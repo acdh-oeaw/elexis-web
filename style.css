@@ -1,0 +1,65 @@
+/*
+Theme Name: Elexis
+Theme URI: https://www.oeaw.ac.at/acdh
+Author: ACDH
+Author URI: https://www.oeaw.ac.at/acdh
+Description: Elexis WordPress Theme.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+/* -----------------------------------------
+	Table of Contents
+--------------------------------------------
+
+.. 01. General
+.. 02. Header
+.. 03. Blocks
+.. 04. Single Posts
+.. 05. Pages
+.. 06. Widgets Styling
+.. 07. Footer
+*/
+/*
+ ** 01. General
+ */
+/* Breakingpoint-down mixin
+// Usage:
+  @include breakpoint-down($xs) {
+    ...
+  }
+*/
+/* Breakingpoint-up mixin
+// Usage:
+  @include breakpoint-up($xs) {
+    ...
+  }
+*/
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  height: 2.5rem; }
+  .navbar-brand img {
+    max-height: 100%;
+    width: auto; }
+
+/*
+ ** 02. Header
+ */
+/*
+ ** 03. Blocks
+ */
+/*
+ ** 04. Single Posts
+ */
+/*
+ ** 05. Pages
+ */
+/*
+ ** 06. Widgets
+ */
+/*
+ ** 07. Footer
+ */
+
+/*# sourceMappingURL=style.css.map */

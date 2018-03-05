@@ -1,0 +1,23 @@
+{
+  "browserSyncOptions" : {
+    "proxy": "localhost/dev/acdh/elexis/",
+    "notify": false
+  },
+  "browserSyncWatchFiles" : [
+    "./style.css",
+    "./css/*.min.css",
+    "./js/*.min.js",
+    "./**/*.php"
+  ],
+  "paths" : {
+    "js": "./js",
+    "css": "./css",
+    "sass": "./sass",
+    "node": "./node_modules/",
+    "bower": "./bower_components/",
+    "dev": "./src",
+    "dist": "./dist",
+    "distprod": "./dist-product",
+    "vendor": ""
+  }
+}

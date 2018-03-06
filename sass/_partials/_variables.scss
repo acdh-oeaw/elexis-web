@@ -11,6 +11,7 @@
 // stylelint-disable
 $white:    #fff !default;
 $gray-100: #f8f9fa !default;
+$gray-150: #f0f3f7 !default;
 $gray-200: #e9ecef !default;
 $gray-300: #dee2e6 !default;
 $gray-400: #ced4da !default;
@@ -140,7 +141,7 @@ $sizes: map-merge((
 //
 // Settings for the `<body>` element.
 
-$body-bg:                   $white !default;
+$body-bg:                   $gray-150 !default;
 $body-color:                $gray-900 !default;
 
 // Links

@@ -55,8 +55,8 @@ if ( ! function_exists( 'elexis_widgets_init' ) ) {
 			'description'   => 'Right sidebar widget area',
 			'before_widget' => '<aside id="%1$s" class="widget card %2$s">',
 			'after_widget'  => '</aside>',
-			'before_title'  => '<h3 class="widget-title">',
-			'after_title'   => '</h3>',
+			'before_title'  => '<h5 class="widget-title">',
+			'after_title'   => '</h5>',
 		) );
 
 		register_sidebar( array(
@@ -65,8 +65,8 @@ if ( ! function_exists( 'elexis_widgets_init' ) ) {
 			'description'   => 'Left sidebar widget area',
 			'before_widget' => '<aside id="%1$s" class="widget card %2$s">',
 			'after_widget'  => '</aside>',
-			'before_title'  => '<h3 class="widget-title">',
-			'after_title'   => '</h3>',
+			'before_title'  => '<h5 class="widget-title">',
+			'after_title'   => '</h5>',
 		) );
 
 		register_sidebar( array(
@@ -85,8 +85,8 @@ if ( ! function_exists( 'elexis_widgets_init' ) ) {
 			'description'   => 'Static Hero widget. no slider functionallity',
 		    'before_widget'  => '<div id="%1$s" class="static-hero-widget %2$s '. elexis_slbd_count_widgets( 'statichero' ) .'">', 
 		    'after_widget'   => '</div><!-- .static-hero-widget -->', 
-		    'before_title'   => '<h3 class="widget-title">', 
-		    'after_title'    => '</h3>',
+		    'before_title'   => '<h5 class="widget-title">', 
+		    'after_title'    => '</h5>',
 		) );
 
 		register_sidebar( array(
@@ -95,8 +95,8 @@ if ( ! function_exists( 'elexis_widgets_init' ) ) {
 			'description'   => 'Widget area below main content and above footer',
 		    'before_widget'  => '<div id="%1$s" class="footer-widget %2$s '. elexis_slbd_count_widgets( 'footerfull' ) .'">', 
 		    'after_widget'   => '</div><!-- .footer-widget -->', 
-		    'before_title'   => '<h3 class="widget-title">', 
-		    'after_title'    => '</h3>', 
+		    'before_title'   => '<h5 class="widget-title">', 
+		    'after_title'    => '</h5>', 
 		) );
 
 	}

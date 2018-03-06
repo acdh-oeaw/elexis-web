@@ -16,6 +16,10 @@ $navbar-brand-font-size: 1.75rem;
 
 // Home items spacing
 .card {
-  padding: 20px;
+  padding: $grid-gutter-width/2;
   margin-bottom: $grid-gutter-width;
+}
+
+.widget ul {
+  margin-bottom: 0;
 }

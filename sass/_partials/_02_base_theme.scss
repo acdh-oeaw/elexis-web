@@ -1,6 +1,7 @@
 $navbar-padding-y: 1rem;
 $navbar-brand-font-size: 1.75rem;
 
+// Navbar brand and logo
 .navbar-brand {
   display: flex;
   align-items: center;
@@ -11,4 +12,10 @@ $navbar-brand-font-size: 1.75rem;
     width: auto;
   }
 
+}
+
+// Home items spacing
+.card {
+  padding: 20px;
+  margin-bottom: $grid-gutter-width;
 }

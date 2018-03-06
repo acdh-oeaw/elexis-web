@@ -5,8 +5,8 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-@import "functions";
-@import "variables";
+@import "./sass/_partials/functions";
+@import "./sass/_partials/variables";
 @import "mixins";
 @import "root";
 @import "reboot";

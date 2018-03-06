@@ -25,7 +25,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 /*
  ** 01. General
  */
-@import 'sass/_partials/_00_variables';
+@import 'sass/_partials/_functions';
+@import 'sass/_partials/_variables';
 @import 'sass/_partials/_01_mixins';
 @import 'sass/_partials/_02_base_theme';
 @import 'sass/_partials/_03_general';

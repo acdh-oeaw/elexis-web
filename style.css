@@ -5,7 +5,7 @@ Author: ACDH
 Author URI: https://www.oeaw.ac.at/acdh
 Description: Elexis WordPress Theme.
 Version: 1.0
-License: GNU General Public License v2 or later
+License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 /* -----------------------------------------
@@ -23,18 +23,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 /*
  ** 01. General
  */
-/* Breakingpoint-down mixin
-// Usage:
-  @include breakpoint-down($xs) {
-    ...
-  }
-*/
-/* Breakingpoint-up mixin
-// Usage:
-  @include breakpoint-up($xs) {
-    ...
-  }
-*/
 .navbar-brand {
   display: flex;
   align-items: center;
@@ -42,6 +30,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
   .navbar-brand img {
     max-height: 100%;
     width: auto; }
+
+.card {
+  padding: 20px;
+  margin-bottom: 30px; }
 
 /*
  ** 02. Header

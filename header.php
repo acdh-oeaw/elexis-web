@@ -40,18 +40,7 @@ $container = get_theme_mod( 'elexis_container_type' );
 
 					<!-- Your site title as branding in the menu -->
 					<?php if ( ! has_custom_logo() ) { ?>
-
-						<?php if ( is_front_page() && is_home() ) : ?>
-
-							<h1 class="navbar-brand mb-0"><a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a></h1>
-							
-						<?php else : ?>
-
-							<a class="navbar-brand" rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a>
-						
-						<?php endif; ?>
-						
-					
+						<a class="navbar-brand" rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" itemprop="url"><?php bloginfo( 'name' ); ?></a>
 					<?php } else {
 						the_custom_logo();
 					} ?><!-- end custom logo -->
@@ -60,18 +49,25 @@ $container = get_theme_mod( 'elexis_container_type' );
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
-				<!-- The WordPress Menu goes here -->
-				<?php wp_nav_menu(
-					array(
-						'theme_location'  => 'primary',
-						'container_class' => 'collapse navbar-collapse',
-						'container_id'    => 'navbarNavDropdown',
-						'menu_class'      => 'navbar-nav',
-						'fallback_cb'     => '',
-						'menu_id'         => 'main-menu',
-						'walker'          => new elexis_WP_Bootstrap_Navwalker(),
-					)
-				); ?>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+  				<!-- The WordPress Menu goes here -->
+  				<?php wp_nav_menu(
+  					array(
+  						'theme_location'  => 'primary',
+  						'container'       => false,
+  						'menu_class'      => 'navbar-nav',
+  						'fallback_cb'     => '',
+  						'menu_id'         => 'main-menu',
+  						'walker'          => new elexis_WP_Bootstrap_Navwalker(),
+  					)
+  				); ?>
+
+          <form class="form-inline my-2 my-lg-0" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
+            <input class="form-control mr-sm-2" id="s" name="s" type="text" placeholder="<?php esc_attr_e( 'Search', 'elexis' ); ?>" value="<?php the_search_query(); ?>">
+          </form>
+
+        </div><!-- .collapse navbar-collapse -->
+
 			<?php if ( 'container' == $container ) : ?>
 			</div><!-- .container -->
 			<?php endif; ?>

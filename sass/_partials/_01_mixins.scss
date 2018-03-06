@@ -8,24 +8,18 @@ $md: 768px;
 $lg: 992px;
 $xl: 1200px;
 
-/* Breakingpoint-down mixin
+// Breakingpoint-down mixin
 // Usage:
-  @include breakpoint-down($xs) {
-    ...
-  }
-*/
+//  @include breakpoint-down($xs) { ... }
 @mixin breakpoint-down($value) {
   @media (max-width: $value - 1) {
     @content;
   }
 }
 
-/* Breakingpoint-up mixin
+// Breakingpoint-up mixin
 // Usage:
-  @include breakpoint-up($xs) {
-    ...
-  }
-*/
+//  @include breakpoint-up($xs) { ... }
 @mixin breakpoint-up($value) {
   @media (min-width: $value) {
     @content;

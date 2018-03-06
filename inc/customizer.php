@@ -20,8 +20,6 @@ if ( ! function_exists( 'elexis_customize_register' ) ) {
 		$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 		$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 		$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
-		$wp_customize->get_setting( 'elexis_theme_fonts_options' )->transport = 'refresh';
-
 	}
 }
 add_action( 'customize_register', 'elexis_customize_register' );
@@ -107,62 +105,6 @@ if ( ! function_exists( 'elexis_theme_customize_register' ) ) {
 					'priority'    => '20',
 				)
 			) );
-
-    require_once( 'customizer-controls/google-font-dropdown-custom-control.php' );
-
-		// Theme fonts.
-		$wp_customize->add_section( 'elexis_theme_fonts_options', array(
-			'title'       => __( 'Fonts', 'elexis' ),
-			'capability'  => 'edit_theme_options',
-			'description' => __( 'Select the fonts for your website.', 'elexis' ),
-			'priority'    => 40,
-		) );
-	
-		$wp_customize->add_setting( 'elexis_heading_font_family', array(
-			'default'           => 'Roboto',
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'sanitize_text_field',
-			'capability'        => 'edit_theme_options',
-		) );
-	
-  	$wp_customize->add_control(
-  		new Google_Font_Dropdown_Custom_Control(
-  			$wp_customize, 'control_heading_font_family', array(
-  				'label'       => __( 'Font Family for Headings', 'elexis' ),
-  				'section'     => 'elexis_theme_fonts_options',
-  				'settings'    => 'elexis_heading_font_family',
-  				'input_attrs' => array('font_property' => 'family'),
-  				'description' => __( 'Select a Google Font from the list.', 'elexis' ),
-  			)
-  		)
-  	);
-
-		$wp_customize->add_setting( 'elexis_heading_font_weight', array(
-			'default'           => '500',
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'sanitize_text_field',
-			'capability'        => 'edit_theme_options',
-		) );
-	
-  	$wp_customize->add_control(
-  		new Google_Font_Dropdown_Custom_Control(
-  			$wp_customize, 'control_heading_font_weight', array(
-  				'label'       => __( 'Font Weight for Headings', 'elexis' ),
-  				'section'     => 'elexis_theme_fonts_options',
-  				'settings'    => 'elexis_heading_font_weight',
-  				'input_attrs' => array('font_property' => 'variants'),
-  				'description' => __( 'Define a weight for your selected font.', 'elexis' ),
-  			)
-  		)
-  	);
-
-
-
-
-
-
-
-
 	}
 } // endif function_exists( 'elexis_theme_customize_register' ).
 add_action( 'customize_register', 'elexis_theme_customize_register' );

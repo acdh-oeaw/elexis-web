@@ -37,21 +37,21 @@ if ( ! function_exists( 'elexis_scripts' ) ) {
       $font_body_family = $fonts_body['font-family'];
       $font_body_variant = $fonts_body['variant'];
       $fonts_embed[] = $font_body_family . ':' . $font_body_variant;
-    }
+    } else { $fonts_embed[] = 'Asap:400'; }
 
     $fonts_heading = get_theme_mod( 'typography_heading', array() );
     if ($fonts_heading) {
       $font_heading_family = $fonts_heading['font-family'];
       $font_heading_variant = $fonts_heading['variant'];
       $fonts_embed[] = $font_heading_family . ':' . $font_heading_variant;
-    }
+    } else { $fonts_embed[] = 'Asap:600'; }
 
     $fonts_article = get_theme_mod( 'typography_article', array() );
     if ($fonts_article) {
       $font_article_family = $fonts_article['font-family'];
       $font_article_variant = $fonts_article['variant'];
       $fonts_embed[] = $font_article_family . ':' . $font_article_variant . ',italic,bold';
-    }
+    } else { $fonts_embed[] = 'Lora:regular,italic,bold'; }
 
     if ($fonts_embed) {
 

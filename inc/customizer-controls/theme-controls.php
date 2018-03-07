@@ -91,7 +91,7 @@ my_config_kirki_add_field(
 		),
 		'choices' => array(
 			'fonts' => array(
-				'google' => array( 'popularity', 60 ),
+				'google' => array( 'alpha' ),
 			),
 		),
 	)
@@ -121,7 +121,7 @@ my_config_kirki_add_field(
 		),
 		'choices' => array(
 			'fonts' => array(
-				'google' => array( 'popularity', 60 ),
+				'google' => array( 'alpha' ),
 			),
 		),
 	)
@@ -143,8 +143,8 @@ my_config_kirki_add_field(
 			'font-family'     => 'Lora',
 			'variant'         => '400',
 			'color'           => '#212529',
-			'font-size'       => '1.25rem',
-			'line-height'     => '1.5',
+			'font-size'       => '1.3rem',
+			'line-height'     => '1.55',
 		),
 		'output'      => array(
 			array(
@@ -153,7 +153,7 @@ my_config_kirki_add_field(
 		),
 		'choices' => array(
 			'fonts' => array(
-				'google' => array( 'popularity', 60 ),
+				'google' => array( 'alpha' ),
 			),
 		),
 	)

@@ -197,15 +197,16 @@ class Kirki_Modules_CSS {
 						wp_add_inline_style( $stylesheet, $styles );
 						continue;
 					}
-					wp_enqueue_style( 'kirki-styles-' . $config_id, trailingslashit( Kirki::$url ) . 'assets/css/kirki-styles.css', array(), KIRKI_VERSION );
+					wp_enqueue_style( 'kirki-styles-' . $config_id, trailingslashit( Kirki::$url ) . 'assets/css/kirki-styles.css', array() );
 					wp_add_inline_style( 'kirki-styles-' . $config_id, $styles );
 				}
 			}
 			$this->processed = true;
 		}
+		/*
 		if ( apply_filters( 'kirki_load_fontawesome', true ) ) {
 			wp_enqueue_script( 'kirki-fontawesome-font', 'https://use.fontawesome.com/30858dc40a.js', array(), '4.0.7', true );
-		}
+		}*/
 	}
 
 	/**
@@ -224,7 +225,7 @@ class Kirki_Modules_CSS {
 	 * @access public
 	 */
 	public function frontend_styles() {
-		wp_enqueue_style( 'kirki-styles-php', admin_url( 'admin-ajax.php' ) . '?action=kirki_dynamic_css', array(), KIRKI_VERSION );
+		wp_enqueue_style( 'kirki-styles-php', admin_url( 'admin-ajax.php' ) . '?action=kirki_dynamic_css', array() );
 	}
 
 	/**

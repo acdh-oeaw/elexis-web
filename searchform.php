@@ -7,7 +7,7 @@
 
 ?>
 <form method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
-	<label class="assistive-text" for="s"><?php esc_html_e( 'Search', 'elexis' ); ?></label>
+	<h5 class="widget-title"><span class="separator-title"><?php esc_html_e( 'Search', 'elexis' ); ?></span></h5>
 	<div class="input-group">
 		<input class="field form-control" id="s" name="s" type="text"
 			placeholder="<?php esc_attr_e( 'Search &hellip;', 'elexis' ); ?>" value="<?php the_search_query(); ?>">

@@ -75,8 +75,20 @@ svg.feather {
     width: 100%;
     height: 100%; }
 
-.widget ul {
-  margin-bottom: 0; }
+.widget {
+  margin-bottom: 30px; }
+  .widget ul {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none; }
+  .widget .widget-title {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    padding-bottom: 1rem;
+    margin-bottom: 1.2rem; }
+
+.separator-title {
+  border-bottom: 1px solid #212529;
+  padding-bottom: calc(1rem + 1px); }
 
 /*
  ** 02. Header

@@ -53,20 +53,20 @@ if ( ! function_exists( 'elexis_widgets_init' ) ) {
 			'name'          => __( 'Right Sidebar', 'elexis' ),
 			'id'            => 'right-sidebar',
 			'description'   => 'Right sidebar widget area',
-			'before_widget' => '<aside id="%1$s" class="widget card %2$s">',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</aside>',
-			'before_title'  => '<h5 class="widget-title">',
-			'after_title'   => '</h5>',
+			'before_title'  => '<h5 class="widget-title"><span class="separator-title">',
+			'after_title'   => '</span></h5>',
 		) );
 
 		register_sidebar( array(
 			'name'          => __( 'Left Sidebar', 'elexis' ),
 			'id'            => 'left-sidebar',
 			'description'   => 'Left sidebar widget area',
-			'before_widget' => '<aside id="%1$s" class="widget card %2$s">',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</aside>',
-			'before_title'  => '<h5 class="widget-title">',
-			'after_title'   => '</h5>',
+			'before_title'  => '<h5 class="widget-title"><span class="separator-title">',
+			'after_title'   => '</span></h5>',
 		) );
 
 		register_sidebar( array(

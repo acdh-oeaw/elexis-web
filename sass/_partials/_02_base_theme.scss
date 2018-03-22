@@ -81,6 +81,24 @@ svg.feather {
 
 }
 
-.widget ul {
-  margin-bottom: 0;
+.widget {
+  margin-bottom: $grid-gutter-width;
+
+  ul {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .widget-title {
+    border-bottom: 1px solid rgba(0,0,0,.15);
+    padding-bottom: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+}
+
+.separator-title {
+  border-bottom: 1px solid $body-color;
+  padding-bottom: calc(1rem + 1px);
 }

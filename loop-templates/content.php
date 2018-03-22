@@ -7,7 +7,7 @@
 
 ?>
 
-<article <?php post_class('card col-md-6'); ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class('card'); ?> id="post-<?php the_ID(); ?>">
 
   <div class="entry-top-thumbnail">
 

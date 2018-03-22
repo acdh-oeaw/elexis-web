@@ -117,7 +117,7 @@ my_config_kirki_add_field(
 		),
 		'output'      => array(
 			array(
-				'element' => array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ),
+				'element' => array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', '.navbar-brand' ),
 			),
 		),
 		'choices' => array(

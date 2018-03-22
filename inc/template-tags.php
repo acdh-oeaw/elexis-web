@@ -22,17 +22,40 @@ function elexis_posted_on() {
 		esc_attr( get_the_modified_date( 'c' ) ),
 		esc_html( get_the_modified_date() )
 	);
+	$gravatar = sprintf(
+		'<a class="author-avatar" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . get_avatar( get_the_author_meta( 'ID' ), 40 ) . '</a>'
+	);
 	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'elexis' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+		'<a class="post-date" href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
-	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'elexis' ),
-		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+	$authorname = sprintf(
+		'<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>'
 	);
-	echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
+	$readicon = sprintf(
+		'<a class="read-post-icon" href="' . esc_url( get_permalink() ) . '" rel="bookmark" title="' . __( 'Read More...',
+		'elexis' ) . '"><i data-feather="bookmark"></i></a>'
+	);
+
+	echo $gravatar . '<span class="author-meta">' . $authorname . $posted_on . '</span>' . $readicon; // WPCS: XSS OK.
 }
 endif;
+
+if ( ! function_exists( 'elexis_entry_footer' ) ) :
+/**
+ * Prints HTML with meta information for the categories, tags and comments.
+ */
+function elexis_entry_list_categories() {
+	// Hide category and tag text for pages.
+	if ( 'post' === get_post_type() ) {
+		/* translators: used between list items, there is a space after the comma */
+		$categories_list = get_the_category_list( esc_html__( ', ', 'elexis' ) );
+		if ( $categories_list && elexis_categorized_blog() ) {
+			printf( '<span class="entry-cat-links"><i data-feather="archive"></i>' . $categories_list . '</span>', $categories_list ); // WPCS: XSS OK.
+		}
+	}
+}
+endif;
+
 
 if ( ! function_exists( 'elexis_entry_footer' ) ) :
 /**

@@ -1,6 +1,3 @@
-$navbar-padding-y: 1rem;
-$navbar-brand-font-size: 1.75rem;
-
 .navbar {
   box-shadow: 0 2px 2px -2px rgba(0,0,0,.15);
 
@@ -40,7 +37,6 @@ $navbar-brand-font-size: 1.75rem;
     background: none;
     color: $gray-600;
     margin-left: -1.6rem;
-    margin-bottom: 2px;
     width: 1rem;
     cursor: pointer;
 
@@ -54,8 +50,9 @@ $navbar-brand-font-size: 1.75rem;
 
 // Feather Icons
 svg.feather {
-  width: 100%;
-  vertical-align: middle;
+  width: 1.1rem;
+  max-width: 100%;
+  vertical-align: top;
 }
 
 // Home items spacing
@@ -64,6 +61,12 @@ svg.feather {
   margin-bottom: $grid-gutter-width;
   border-radius: 2px;
   border: 1px solid rgba(0,0,0,.1);
+
+  .entry-content p {
+    color: #6f757c;
+    font-size: 0.9rem;
+  }
+
 }
 
 .entry-top-thumbnail {
@@ -101,4 +104,47 @@ svg.feather {
 .separator-title {
   border-bottom: 1px solid $body-color;
   padding-bottom: calc(1rem + 1px);
+}
+
+.entry-meta {
+  font-size: 0.85rem;
+  display: flex;
+
+  .author-meta a {
+    display: block;
+  }
+  
+  .post-date {
+    color: $gray-600;
+  }
+  
+  .author-avatar {
+    margin-right: 0.5rem;
+
+    img {
+      border-radius: 100%;
+    }
+  }
+  
+  .read-post-icon {
+    margin-left: auto;
+    width: 1.1rem;
+    color: $gray-600;
+  }
+
+}
+
+.entry-cat-links {
+  font-size: 0.9rem;
+  color: $gray-600;
+
+  a {
+    color: $gray-600;
+  }
+
+  svg {
+    margin-right: 5px;
+    width: 0.9rem;
+  }
+
 }

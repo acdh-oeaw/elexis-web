@@ -48,21 +48,24 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
     background: none;
     color: #6c757d;
     margin-left: -1.6rem;
-    margin-bottom: 2px;
     width: 1rem;
     cursor: pointer; }
     .navbar button.navbar-search-icon:hover {
       color: #212529; }
 
 svg.feather {
-  width: 100%;
-  vertical-align: middle; }
+  width: 1.1rem;
+  max-width: 100%;
+  vertical-align: top; }
 
 .card {
   padding: 15px;
   margin-bottom: 30px;
   border-radius: 2px;
   border: 1px solid rgba(0, 0, 0, 0.1); }
+  .card .entry-content p {
+    color: #6f757c;
+    font-size: 0.9rem; }
 
 .entry-top-thumbnail {
   margin: -15px -15px 15px -15px;
@@ -89,6 +92,31 @@ svg.feather {
 .separator-title {
   border-bottom: 1px solid #212529;
   padding-bottom: calc(1rem + 1px); }
+
+.entry-meta {
+  font-size: 0.85rem;
+  display: flex; }
+  .entry-meta .author-meta a {
+    display: block; }
+  .entry-meta .post-date {
+    color: #6c757d; }
+  .entry-meta .author-avatar {
+    margin-right: 0.5rem; }
+    .entry-meta .author-avatar img {
+      border-radius: 100%; }
+  .entry-meta .read-post-icon {
+    margin-left: auto;
+    width: 1.1rem;
+    color: #6c757d; }
+
+.entry-cat-links {
+  font-size: 0.9rem;
+  color: #6c757d; }
+  .entry-cat-links a {
+    color: #6c757d; }
+  .entry-cat-links svg {
+    margin-right: 5px;
+    width: 0.9rem; }
 
 /*
  ** 02. Header

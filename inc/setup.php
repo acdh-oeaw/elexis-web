@@ -107,19 +107,3 @@ if ( ! function_exists( 'elexis_custom_excerpt_more' ) ) {
 	}
 }
 add_filter( 'excerpt_more', 'elexis_custom_excerpt_more' );
-
-if ( ! function_exists( 'elexis_all_excerpts_get_more_link' ) ) {
-	/**
-	 * Adds a custom read more link to all excerpts, manually or automatically generated
-	 *
-	 * @param string $post_excerpt Posts's excerpt.
-	 *
-	 * @return string
-	 */
-	function elexis_all_excerpts_get_more_link( $post_excerpt ) {
-
-		return $post_excerpt . ' [...]<p><a class="btn btn-secondary elexis-read-more-link" href="' . esc_url( get_permalink( get_the_ID() )) . '">' . __( 'Read More...',
-		'elexis' ) . '</a></p>';
-	}
-}
-add_filter( 'wp_trim_excerpt', 'elexis_all_excerpts_get_more_link' );

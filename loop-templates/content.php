@@ -16,6 +16,8 @@
   </div><!-- .entry-top-thumbnail -->
 
 	<header class="entry-header">
+  	
+  	<?php elexis_entry_list_categories(); ?>
 
 		<?php the_title( sprintf( '<h4 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ),
 		'</a></h4>' ); ?>
@@ -37,17 +39,17 @@
 
 	</div><!-- .entry-content -->
 
+	<?php if ( 'post' == get_post_type() ) : ?>
+
+		<div class="entry-meta">
+			<?php elexis_posted_on(); ?>
+		</div><!-- .entry-meta -->
+
+	<?php endif; ?>
+
 	<footer class="entry-footer">
 
 		<?php elexis_entry_footer(); ?>
-
-		<?php if ( 'post' == get_post_type() ) : ?>
-
-			<div class="entry-meta">
-				<?php elexis_posted_on(); ?>
-			</div><!-- .entry-meta -->
-
-		<?php endif; ?>
 
 	</footer><!-- .entry-footer -->
 

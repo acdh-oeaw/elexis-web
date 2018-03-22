@@ -45,6 +45,7 @@ Kirki::add_panel(
  */
 $sections = array(
 	'typography'      => array( esc_attr__( 'Typography', 'elexis' ), '' ),
+	'navbar'      => array( esc_attr__( 'Top Navigation', 'elexis' ), '' ),
 );
 foreach ( $sections as $section_id => $section ) {
 	$section_args = array(
@@ -159,3 +160,69 @@ my_config_kirki_add_field(
 	)
 );
 
+/**
+ * Navbar Logo Height
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'slider',
+		'settings'    => 'navbar_logo_height',
+		'label'       => esc_attr__( 'Navbar Logo Height', 'elexis' ),
+		'description' => esc_attr__( 'Make your logo on the navigation bar bigger or smaller.', 'elexis' ),
+		'section'     => 'navbar_section',
+		'default'     => '2.5',
+		'choices'     => array(
+			'min'  => 2.5,
+			'max'  => 6.0,
+			'step' => 0.1,
+			'suffix' => 'rem',
+		),
+		'output'      => array(
+			array(
+				'element' => array( '.navbar .navbar-brand' ),
+        'property' => 'height',
+        'units'    => 'rem',
+			),
+		),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+      array(
+				'element' => array( '.navbar .navbar-brand' ),
+        'property' => 'height',
+        'units'    => 'rem',
+      ),
+    ),
+	)
+);
+
+/**
+ * Navbar Logo Height
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'dimensions',
+		'settings'    => 'navbar_padding',
+		'label'       => esc_attr__( 'Navbar Padding', 'elexis' ),
+		'description' => esc_attr__( 'Define the padding of your top navigation bar.', 'elexis' ),
+		'section'     => 'navbar_section',
+		'default'     => array(
+			'padding-top'    => '0.5rem',
+			'padding-bottom' => '0.5rem',
+			'padding-left'   => '1rem',
+			'padding-right'  => '1rem',
+		),
+    'output'    => array(
+    	array(
+    		'element'         => array( '.navbar' ),
+    		'property'        => '',
+      ),
+    ),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+      array(
+    		'element'         => array( '.navbar' ),
+    		'property'        => '',
+      ),
+    ),
+	)
+);

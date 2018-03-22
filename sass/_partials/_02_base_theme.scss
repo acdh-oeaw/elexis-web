@@ -1,23 +1,69 @@
 $navbar-padding-y: 1rem;
 $navbar-brand-font-size: 1.75rem;
 
-// Navbar brand and logo
-.navbar-brand {
-  display: flex;
-  align-items: center;
-  height: 2.5rem;
+.navbar {
+  box-shadow: 0 2px 2px -2px rgba(0,0,0,.15);
 
-  img {
-    max-height: 100%;
-    width: auto;
+  // Navbar brand and logo
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    height: 2.5rem;
+
+    img {
+      max-height: 100%;
+      width: auto;
+    }
+
   }
 
+  .navbar-collapse li {
+    font-size: 0.9rem;
+  }
+
+  .navbar-search {
+    font-size: 0.8rem;
+    width: 9rem;
+    border-radius: 30px;
+    padding: .3rem 1.75rem .3rem .75rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    &::placeholder {
+      color: $gray-500;
+    }
+
+  }
+
+  button.navbar-search-icon {
+    border: 0;
+    padding: 0;
+    background: none;
+    color: $gray-600;
+    margin-left: -1.6rem;
+    margin-bottom: 2px;
+    width: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      color: $gray-900;
+    }
+
+  }
+
+}
+
+// Feather Icons
+svg.feather {
+  width: 100%;
+  vertical-align: middle;
 }
 
 // Home items spacing
 .card {
   padding: $grid-gutter-width/2;
   margin-bottom: $grid-gutter-width;
+  border-radius: 2px;
+  border: 1px solid rgba(0,0,0,.1);
 }
 
 .widget ul {

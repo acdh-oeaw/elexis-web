@@ -23,17 +23,46 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 /*
  ** 01. General
  */
-.navbar-brand {
-  display: flex;
-  align-items: center;
-  height: 2.5rem; }
-  .navbar-brand img {
-    max-height: 100%;
-    width: auto; }
+.navbar {
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.15); }
+  .navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+    height: 2.5rem; }
+    .navbar .navbar-brand img {
+      max-height: 100%;
+      width: auto; }
+  .navbar .navbar-collapse li {
+    font-size: 0.9rem; }
+  .navbar .navbar-search {
+    font-size: 0.8rem;
+    width: 9rem;
+    border-radius: 30px;
+    padding: .3rem 1.75rem .3rem .75rem;
+    border: 1px solid rgba(0, 0, 0, 0.1); }
+    .navbar .navbar-search::placeholder {
+      color: #adb5bd; }
+  .navbar button.navbar-search-icon {
+    border: 0;
+    padding: 0;
+    background: none;
+    color: #6c757d;
+    margin-left: -1.6rem;
+    margin-bottom: 2px;
+    width: 1rem;
+    cursor: pointer; }
+    .navbar button.navbar-search-icon:hover {
+      color: #212529; }
+
+svg.feather {
+  width: 100%;
+  vertical-align: middle; }
 
 .card {
   padding: 15px;
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.1); }
 
 .widget ul {
   margin-bottom: 0; }

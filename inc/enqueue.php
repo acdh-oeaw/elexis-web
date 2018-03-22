@@ -14,8 +14,8 @@ if ( ! function_exists( 'elexis_scripts' ) ) {
 		// Get the theme data.
 		$the_theme = wp_get_theme();
 
-		wp_enqueue_style( 'theme-asset-styles', get_stylesheet_directory_uri() . '/css/assets.min.css', array(), $the_theme->get( 'Version' ), false );
-		wp_enqueue_style( 'theme-styles', get_stylesheet_directory_uri() . '/style.css', array(), $the_theme->get( 'Version' ), false );
+		wp_enqueue_style( 'theme-asset-styles', get_template_directory_uri() . '/css/assets.min.css', array(), $the_theme->get( 'Version' ), false );
+		wp_enqueue_style( 'theme-styles', get_template_directory_uri() . '/style.css', array(), $the_theme->get( 'Version' ), false );
     wp_enqueue_style( 'theme-google-fonts', elexis_google_fonts(), array(), null );
 		wp_enqueue_script( 'jquery');
 		wp_enqueue_script( 'theme-asset-scripts', get_template_directory_uri() . '/js/assets.min.js', array(), $the_theme->get( 'Version' ), true );

@@ -9,22 +9,18 @@
 
 <article <?php post_class('card'); ?> id="post-<?php the_ID(); ?>">
 
+  <div class="entry-top-thumbnail">
+
+    <?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
+
+  </div><!-- .entry-top-thumbnail -->
+
 	<header class="entry-header">
 
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ),
-		'</a></h2>' ); ?>
-
-		<?php if ( 'post' == get_post_type() ) : ?>
-
-			<div class="entry-meta">
-				<?php elexis_posted_on(); ?>
-			</div><!-- .entry-meta -->
-
-		<?php endif; ?>
+		<?php the_title( sprintf( '<h4 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ),
+		'</a></h4>' ); ?>
 
 	</header><!-- .entry-header -->
-
-	<?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
 
 	<div class="entry-content">
 
@@ -44,6 +40,14 @@
 	<footer class="entry-footer">
 
 		<?php elexis_entry_footer(); ?>
+
+		<?php if ( 'post' == get_post_type() ) : ?>
+
+			<div class="entry-meta">
+				<?php elexis_posted_on(); ?>
+			</div><!-- .entry-meta -->
+
+		<?php endif; ?>
 
 	</footer><!-- .entry-footer -->
 

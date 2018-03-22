@@ -2,3 +2,4 @@
  * Theme.js
  */
 
+feather.replace()

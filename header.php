@@ -32,7 +32,7 @@ $container = get_theme_mod( 'elexis_container_type' );
 
 		<a class="skip-link screen-reader-text sr-only" href="#content"><?php esc_html_e( 'Skip to content', 'elexis' ); ?></a>
 
-		<nav class="navbar navbar-expand-md navbar-light bg-light">
+		<nav class="navbar navbar-expand-md navbar-light bg-white">
 
 		<?php if ( 'container' == $container ) : ?>
 			<div class="container" >
@@ -63,7 +63,11 @@ $container = get_theme_mod( 'elexis_container_type' );
   				); ?>
 
           <form class="form-inline my-2 my-lg-0" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
-            <input class="form-control mr-sm-2" id="s" name="s" type="text" placeholder="<?php esc_attr_e( 'Search', 'elexis' ); ?>" value="<?php the_search_query(); ?>">
+            <input class="form-control ml-sm-2 navbar-search" id="s" name="s" type="text" placeholder="<?php esc_attr_e( 'Search', 'elexis' ); ?>" value="<?php the_search_query(); ?>">
+            
+            <button type="submit" class="navbar-search-icon">
+              <i data-feather="search"></i>
+            </button>
           </form>
 
         </div><!-- .collapse navbar-collapse -->

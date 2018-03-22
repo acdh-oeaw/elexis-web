@@ -66,6 +66,21 @@ svg.feather {
   border: 1px solid rgba(0,0,0,.1);
 }
 
+.entry-top-thumbnail {
+  margin: (-$grid-gutter-width)/2 (-$grid-gutter-width)/2 $grid-gutter-width/2 (-$grid-gutter-width)/2;
+  max-height: 250px;
+  overflow: hidden;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+}
+
 .widget ul {
   margin-bottom: 0;
 }

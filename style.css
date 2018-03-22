@@ -64,6 +64,17 @@ svg.feather {
   border-radius: 2px;
   border: 1px solid rgba(0, 0, 0, 0.1); }
 
+.entry-top-thumbnail {
+  margin: -15px -15px 15px -15px;
+  max-height: 250px;
+  overflow: hidden;
+  justify-content: center;
+  display: flex;
+  align-items: center; }
+  .entry-top-thumbnail img {
+    width: 100%;
+    height: 100%; }
+
 .widget ul {
   margin-bottom: 0; }
 

@@ -46,6 +46,7 @@ Kirki::add_panel(
 $sections = array(
 	'typography'      => array( esc_attr__( 'Typography', 'elexis' ), '' ),
 	'navbar'      => array( esc_attr__( 'Top Navigation', 'elexis' ), '' ),
+	'content_blocks'      => array( esc_attr__( 'Content Blocks', 'elexis' ), '' ),
 );
 foreach ( $sections as $section_id => $section ) {
 	$section_args = array(

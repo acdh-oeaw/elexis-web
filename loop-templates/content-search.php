@@ -31,10 +31,4 @@
 
 	</div><!-- .entry-summary -->
 
-	<footer class="entry-footer">
-
-		<?php elexis_entry_footer(); ?>
-
-	</footer><!-- .entry-footer -->
-
 </article><!-- #post-## -->

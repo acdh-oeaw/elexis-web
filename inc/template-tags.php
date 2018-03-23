@@ -32,15 +32,28 @@ function elexis_posted_on() {
 		'<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>'
 	);
 	$readicon = sprintf(
-		'<a class="read-post-icon" href="' . esc_url( get_permalink() ) . '" rel="bookmark" title="' . __( 'Read More...',
-		'elexis' ) . '"><i data-feather="bookmark"></i></a>'
+		'<a class="read-post-icon" href="' . esc_url( get_permalink() ) . '" rel="bookmark" title="' . __( 'Read More...', 'elexis' ) . '"><i data-feather="bookmark"></i></a>'
 	);
-
-	echo $gravatar . '<span class="author-meta">' . $authorname . $posted_on . '</span>' . $readicon; // WPCS: XSS OK.
+	echo $gravatar . '<span class="author-meta">' . $authorname . $posted_on . '</span>'; // WPCS: XSS OK.
+  echo '<div class="entry-meta-icons">';
+	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+		comments_popup_link( '', esc_html__( '1', 'elexis' ) . '<i data-feather="message-circle"></i>', esc_html__( '%', 'elexis' ) . '<i data-feather="message-circle"></i>', 'comments-link' );
+	}
+  edit_post_link( '<i data-feather="edit-3"></i>' );
+	echo $readicon;
+	// Hide category and tag text for pages.
+	if ( 'post' === get_post_type() ) {
+		/* translators: used between list items, there is a space after the comma */
+		$tags_list = get_the_tag_list( '<i data-feather="hash"></i>', ' <i data-feather="hash"></i>' );
+		if ( $tags_list ) {
+			printf( '<span class="tags-links">' . $tags_list . '</span>' ); // WPCS: XSS OK.
+		}
+	}
+	echo '</div>';
 }
 endif;
 
-if ( ! function_exists( 'elexis_entry_footer' ) ) :
+if ( ! function_exists( 'elexis_entry_list_categories' ) ) :
 /**
  * Prints HTML with meta information for the categories, tags and comments.
  */
@@ -50,45 +63,9 @@ function elexis_entry_list_categories() {
 		/* translators: used between list items, there is a space after the comma */
 		$categories_list = get_the_category_list( esc_html__( ', ', 'elexis' ) );
 		if ( $categories_list && elexis_categorized_blog() ) {
-			printf( '<span class="entry-cat-links"><i data-feather="archive"></i>' . $categories_list . '</span>', $categories_list ); // WPCS: XSS OK.
+			printf( '<span class="entry-cat-links"><i data-feather="archive"></i>' . $categories_list . '</span>' ); // WPCS: XSS OK.
 		}
 	}
-}
-endif;
-
-
-if ( ! function_exists( 'elexis_entry_footer' ) ) :
-/**
- * Prints HTML with meta information for the categories, tags and comments.
- */
-function elexis_entry_footer() {
-	// Hide category and tag text for pages.
-	if ( 'post' === get_post_type() ) {
-		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( esc_html__( ', ', 'elexis' ) );
-		if ( $categories_list && elexis_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'elexis' ) . '</span>', $categories_list ); // WPCS: XSS OK.
-		}
-		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'elexis' ) );
-		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'elexis' ) . '</span>', $tags_list ); // WPCS: XSS OK.
-		}
-	}
-	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-		echo '<span class="comments-link">';
-		comments_popup_link( esc_html__( 'Leave a comment', 'elexis' ), esc_html__( '1 Comment', 'elexis' ), esc_html__( '% Comments', 'elexis' ) );
-		echo '</span>';
-	}
-	edit_post_link(
-		sprintf(
-			/* translators: %s: Name of current post */
-			esc_html__( 'Edit %s', 'elexis' ),
-			the_title( '<span class="screen-reader-text">"', '"</span>', false )
-		),
-		'<span class="edit-link">',
-		'</span>'
-	);
 }
 endif;
 

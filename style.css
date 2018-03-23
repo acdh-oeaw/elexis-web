@@ -73,7 +73,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 svg.feather {
   width: 1.1rem;
   max-width: 100%;
-  vertical-align: top; }
+  vertical-align: bottom; }
 
 .card {
   padding: 15px;
@@ -92,8 +92,7 @@ svg.feather {
   display: flex;
   align-items: center; }
   .entry-top-thumbnail img {
-    width: 100%;
-    height: 100%; }
+    width: 100%; }
 
 .widget {
   margin-bottom: 30px; }
@@ -113,24 +112,59 @@ svg.feather {
 .entry-meta {
   font-size: 0.85rem;
   display: flex; }
-  .entry-meta .author-meta a {
-    display: block; }
+  .entry-meta .author-meta {
+    min-width: 10rem; }
+    .entry-meta .author-meta a {
+      display: block; }
   .entry-meta .post-date {
     color: #6c757d; }
   .entry-meta .author-avatar {
-    margin-right: 0.5rem; }
+    margin-right: 0.5rem;
+    min-width: 40px; }
     .entry-meta .author-avatar img {
       border-radius: 100%; }
-  .entry-meta .read-post-icon {
+  .entry-meta .entry-meta-icons {
     margin-left: auto;
-    width: 1.1rem;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: right;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-top: -5px; }
+    .entry-meta .entry-meta-icons > a {
+      color: #6c757d;
+      margin-left: 0.5rem; }
+      .entry-meta .entry-meta-icons > a:hover {
+        color: #212529; }
+    .entry-meta .entry-meta-icons .comments-link {
+      display: inline-flex;
+      align-items: center; }
+      .entry-meta .entry-meta-icons .comments-link svg {
+        margin-left: 0.1rem; }
+
+.tags-links {
+  font-size: 0.85rem;
+  width: 100%; }
+  .tags-links a {
+    color: #6c757d; }
+    .tags-links a:hover {
+      color: #212529; }
+  .tags-links svg {
+    width: 0.8rem;
+    margin-left: 0.25rem;
+    vertical-align: middle;
     color: #6c757d; }
 
 .entry-cat-links {
   font-size: 0.9rem;
-  color: #6c757d; }
+  color: #6c757d;
+  display: block;
+  margin-top: -5px;
+  margin-bottom: 5px; }
   .entry-cat-links a {
     color: #6c757d; }
+    .entry-cat-links a:hover {
+      color: #212529; }
   .entry-cat-links svg {
     margin-right: 5px;
     width: 0.9rem; }

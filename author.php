@@ -64,7 +64,7 @@ $container   = get_theme_mod( 'elexis_container_type' );
 								<a rel="bookmark" href="<?php the_permalink() ?>"
 								   title="<?php esc_html_e( 'Permanent Link:', 'elexis' ); ?> <?php the_title(); ?>">
 									<?php the_title(); ?></a>,
-								<?php elexis_posted_on(); ?> <?php esc_html_e( 'in',
+								<?php elexis_entry_meta(); ?> <?php esc_html_e( 'in',
 								'elexis' ); ?> <?php the_category( '&' ); ?>
 							</li>
 						<?php endwhile; ?>

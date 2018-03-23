@@ -17,7 +17,7 @@
 
 			<div class="entry-meta">
 
-				<?php elexis_posted_on(); ?>
+				<?php elexis_entry_meta(); ?>
 
 			</div><!-- .entry-meta -->
 

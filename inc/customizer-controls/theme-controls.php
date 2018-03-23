@@ -259,7 +259,7 @@ my_config_kirki_add_field(
 );
 
 /**
- * Navbar Font Color Palette
+ * Navbar Font Color Scheme
  */
 my_config_kirki_add_field(
 	array(
@@ -277,3 +277,93 @@ my_config_kirki_add_field(
 	)
 );
 
+
+/**
+ * Display Post Categories on Cards
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'card_category_toggle',
+		'label'       => esc_attr__( 'Display Post Categories on Cards', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the post categories on card items.', 'elexis' ),
+		'section'     => 'content_blocks_section',
+		'default'     => true,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Author Avatar on Cards
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'card_avatar_toggle',
+		'label'       => esc_attr__( 'Display Author Avatar on Cards', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the author avatar on card items.', 'elexis' ),
+		'section'     => 'content_blocks_section',
+		'default'     => true,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Author Name on Cards
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'card_author_toggle',
+		'label'       => esc_attr__( 'Display Author Name on Cards', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the author name on card items.', 'elexis' ),
+		'section'     => 'content_blocks_section',
+		'default'     => true,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Post Date on Cards
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'card_postdate_toggle',
+		'label'       => esc_attr__( 'Display Post Date on Cards', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the post date on card items.', 'elexis' ),
+		'section'     => 'content_blocks_section',
+		'default'     => true,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Meta Icons on Cards
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'card_icons_toggle',
+		'label'       => esc_attr__( 'Display Meta Icons on Cards', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the meta icons on card items.', 'elexis' ),
+		'section'     => 'content_blocks_section',
+		'default'     => true,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Post Tags on Cards
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'card_tags_toggle',
+		'label'       => esc_attr__( 'Display Post Tags on Cards', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the post tags on card items.', 'elexis' ),
+		'section'     => 'content_blocks_section',
+		'default'     => false,
+		'transport'   => 'refresh',
+	)
+);

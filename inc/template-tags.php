@@ -7,11 +7,11 @@
  * @package elexis
  */
 
-if ( ! function_exists( 'elexis_posted_on' ) ) :
+if ( ! function_exists( 'elexis_entry_meta' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
  */
-function elexis_posted_on() {
+function elexis_entry_meta($avatar = true, $author = true, $postdate = true, $readingtime = false, $icons = true, $tags = false) {
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s"> (%4$s) </time>';
@@ -22,33 +22,43 @@ function elexis_posted_on() {
 		esc_attr( get_the_modified_date( 'c' ) ),
 		esc_html( get_the_modified_date() )
 	);
-	$gravatar = sprintf(
-		'<a class="author-avatar" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . get_avatar( get_the_author_meta( 'ID' ), 40 ) . '</a>'
-	);
-	$posted_on = sprintf(
-		'<a class="post-date" href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-	);
-	$authorname = sprintf(
-		'<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>'
-	);
-	$readicon = sprintf(
-		'<a class="read-post-icon" href="' . esc_url( get_permalink() ) . '" rel="bookmark" title="' . __( 'Read More...', 'elexis' ) . '"><i data-feather="bookmark"></i></a>'
-	);
+	if ($avatar) {
+  	$gravatar = sprintf(
+  		'<a class="author-avatar" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . get_avatar( get_the_author_meta( 'ID' ), 40 ) . '</a>'
+  	);
+	} else { $gravatar = ''; }
+	if ($author) {
+  	$authorname = sprintf(
+  		'<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>'
+  	);
+  } else { $authorname = ''; }
+  if ($postdate) {
+  	$posted_on = sprintf(
+  		'<a class="post-date" href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+  	);
+  } else { $posted_on = ''; }
 	echo $gravatar . '<span class="author-meta">' . $authorname . $posted_on . '</span>'; // WPCS: XSS OK.
   echo '<div class="entry-meta-icons">';
-	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-		comments_popup_link( '', esc_html__( '1', 'elexis' ) . '<i data-feather="message-circle"></i>', esc_html__( '%', 'elexis' ) . '<i data-feather="message-circle"></i>', 'comments-link' );
-	}
-  edit_post_link( '<i data-feather="edit-3"></i>' );
-	echo $readicon;
-	// Hide category and tag text for pages.
-	if ( 'post' === get_post_type() ) {
-		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '<i data-feather="hash"></i>', ' <i data-feather="hash"></i>' );
-		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . $tags_list . '</span>' ); // WPCS: XSS OK.
-		}
-	}
+  if ($icons) {
+  	$readicon = sprintf(
+  		'<a class="read-post-icon" href="' . esc_url( get_permalink() ) . '" rel="bookmark" title="' . __( 'Read More...', 'elexis' ) . '"><i data-feather="bookmark"></i></a>'
+  	);
+  	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+  		comments_popup_link( '', esc_html__( '1', 'elexis' ) . '<i data-feather="message-circle"></i>', esc_html__( '%', 'elexis' ) . '<i data-feather="message-circle"></i>', 'comments-link' );
+  	}
+    edit_post_link( '<i data-feather="edit-3"></i>' );
+  	echo $readicon;
+  }
+  if ($tags) {
+  	// Hide category and tag text for pages.
+  	if ( 'post' === get_post_type() ) {
+  		/* translators: used between list items, there is a space after the comma */
+  		$tags_list = get_the_tag_list( '<i data-feather="hash"></i>', ' <i data-feather="hash"></i>' );
+  		if ( $tags_list ) {
+  			printf( '<span class="tags-links">' . $tags_list . '</span>' ); // WPCS: XSS OK.
+  		}
+  	}
+  }
 	echo '</div>';
 }
 endif;

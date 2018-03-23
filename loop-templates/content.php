@@ -17,7 +17,7 @@
 
 	<header class="entry-header">
   	
-  	<?php elexis_entry_list_categories(); ?>
+  	<?php $card_category_toggle = get_theme_mod( 'card_category_toggle', true ); if ($card_category_toggle) { elexis_entry_list_categories(); } ?>
 
 		<?php the_title( sprintf( '<h4 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ),
 		'</a></h4>' ); ?>
@@ -40,9 +40,16 @@
 	</div><!-- .entry-content -->
 
 	<?php if ( 'post' == get_post_type() ) : ?>
-
 		<div class="entry-meta">
-			<?php elexis_posted_on(); ?>
+			<?php 
+  			$avatar = get_theme_mod( 'card_avatar_toggle', true );
+  			$author = get_theme_mod( 'card_author_toggle', true );
+  			$postdate = get_theme_mod( 'card_postdate_toggle', true );
+  			$readingtime = get_theme_mod( 'card_readingtime_toggle', false );
+  			$icons =  get_theme_mod( 'card_icons_toggle', true );
+  			$tags =  get_theme_mod( 'card_tags_toggle', false );
+  			elexis_entry_meta($avatar, $author, $postdate, $readingtime, $icons, $tags); 
+  		?>
 		</div><!-- .entry-meta -->
 
 	<?php endif; ?>

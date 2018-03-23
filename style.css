@@ -113,14 +113,14 @@ svg.feather {
   font-size: 0.85rem;
   display: flex; }
   .entry-meta .author-meta {
-    min-width: 10rem; }
+    min-width: 6rem; }
     .entry-meta .author-meta a {
       display: block; }
   .entry-meta .post-date {
     color: #6c757d; }
   .entry-meta .author-avatar {
     margin-right: 0.5rem;
-    min-width: 40px; }
+    min-width: 30px; }
     .entry-meta .author-avatar img {
       border-radius: 100%; }
   .entry-meta .entry-meta-icons {
@@ -129,11 +129,11 @@ svg.feather {
     flex-wrap: wrap;
     text-align: right;
     justify-content: flex-end;
-    align-items: flex-start;
-    margin-top: -5px; }
+    align-items: flex-start; }
     .entry-meta .entry-meta-icons > a {
       color: #6c757d;
-      margin-left: 0.5rem; }
+      margin-left: 0.5rem;
+      margin-top: -5px; }
       .entry-meta .entry-meta-icons > a:hover {
         color: #212529; }
     .entry-meta .entry-meta-icons .comments-link {

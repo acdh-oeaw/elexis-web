@@ -226,3 +226,53 @@ my_config_kirki_add_field(
     ),
 	)
 );
+
+/**
+ * Navbar Background Color
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'color',
+		'settings'    => 'navbar_bg_color',
+		'label'       => __( 'Navbar Background Color', 'elexis' ),
+		'description' => esc_attr__( 'Define the background color of your top navigation bar.', 'elexis' ),
+		'section'     => 'navbar_section',
+		'default'     => '#fff',
+		'choices'     => array(
+			'alpha' => true,
+		),
+    'output'    => array(
+    	array(
+    		'element'         => array( '.navbar' ),
+    		'property'        => 'background-color',
+      ),
+    ),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+      array(
+    		'element'         => array( '.navbar' ),
+    		'property'        => 'background-color',
+      ),
+    ),
+	)
+);
+
+/**
+ * Navbar Font Color Palette
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'radio',
+		'settings'    => 'navbar_color_scheme',
+		'label'       => esc_attr__( 'Navbar Font Color Scheme', 'elexis' ),
+		'description' => esc_attr__( 'Use the light navbar setting with a bright background color and the dark navbar with a dark background.', 'elexis' ),
+		'section'     => 'navbar_section',
+		'default'     => 'navbar-light',
+		'choices'     => array(
+			'navbar-light' => esc_attr__( 'Light Navbar', 'elexis' ),
+			'navbar-dark' => esc_attr__( 'Dark Navbar', 'elexis' ),
+		),
+		'transport'   => 'refresh',
+	)
+);
+

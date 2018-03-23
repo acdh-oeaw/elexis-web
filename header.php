@@ -32,7 +32,7 @@ $container = get_theme_mod( 'elexis_container_type' );
 
 		<a class="skip-link screen-reader-text sr-only" href="#content"><?php esc_html_e( 'Skip to content', 'elexis' ); ?></a>
 
-		<nav class="navbar navbar-expand-md navbar-light bg-white">
+		<nav class="navbar navbar-expand-md <?php $navbar_color_scheme = get_theme_mod( 'navbar_color_scheme' ); if ($navbar_color_scheme) { echo $navbar_color_scheme; } else { echo 'navbar-light'; } ?>">
 
 		<?php if ( 'container' == $container ) : ?>
 			<div class="container" >

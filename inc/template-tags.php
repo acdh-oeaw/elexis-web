@@ -29,7 +29,7 @@ function elexis_entry_meta($avatar = true, $author = true, $postdate = true, $re
 	} else { $gravatar = ''; }
 	if ($author) {
   	$authorname = sprintf(
-  		'<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>'
+  		'<a class="author-name" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>'
   	);
   } else { $authorname = ''; }
   if ($postdate) {
@@ -37,7 +37,19 @@ function elexis_entry_meta($avatar = true, $author = true, $postdate = true, $re
   		'<a class="post-date" href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
   	);
   } else { $posted_on = ''; }
-	echo $gravatar . '<span class="author-meta">' . $authorname . $posted_on . '</span>'; // WPCS: XSS OK.
+  if ($readingtime) {
+    // Estimate reading time
+    $postcontent = get_the_content();
+    $words = str_word_count(strip_tags($postcontent));
+    $mins = floor($words / 200);
+    if ($mins < 1) { $mins = '1'; }
+    $estimated = $mins . __( ' min', 'elexis' ) . __( ' read', 'elexis' );
+    if (!empty($postdate)) { $readingtime = sprintf('<span class="reading-time"><span class="dot"></span>'); } else { $readingtime = '<span class="reading-time">'; }
+  	$readingtime .= sprintf(
+  		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $estimated . '</a></span>'
+  	);
+  } else { $readingtime = ''; }
+	echo $gravatar . '<span class="author-meta">' . $authorname . $posted_on . $readingtime .'</span>'; // WPCS: XSS OK.
   echo '<div class="entry-meta-icons">';
   if ($icons) {
   	$readicon = sprintf(

@@ -339,6 +339,21 @@ my_config_kirki_add_field(
 );
 
 /**
+ * Display Estimated Reading Time on Cards
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'card_readingtime_toggle',
+		'label'       => esc_attr__( 'Display Estimated Reading Time on Cards', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the estimated reading time on card items.', 'elexis' ),
+		'section'     => 'content_blocks_section',
+		'default'     => false,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
  * Display Meta Icons on Cards
  */
 my_config_kirki_add_field(

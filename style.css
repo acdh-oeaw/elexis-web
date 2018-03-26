@@ -84,6 +84,11 @@ svg.feather {
   .card .entry-content p {
     color: #6f757c;
     font-size: 0.9rem; }
+  .card.sticky .entry-title svg {
+    width: 1rem;
+    margin-right: 0.5rem;
+    vertical-align: text-bottom;
+    color: #6c757d; }
 
 .entry-top-thumbnail {
   margin: -15px -15px 15px -15px;
@@ -114,7 +119,7 @@ svg.feather {
   font-size: 0.85rem;
   display: flex; }
   .entry-meta .author-meta {
-    min-width: 6rem; }
+    padding-right: 0.5rem; }
     .entry-meta .author-meta .author-name {
       display: block; }
   @media (max-width: 575px) {
@@ -137,7 +142,7 @@ svg.feather {
       color: #212529; }
   .entry-meta .author-avatar {
     margin-right: 0.5rem;
-    min-width: 30px; }
+    width: 40px; }
     .entry-meta .author-avatar img {
       border-radius: 100%; }
   .entry-meta .entry-meta-icons {

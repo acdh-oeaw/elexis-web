@@ -9,18 +9,19 @@
 
 <article <?php post_class('card'); ?> id="post-<?php the_ID(); ?>">
 
-  <div class="entry-top-thumbnail">
-
-    <?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
-
-  </div><!-- .entry-top-thumbnail -->
+  <?php 
+    $postThumbnail = get_the_post_thumbnail( $post->ID, 'large' ); 
+    if ($postThumbnail) { echo '<div class="entry-top-thumbnail">'.$postThumbnail.'</div>'; }
+  ?>
 
 	<header class="entry-header">
   	
   	<?php $card_category_toggle = get_theme_mod( 'card_category_toggle', true ); if ($card_category_toggle) { elexis_entry_list_categories(); } ?>
 
-		<?php the_title( sprintf( '<h4 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ),
-		'</a></h4>' ); ?>
+		<?php 
+  		if ( is_sticky() ) { $sticky = '<i class="fas fa-thumbtack"></i>'; } else { $sticky = ''; } 
+  		the_title( sprintf( '<h4 class="entry-title">'.$sticky.'<a href="%s" rel="bookmark">', esc_url( get_permalink() ) ),'</a></h4>' );
+    ?>
 
 	</header><!-- .entry-header -->
 

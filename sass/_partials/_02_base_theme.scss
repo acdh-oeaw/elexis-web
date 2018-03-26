@@ -98,6 +98,13 @@ svg.feather {
     font-size: 0.9rem;
   }
 
+  &.sticky .entry-title svg {
+    width: 1rem;
+    margin-right: 0.5rem;
+    vertical-align: text-bottom;
+    color: $gray-600;
+  }
+
 }
 
 .entry-top-thumbnail {

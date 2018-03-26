@@ -133,7 +133,7 @@ svg.feather {
     .entry-meta .entry-meta-icons > a {
       color: #6c757d;
       margin-left: 0.5rem;
-      margin-top: -5px; }
+      margin-top: -2px; }
       .entry-meta .entry-meta-icons > a:hover {
         color: #212529; }
     .entry-meta .entry-meta-icons .comments-link {
@@ -144,7 +144,10 @@ svg.feather {
 
 .tags-links {
   font-size: 0.85rem;
-  width: 100%; }
+  width: 100%;
+  margin-top: -3px; }
+  .tags-links > span {
+    display: inline-block; }
   .tags-links a {
     color: #6c757d; }
     .tags-links a:hover {

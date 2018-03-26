@@ -53,7 +53,7 @@ function elexis_entry_meta($avatar = true, $author = true, $postdate = true, $re
   	// Hide category and tag text for pages.
   	if ( 'post' === get_post_type() ) {
   		/* translators: used between list items, there is a space after the comma */
-  		$tags_list = get_the_tag_list( '<i data-feather="hash"></i>', ' <i data-feather="hash"></i>' );
+  		$tags_list = get_the_tag_list( '<span><i data-feather="hash"></i>', '</span><span><i data-feather="hash"></i>', '</span>' );
   		if ( $tags_list ) {
   			printf( '<span class="tags-links">' . $tags_list . '</span>' ); // WPCS: XSS OK.
   		}

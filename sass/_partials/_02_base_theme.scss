@@ -171,7 +171,7 @@ svg.feather {
     > a {
       color: $gray-600;
       margin-left: 0.5rem;
-      margin-top: -5px;
+      margin-top: -2px;
 
       &:hover {
         color: $gray-900;
@@ -194,6 +194,11 @@ svg.feather {
 .tags-links {
   font-size: 0.85rem;
   width: 100%;
+  margin-top: -3px;
+
+  > span {
+    display: inline-block;
+  }
 
   a {
     color: $gray-600;

@@ -395,7 +395,6 @@ my_config_kirki_add_field(
 		'description' => esc_attr__( 'Choose between a fixed container layout and a full width fluid layout.', 'elexis' ),
 		'section'     => 'theme_layout_section',
 		'default'     => 'container',
-		'placeholder' => esc_attr__( 'Select an option', 'elexis' ),
 		'choices'     => array(
 			'container' => esc_attr__( 'Fixed Width Container', 'elexis' ),
 			'container-fluid' => esc_attr__( 'Full Width Container', 'elexis' ),

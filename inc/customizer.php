@@ -5,6 +5,27 @@
  * @package elexis
  */
 
+
+/**
+ * Remove unneeded sections from the Theme Customizer.
+ *
+ * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+ */
+if ( ! function_exists( 'elexis_remove_customizer_settings' ) ) {
+  function elexis_remove_customizer_settings( $wp_customize ){
+    $wp_customize->remove_section('colors');
+    $wp_customize->remove_section('background_image');
+  }
+}
+add_action( 'customize_register', 'elexis_remove_customizer_settings', 20 );
+
+
+
+
+
+
+
+
 /**
  * Add postMessage support for site title and description for the Theme Customizer.
  *

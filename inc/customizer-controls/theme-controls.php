@@ -46,6 +46,7 @@ Kirki::add_panel(
 $sections = array(
 	'typography'      => array( esc_attr__( 'Typography', 'elexis' ), '' ),
 	'navbar'      => array( esc_attr__( 'Top Navigation', 'elexis' ), '' ),
+	'theme_layout'      => array( esc_attr__( 'Theme Layout', 'elexis' ), '' ),
 	'content_blocks'      => array( esc_attr__( 'Content Blocks', 'elexis' ), '' ),
 );
 foreach ( $sections as $section_id => $section ) {
@@ -380,5 +381,100 @@ my_config_kirki_add_field(
 		'section'     => 'content_blocks_section',
 		'default'     => false,
 		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Outline Border Around Website Color
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'color',
+		'settings'    => 'theme_layout_html_bg_color',
+		'label'       => __( 'HTML Document Background Color', 'elexis' ),
+		'description' => esc_attr__( 'Define the background color of your HTML document. This color is visible on some browsers where the scrolling can stretch the page further and also on some mobile browsers. It is wise to make this color same as your body/navbar/outline-border background color.', 'elexis' ),
+		'section'     => 'theme_layout_section',
+		'default'     => '#fff',
+		'choices'     => array(
+			'alpha' => true,
+		),
+    'output'    => array(
+    	array(
+    		'element'         => 'html',
+    		'property'        => 'background-color',
+      ),
+    ),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+    	array(
+    		'element'         => 'html',
+    		'property'        => 'background-color',
+      ),
+    ),
+	)
+);
+
+/**
+ * Outline Border Around Website
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'slider',
+		'settings'    => 'theme_layout_body_border',
+		'label'       => esc_attr__( 'Outline Border Around Website', 'elexis' ),
+		'description' => esc_attr__( 'Add an outline border around your website with the following thickness.', 'elexis' ),
+		'section'     => 'theme_layout_section',
+		'default'     => '0',
+		'choices'     => array(
+			'min'  => 0,
+			'max'  => 2.0,
+			'step' => 0.1,
+			'suffix' => 'rem',
+		),
+		'output'      => array(
+			array(
+				'element' => 'body',
+        'property' => 'border-width',
+        'units'    => 'rem',
+			),
+		),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+      array(
+				'element' => 'body',
+        'property' => 'border-width',
+        'units'    => 'rem',
+      ),
+    ),
+	)
+);
+
+/**
+ * Outline Border Around Website Color
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'color',
+		'settings'    => 'theme_layout_body_border_color',
+		'label'       => __( 'Outline Border Around Website Color', 'elexis' ),
+		'description' => esc_attr__( 'Define the background color of the outline border around your website.', 'elexis' ),
+		'section'     => 'theme_layout_section',
+		'default'     => '#6b757c',
+		'choices'     => array(
+			'alpha' => true,
+		),
+    'output'    => array(
+    	array(
+    		'element'         => 'body',
+    		'property'        => 'border-color',
+      ),
+    ),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+      array(
+    		'element'         => 'body',
+    		'property'        => 'border-color',
+      ),
+    ),
 	)
 );

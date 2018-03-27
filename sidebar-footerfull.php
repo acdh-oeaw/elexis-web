@@ -5,7 +5,7 @@
  * @package elexis
  */
 
-$container   = get_theme_mod( 'elexis_container_type' );
+$container   = get_theme_mod( 'theme_layout_container', 'container' );
 
 ?>
 

@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // load container setting
-$container = get_theme_mod( 'elexis_container_type' );
+$container = get_theme_mod( 'theme_layout_container', 'container' );
 
 // if we use container-fluid add some margin
 if ( 'container-fluid' === $container ) {

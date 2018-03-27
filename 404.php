@@ -7,7 +7,7 @@
 
 get_header();
 
-$container   = get_theme_mod( 'elexis_container_type' );
+$container   = get_theme_mod( 'theme_layout_container', 'container' );
 $sidebar_pos = get_theme_mod( 'elexis_sidebar_position' );
 
 ?>

@@ -23,10 +23,5 @@ if ( ! function_exists( 'elexis_setup_theme_default_settings' ) ) :
 			set_theme_mod( 'elexis_sidebar_position', 'right' );
 		}
 
-		// Container width.
-		$elexis_container_type = get_theme_mod( 'elexis_container_type' );
-		if ( '' == $elexis_container_type ) {
-			set_theme_mod( 'elexis_container_type', 'container' );
-		}
 	}
 endif;

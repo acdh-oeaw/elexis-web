@@ -385,6 +385,27 @@ my_config_kirki_add_field(
 );
 
 /**
+ * Container Width
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'select',
+		'settings'    => 'theme_layout_container',
+		'label'       => esc_attr__( 'Container Width', 'elexis' ),
+		'description' => esc_attr__( 'Choose between a fixed container layout and a full width fluid layout.', 'elexis' ),
+		'section'     => 'theme_layout_section',
+		'default'     => 'container',
+		'placeholder' => esc_attr__( 'Select an option', 'elexis' ),
+		'choices'     => array(
+			'container' => esc_attr__( 'Fixed Width Container', 'elexis' ),
+			'container-fluid' => esc_attr__( 'Full Width Container', 'elexis' ),
+		),
+		'transport'   => 'refresh',
+	)
+);
+
+
+/**
  * Outline Border Around Website Color
  */
 my_config_kirki_add_field(

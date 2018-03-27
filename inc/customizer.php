@@ -54,29 +54,6 @@ if ( ! function_exists( 'elexis_theme_customize_register' ) ) {
              
         }
 
-		$wp_customize->add_setting( 'elexis_container_type', array(
-			'default'           => 'container',
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'elexis_theme_slug_sanitize_select',
-			'capability'        => 'edit_theme_options',
-		) );
-
-		$wp_customize->add_control(
-			new WP_Customize_Control(
-				$wp_customize,
-				'elexis_container_type', array(
-					'label'       => __( 'Container Width', 'elexis' ),
-					'description' => __( "Choose between Bootstrap's container and container-fluid", 'elexis' ),
-					'section'     => 'elexis_theme_layout_options',
-					'settings'    => 'elexis_container_type',
-					'type'        => 'select',
-					'choices'     => array(
-						'container'       => __( 'Fixed width container', 'elexis' ),
-						'container-fluid' => __( 'Full width container', 'elexis' ),
-					),
-					'priority'    => '10',
-				)
-			) );
 
 		$wp_customize->add_setting( 'elexis_sidebar_position', array(
 			'default'           => 'right',

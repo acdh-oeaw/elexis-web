@@ -17,9 +17,9 @@ $hero_static_image = get_theme_mod( 'hero_static_image' );
 
 	<!-- ******************* The Hero Area ******************* -->
 
-	<div class="wrapper" id="wrapper-static-hero">
+	<div class="wrapper" id="wrapper-hero-content" <?php if ($hero_static_image) { ?>style="background-image:url(<?php echo esc_attr( $hero_static_image ); ?>)"<?php } ?>>
 
-			<div class="<?php echo esc_attr( $container ); ?>" id="wrapper-static-content" tabindex="-1">
+			<div class="<?php echo esc_attr( $container ); ?>" id="wrapper-hero-inner" tabindex="-1">
 
 				<div class="row">
 
@@ -31,4 +31,4 @@ $hero_static_image = get_theme_mod( 'hero_static_image' );
 
 			</div>
 
-	</div><!-- #wrapper-static-hero -->
+	</div><!-- #wrapper-hero-content -->

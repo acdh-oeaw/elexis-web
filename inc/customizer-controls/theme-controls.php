@@ -480,7 +480,7 @@ my_config_kirki_add_field(
 		'label'       => __( 'Outline Border Around Website Color', 'elexis' ),
 		'description' => esc_attr__( 'Define the background color of the outline border around your website.', 'elexis' ),
 		'section'     => 'theme_layout_section',
-		'default'     => '#6b757c',
+		'default'     => '#6c757d',
 		'choices'     => array(
 			'alpha' => true,
 		),
@@ -784,32 +784,6 @@ my_config_kirki_add_field(
 );
 
 /**
- * Hero Container Width
- */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'select',
-		'settings'    => 'hero_container',
-		'label'       => esc_attr__( 'Hero Container Width', 'elexis' ),
-		'description' => esc_attr__( 'Choose between a fixed container and a full width container for the hero.', 'elexis' ),
-		'section'     => 'home_layout_section',
-		'default'     => 'container',
-		'choices'     => array(
-			'container' => esc_attr__( 'Fixed Width Container', 'elexis' ),
-			'container-fluid' => esc_attr__( 'Full Width Container', 'elexis' ),
-		),
-    'required' => array(
-        array(
-    			'setting' => 'hero_type_setting', 
-    			'operator' => 'contains', 
-    			'value' => array('static-hero', 'post-hero')
-        )
-    ),
-		'transport'   => 'refresh',
-	)
-);
-
-/**
  * Hero: Background Color
  */
 my_config_kirki_add_field(
@@ -819,7 +793,7 @@ my_config_kirki_add_field(
 		'label'       => __( 'Hero Background Color', 'elexis' ),
 		'description' => esc_attr__( 'Define the background color of your hero content. If the hero has a background image, you can decrease the opacity of this color to make a color overlay on the image.', 'elexis' ),
 		'section'     => 'home_layout_section',
-		'default'     => '#6b757c',
+		'default'     => 'rgba(108,117,125,0.75)',
 		'choices'     => array(
 			'alpha' => true,
 		),
@@ -830,21 +804,19 @@ my_config_kirki_add_field(
     			'value' => array('static-hero', 'post-hero')
         )
     ),
-/*
     'output'    => array(
     	array(
-    		'element'         => 'body',
-    		'property'        => 'border-color',
+    		'element'         => '#wrapper-hero-content::after',
+    		'property'        => 'background-color',
       ),
     ),
 		'transport'   => 'postMessage',
     'js_vars'     => array(
       array(
-    		'element'         => 'body',
-    		'property'        => 'border-color',
+    		'element'         => '#wrapper-hero-content::after',
+    		'property'        => 'background-color',
       ),
     ),
-*/
 	)
 );
 

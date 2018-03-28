@@ -47,7 +47,8 @@ $sections = array(
 	'typography'      => array( esc_attr__( 'Typography', 'elexis' ), '' ),
 	'navbar'      => array( esc_attr__( 'Top Navigation', 'elexis' ), '' ),
 	'theme_layout'      => array( esc_attr__( 'Theme Layout', 'elexis' ), '' ),
-	'content_blocks'      => array( esc_attr__( 'Content Blocks', 'elexis' ), '' ),
+	'home_layout'      => array( esc_attr__( 'Homepage Layout', 'elexis' ), '' ),
+	'content_blocks'      => array( esc_attr__( 'Content Blocks Options', 'elexis' ), '' ),
 );
 foreach ( $sections as $section_id => $section ) {
 	$section_args = array(
@@ -496,5 +497,117 @@ my_config_kirki_add_field(
     		'property'        => 'border-color',
       ),
     ),
+	)
+);
+
+/**
+ * Hero Type Setting
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'select',
+		'settings'    => 'hero_type_setting',
+		'label'       => esc_attr__( 'Select Hero Type', 'elexis' ),
+		'description' => esc_attr__( 'A hero element will be visible on top of your homepage. You may use static hero content or generate your hero from post(s).', 'elexis' ),
+		'section'     => 'home_layout_section',
+		'default'     => 'none',
+		'choices'     => array(
+			'none' => esc_attr__( 'No Hero', 'elexis' ),
+			'static-hero' => esc_attr__( 'Static Hero', 'elexis' ),
+			'post-hero' => esc_attr__( 'Hero with Post Items', 'elexis' ),
+		),
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Static Hero: Title.
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'text',
+		'settings'    => 'hero_static_title',
+		'label'       => esc_attr__( 'Static Hero Title', 'kirki' ),
+		'description' => esc_attr__( 'Description', 'kirki' ),
+		'section'     => 'home_layout_section',
+		'default'     => 'Your Hero Title',
+    'required' => array(
+        array(
+    			'setting' => 'hero_type_setting', 
+    			'operator' => '==', 
+    			'value' => 'static-hero'
+        )
+    ),
+	)
+);
+
+
+/**
+ * Home Layout Repeater Control.
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'repeater',
+		'settings'    => 'repeater_setting',
+		'label'       => esc_attr__( 'Homepage Content Blocks', 'elexis' ),
+		'description' => esc_attr__( 'Arrange and define your content blocks for your homepage.', 'elexis' ),
+		'section'     => 'home_layout_section',
+  	'row_label' => array(
+  		'type' => 'text',
+  		'value' => esc_attr__('Content Block', 'elexis' ),
+  	),
+		'default'     => array(
+			array(
+				'link_text'   => esc_attr__( 'Kirki Site', 'elexis' ),
+				'link_url'    => 'https://aristath.github.io/kirki/',
+				'link_target' => '_self',
+				'checkbox'    => false,
+			),
+			array(
+				'link_text'   => esc_attr__( 'Kirki Repository', 'elexis' ),
+				'link_url'    => 'https://github.com/aristath/kirki',
+				'link_target' => '_self',
+				'checkbox'    => false,
+			),
+		),
+		'fields' => array(
+			'link_target' => array(
+				'type'        => 'select',
+				'label'       => esc_attr__( 'Element Type', 'elexis' ),
+				'description' => esc_attr__( 'Select the type of this content block element.', 'elexis' ),
+				'default'     => 'card',
+				'choices'     => array(
+					'_blank'  => esc_attr__( 'New Window', 'elexis' ),
+					'_self'   => esc_attr__( 'Same Frame', 'elexis' ),
+				),
+			),
+			'link_text' => array(
+				'type'        => 'text',
+				'label'       => esc_attr__( 'Element Type', 'elexis' ),
+				'description' => esc_attr__( 'This will be the label for your link', 'elexis' ),
+				'default'     => '',
+			),
+			'link_url' => array(
+				'type'        => 'text',
+				'label'       => esc_attr__( 'Link URL', 'elexis' ),
+				'description' => esc_attr__( 'This will be the link URL', 'elexis' ),
+				'default'     => '',
+			),
+			'link_target' => array(
+				'type'        => 'select',
+				'label'       => esc_attr__( 'Link Target', 'elexis' ),
+				'description' => esc_attr__( 'This will be the link target', 'elexis' ),
+				'default'     => '_self',
+				'choices'     => array(
+					'_blank'  => esc_attr__( 'New Window', 'elexis' ),
+					'_self'   => esc_attr__( 'Same Frame', 'elexis' ),
+				),
+			),
+			'checkbox' => array(
+				'type'			=> 'checkbox',
+				'label'			=> esc_attr__( 'Checkbox', 'elexis' ),
+				'default'		=> false,
+			),
+		),
 	)
 );

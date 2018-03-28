@@ -521,16 +521,169 @@ my_config_kirki_add_field(
 );
 
 /**
+ * Post Hero Query Type
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'radio',
+		'settings'    => 'hero_post_query_type',
+		'label'       => esc_attr__( 'Hero Posts Query Source', 'elexis' ),
+		'description' => esc_attr__( 'Query posts from categories, tags or some selected posts.', 'elexis' ),
+		'section'     => 'home_layout_section',
+		'default'     => 'categories',
+		'choices'     => array(
+			'categories' => esc_attr__( 'Categories', 'elexis' ),
+			'tags' => esc_attr__( 'Tags', 'elexis' ),
+			'posts' => esc_attr__( 'Specific posts', 'elexis' ),
+		),
+		'transport'   => 'refresh',
+    'required' => array(
+        array(
+    			'setting' => 'hero_type_setting', 
+    			'operator' => '==', 
+    			'value' => 'post-hero'
+        )
+    ),
+	)
+);
+
+/**
+ * Post Hero Category Query
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'select',
+		'settings'    => 'hero_post_category_query',
+		'label'       => esc_attr__( 'Select Categories to Query', 'elexis' ),
+		'description' => esc_attr__( 'You may select multiple categories to query your content from.', 'elexis' ),
+		'section'     => 'home_layout_section',
+		'default'     => 'option-1',
+		'multiple'    => 10,
+		'choices'     => array(
+			'option-1' => esc_attr__( 'Option 1', 'elexis' ),
+			'option-2' => esc_attr__( 'Option 2', 'elexis' ),
+			'option-3' => esc_attr__( 'Option 3', 'elexis' ),
+			'option-4' => esc_attr__( 'Option 4', 'elexis' ),
+			'option-5' => esc_attr__( 'Option 5', 'elexis' ),
+		),
+    'required' => array(
+      array(
+  			'setting' => 'hero_type_setting', 
+  			'operator' => '==', 
+  			'value' => 'post-hero'
+      ),
+      array(
+  			'setting' => 'hero_post_query_type', 
+  			'operator' => '==', 
+  			'value' => 'categories'
+      )
+    ),
+	)
+);
+
+/**
+ * Post Hero Tag Query
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'select',
+		'settings'    => 'hero_post_tag_query',
+		'label'       => esc_attr__( 'Select Tags to Query', 'elexis' ),
+		'description' => esc_attr__( 'You may select multiple tags to query your content from.', 'elexis' ),
+		'section'     => 'home_layout_section',
+		'default'     => 'option-1',
+		'multiple'    => 10,
+		'choices'     => array(
+			'option-1' => esc_attr__( 'Option 1', 'elexis' ),
+			'option-2' => esc_attr__( 'Option 2', 'elexis' ),
+			'option-3' => esc_attr__( 'Option 3', 'elexis' ),
+			'option-4' => esc_attr__( 'Option 4', 'elexis' ),
+			'option-5' => esc_attr__( 'Option 5', 'elexis' ),
+		),
+    'required' => array(
+      array(
+  			'setting' => 'hero_type_setting', 
+  			'operator' => '==', 
+  			'value' => 'post-hero'
+      ),
+      array(
+  			'setting' => 'hero_post_query_type', 
+  			'operator' => '==', 
+  			'value' => 'tags'
+      )
+    ),
+	)
+);
+
+/**
+ * Post Hero Posts Query
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'select',
+		'settings'    => 'hero_post_posts_query',
+		'label'       => esc_attr__( 'Select Posts to Query', 'elexis' ),
+		'description' => esc_attr__( 'You may select multiple posts to query your content from.', 'elexis' ),
+		'section'     => 'home_layout_section',
+		'default'     => 'option-1',
+		'multiple'    => 10,
+		'choices'     => array(
+			'option-1' => esc_attr__( 'Option 1', 'elexis' ),
+			'option-2' => esc_attr__( 'Option 2', 'elexis' ),
+			'option-3' => esc_attr__( 'Option 3', 'elexis' ),
+			'option-4' => esc_attr__( 'Option 4', 'elexis' ),
+			'option-5' => esc_attr__( 'Option 5', 'elexis' ),
+		),
+    'required' => array(
+      array(
+  			'setting' => 'hero_type_setting', 
+  			'operator' => '==', 
+  			'value' => 'post-hero'
+      ),
+      array(
+  			'setting' => 'hero_post_query_type', 
+  			'operator' => '==', 
+  			'value' => 'posts'
+      )
+    ),
+	)
+);
+
+/**
+ * Post Hero Number of Items
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'number',
+		'settings'    => 'hero_post_number_of_items',
+		'label'       => esc_attr__( 'Number of Items', 'elexis' ),
+		'section'     => 'home_layout_section',
+		'choices'     => array(
+			'min'  => 1,
+			'max'  => 10,
+			'step' => 1,
+		),
+    'required' => array(
+        array(
+    			'setting' => 'hero_type_setting', 
+    			'operator' => '==', 
+    			'value' => 'post-hero'
+        )
+    ),
+	)
+);
+
+/**
  * Static Hero: Title.
  */
 my_config_kirki_add_field(
 	array(
 		'type'        => 'text',
 		'settings'    => 'hero_static_title',
-		'label'       => esc_attr__( 'Static Hero Title', 'kirki' ),
-		'description' => esc_attr__( 'Description', 'kirki' ),
+		'label'       => esc_attr__( 'Hero Title', 'elexis' ),
+		'description' => esc_attr__( 'The heading of your static hero content.', 'elexis' ),
 		'section'     => 'home_layout_section',
-		'default'     => 'Your Hero Title',
+		'default'     => esc_attr__( 'Your Hero Title', 'elexis' ),
     'required' => array(
         array(
     			'setting' => 'hero_type_setting', 
@@ -538,6 +691,129 @@ my_config_kirki_add_field(
     			'value' => 'static-hero'
         )
     ),
+	)
+);
+
+/**
+ * Static Hero: Text.
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'textarea',
+		'settings'    => 'hero_static_text',
+		'label'       => esc_attr__( 'Hero Text', 'elexis' ),
+		'description' => esc_attr__( 'Add your static hero text.', 'elexis' ),
+		'section'     => 'home_layout_section',
+		'placeholder'     => esc_attr__( 'Add your static hero text.', 'elexis' ),
+    'required' => array(
+        array(
+    			'setting' => 'hero_type_setting', 
+    			'operator' => '==', 
+    			'value' => 'static-hero'
+        )
+    ),
+	)
+);
+
+/**
+ * Hero: Button.
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'text',
+		'settings'    => 'hero_button',
+		'label'       => esc_attr__( 'Hero Button', 'elexis' ),
+		'description' => esc_attr__( 'Add your hero button label. Leave empty for no button.', 'elexis' ),
+		'section'     => 'home_layout_section',
+		'default'     => esc_attr__( 'Read More', 'elexis' ),
+    'required' => array(
+        array(
+    			'setting' => 'hero_type_setting', 
+    			'operator' => 'contains', 
+    			'value' => array('static-hero', 'post-hero')
+        )
+    ),
+	)
+);
+
+/**
+ * Static Hero: URL.
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'text',
+		'settings'    => 'hero_static_url',
+		'label'       => esc_attr__( 'Hero URL', 'elexis' ),
+		'description' => esc_attr__( 'Enter the URL where you want to link your hero to. Leave empty for no linking.', 'elexis' ),
+		'section'     => 'home_layout_section',
+		'default'     => '#',
+    'required' => array(
+        array(
+    			'setting' => 'hero_type_setting', 
+    			'operator' => '==', 
+    			'value' => 'static-hero'
+        )
+    ),
+	)
+);
+
+/**
+ * Static Hero: Background Image
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'image',
+		'settings'    => 'hero_static_image',
+		'label'       => esc_attr__( 'Hero Background Image', 'elexis' ),
+		'description' => esc_attr__( 'Select the image you want to use in the background of your hero.', 'elexis' ),
+		'section'     => 'home_layout_section',
+		'default'     => '',
+    'required' => array(
+        array(
+    			'setting' => 'hero_type_setting', 
+    			'operator' => 'contains', 
+    			'value' => 'static-hero'
+        )
+    ),
+	)
+);
+
+/**
+ * Hero: Background Color
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'color',
+		'settings'    => 'hero_bg_color',
+		'label'       => __( 'Hero Background Color', 'elexis' ),
+		'description' => esc_attr__( 'Define the background color of your hero content. If the hero has a background image, you can decrease the opacity of this color to make a color overlay on the image.', 'elexis' ),
+		'section'     => 'home_layout_section',
+		'default'     => '#6b757c',
+		'choices'     => array(
+			'alpha' => true,
+		),
+    'required' => array(
+        array(
+    			'setting' => 'hero_type_setting', 
+    			'operator' => 'contains', 
+    			'value' => array('static-hero', 'post-hero')
+        )
+    ),
+/*
+    'output'    => array(
+    	array(
+    		'element'         => 'body',
+    		'property'        => 'border-color',
+      ),
+    ),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+      array(
+    		'element'         => 'body',
+    		'property'        => 'border-color',
+      ),
+    ),
+*/
 	)
 );
 
@@ -561,12 +837,14 @@ my_config_kirki_add_field(
 				'link_text'   => esc_attr__( 'Kirki Site', 'elexis' ),
 				'link_url'    => 'https://aristath.github.io/kirki/',
 				'link_target' => '_self',
+				'number_of_items' => 2,
 				'checkbox'    => false,
 			),
 			array(
 				'link_text'   => esc_attr__( 'Kirki Repository', 'elexis' ),
 				'link_url'    => 'https://github.com/aristath/kirki',
 				'link_target' => '_self',
+				'number_of_items' => 4,
 				'checkbox'    => false,
 			),
 		),
@@ -602,6 +880,17 @@ my_config_kirki_add_field(
 					'_blank'  => esc_attr__( 'New Window', 'elexis' ),
 					'_self'   => esc_attr__( 'Same Frame', 'elexis' ),
 				),
+			),
+			'number_of_items' => array(
+				'type'        => 'number',
+				'label'       => esc_attr__( 'Number of Items', 'elexis' ),
+				'description' => esc_attr__( 'This will be the link target', 'elexis' ),
+				'default'     => 3,
+    		'choices'     => array(
+    			'min'  => 0,
+    			'max'  => 10,
+    			'step' => 1,
+    		),
 			),
 			'checkbox' => array(
 				'type'			=> 'checkbox',

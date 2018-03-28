@@ -7,14 +7,21 @@
 
 ?>
 
-<?php if ( is_active_sidebar( 'hero' ) || is_active_sidebar( 'statichero' ) ) : ?>
+<?php
+  $hero_type_setting  = get_theme_mod( 'hero_type_setting', false );
+  if ($hero_type_setting != 'none' && $hero_type_setting) {
+?>
 
 	<div class="wrapper" id="wrapper-hero">
 	
-		<?php get_sidebar( 'hero' ); ?>
-		
-		<?php get_sidebar( 'statichero' ); ?>
+		<?php 
+  		if ($hero_type_setting == 'static-hero') {
+  		  get_template_part( 'loop-templates/hero-static' );
+  		} else if ($hero_type_setting == 'post-hero') {
+    		get_template_part( 'loop-templates/hero-post' );
+      }
+    ?>
 
 	</div>
 
-<?php endif; ?>
+<?php } ?>

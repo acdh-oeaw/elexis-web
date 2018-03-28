@@ -557,6 +557,7 @@ my_config_kirki_add_field(
 		'label'       => esc_attr__( 'Select Categories to Query', 'elexis' ),
 		'description' => esc_attr__( 'You may select multiple categories to query your content from.', 'elexis' ),
 		'section'     => 'home_layout_section',
+		'transport'   => 'refresh',
 		'default'     => 'option-1',
 		'multiple'    => 10,
 		'choices'     => array(
@@ -591,6 +592,7 @@ my_config_kirki_add_field(
 		'label'       => esc_attr__( 'Select Tags to Query', 'elexis' ),
 		'description' => esc_attr__( 'You may select multiple tags to query your content from.', 'elexis' ),
 		'section'     => 'home_layout_section',
+		'transport'   => 'refresh',
 		'default'     => 'option-1',
 		'multiple'    => 10,
 		'choices'     => array(
@@ -625,6 +627,7 @@ my_config_kirki_add_field(
 		'label'       => esc_attr__( 'Select Posts to Query', 'elexis' ),
 		'description' => esc_attr__( 'You may select multiple posts to query your content from.', 'elexis' ),
 		'section'     => 'home_layout_section',
+		'transport'   => 'refresh',
 		'default'     => 'option-1',
 		'multiple'    => 10,
 		'choices'     => array(
@@ -658,6 +661,7 @@ my_config_kirki_add_field(
 		'settings'    => 'hero_post_number_of_items',
 		'label'       => esc_attr__( 'Number of Items', 'elexis' ),
 		'section'     => 'home_layout_section',
+		'transport'   => 'refresh',
 		'choices'     => array(
 			'min'  => 1,
 			'max'  => 10,
@@ -683,7 +687,7 @@ my_config_kirki_add_field(
 		'label'       => esc_attr__( 'Hero Title', 'elexis' ),
 		'description' => esc_attr__( 'The heading of your static hero content.', 'elexis' ),
 		'section'     => 'home_layout_section',
-		'default'     => esc_attr__( 'Your Hero Title', 'elexis' ),
+		'transport'   => 'refresh',
     'required' => array(
         array(
     			'setting' => 'hero_type_setting', 
@@ -704,7 +708,7 @@ my_config_kirki_add_field(
 		'label'       => esc_attr__( 'Hero Text', 'elexis' ),
 		'description' => esc_attr__( 'Add your static hero text.', 'elexis' ),
 		'section'     => 'home_layout_section',
-		'placeholder'     => esc_attr__( 'Add your static hero text.', 'elexis' ),
+		'transport'   => 'refresh',
     'required' => array(
         array(
     			'setting' => 'hero_type_setting', 
@@ -725,7 +729,7 @@ my_config_kirki_add_field(
 		'label'       => esc_attr__( 'Hero Button', 'elexis' ),
 		'description' => esc_attr__( 'Add your hero button label. Leave empty for no button.', 'elexis' ),
 		'section'     => 'home_layout_section',
-		'default'     => esc_attr__( 'Read More', 'elexis' ),
+		'transport'   => 'refresh',
     'required' => array(
         array(
     			'setting' => 'hero_type_setting', 
@@ -745,8 +749,8 @@ my_config_kirki_add_field(
 		'settings'    => 'hero_static_url',
 		'label'       => esc_attr__( 'Hero URL', 'elexis' ),
 		'description' => esc_attr__( 'Enter the URL where you want to link your hero to. Leave empty for no linking.', 'elexis' ),
+		'transport'   => 'refresh',
 		'section'     => 'home_layout_section',
-		'default'     => '#',
     'required' => array(
         array(
     			'setting' => 'hero_type_setting', 
@@ -767,14 +771,41 @@ my_config_kirki_add_field(
 		'label'       => esc_attr__( 'Hero Background Image', 'elexis' ),
 		'description' => esc_attr__( 'Select the image you want to use in the background of your hero.', 'elexis' ),
 		'section'     => 'home_layout_section',
+		'transport'   => 'refresh',
 		'default'     => '',
     'required' => array(
         array(
     			'setting' => 'hero_type_setting', 
-    			'operator' => 'contains', 
+    			'operator' => '==', 
     			'value' => 'static-hero'
         )
     ),
+	)
+);
+
+/**
+ * Hero Container Width
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'select',
+		'settings'    => 'hero_container',
+		'label'       => esc_attr__( 'Hero Container Width', 'elexis' ),
+		'description' => esc_attr__( 'Choose between a fixed container and a full width container for the hero.', 'elexis' ),
+		'section'     => 'home_layout_section',
+		'default'     => 'container',
+		'choices'     => array(
+			'container' => esc_attr__( 'Fixed Width Container', 'elexis' ),
+			'container-fluid' => esc_attr__( 'Full Width Container', 'elexis' ),
+		),
+    'required' => array(
+        array(
+    			'setting' => 'hero_type_setting', 
+    			'operator' => 'contains', 
+    			'value' => array('static-hero', 'post-hero')
+        )
+    ),
+		'transport'   => 'refresh',
 	)
 );
 

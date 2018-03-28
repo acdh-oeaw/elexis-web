@@ -13,7 +13,7 @@
 
 get_header();
 
-$container   = get_theme_mod( 'theme_layout_container', 'container' );
+$container = get_theme_mod( 'theme_layout_container', 'container' );
 ?>
 
 <?php if ( is_front_page() && is_home() ) : ?>

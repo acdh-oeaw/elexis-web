@@ -49,7 +49,7 @@ $sections = array(
 	'theme_layout'      => array( esc_attr__( 'Theme Layout', 'elexis' ), '' ),
 	'home_hero'      => array( esc_attr__( 'Homepage Hero Block', 'elexis' ), '' ),
 	'home_blocks'      => array( esc_attr__( 'Homepage Content Blocks', 'elexis' ), '' ),
-	'content_blocks'      => array( esc_attr__( 'Content Blocks Options', 'elexis' ), '' ),
+	'single_posts'      => array( esc_attr__( 'Single Posts', 'elexis' ), '' ),
 );
 foreach ( $sections as $section_id => $section ) {
 	$section_args = array(
@@ -284,112 +284,6 @@ my_config_kirki_add_field(
 			'navbar-light' => esc_attr__( 'Light Navbar', 'elexis' ),
 			'navbar-dark' => esc_attr__( 'Dark Navbar', 'elexis' ),
 		),
-		'transport'   => 'refresh',
-	)
-);
-
-
-/**
- * Display Post Categories on Cards
- */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'toggle',
-		'settings'    => 'card_category_toggle',
-		'label'       => esc_attr__( 'Display Post Categories on Cards', 'elexis' ),
-		'description' => esc_attr__( 'Select if you want to display the post categories on card items.', 'elexis' ),
-		'section'     => 'content_blocks_section',
-		'default'     => true,
-		'transport'   => 'refresh',
-	)
-);
-
-/**
- * Display Author Avatar on Cards
- */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'toggle',
-		'settings'    => 'card_avatar_toggle',
-		'label'       => esc_attr__( 'Display Author Avatar on Cards', 'elexis' ),
-		'description' => esc_attr__( 'Select if you want to display the author avatar on card items.', 'elexis' ),
-		'section'     => 'content_blocks_section',
-		'default'     => true,
-		'transport'   => 'refresh',
-	)
-);
-
-/**
- * Display Author Name on Cards
- */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'toggle',
-		'settings'    => 'card_author_toggle',
-		'label'       => esc_attr__( 'Display Author Name on Cards', 'elexis' ),
-		'description' => esc_attr__( 'Select if you want to display the author name on card items.', 'elexis' ),
-		'section'     => 'content_blocks_section',
-		'default'     => true,
-		'transport'   => 'refresh',
-	)
-);
-
-/**
- * Display Post Date on Cards
- */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'toggle',
-		'settings'    => 'card_postdate_toggle',
-		'label'       => esc_attr__( 'Display Post Date on Cards', 'elexis' ),
-		'description' => esc_attr__( 'Select if you want to display the post date on card items.', 'elexis' ),
-		'section'     => 'content_blocks_section',
-		'default'     => true,
-		'transport'   => 'refresh',
-	)
-);
-
-/**
- * Display Estimated Reading Time on Cards
- */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'toggle',
-		'settings'    => 'card_readingtime_toggle',
-		'label'       => esc_attr__( 'Display Estimated Reading Time on Cards', 'elexis' ),
-		'description' => esc_attr__( 'Select if you want to display the estimated reading time on card items.', 'elexis' ),
-		'section'     => 'content_blocks_section',
-		'default'     => false,
-		'transport'   => 'refresh',
-	)
-);
-
-/**
- * Display Meta Icons on Cards
- */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'toggle',
-		'settings'    => 'card_icons_toggle',
-		'label'       => esc_attr__( 'Display Meta Icons on Cards', 'elexis' ),
-		'description' => esc_attr__( 'Select if you want to display the meta icons on card items.', 'elexis' ),
-		'section'     => 'content_blocks_section',
-		'default'     => true,
-		'transport'   => 'refresh',
-	)
-);
-
-/**
- * Display Post Tags on Cards
- */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'toggle',
-		'settings'    => 'card_tags_toggle',
-		'label'       => esc_attr__( 'Display Post Tags on Cards', 'elexis' ),
-		'description' => esc_attr__( 'Select if you want to display the post tags on card items.', 'elexis' ),
-		'section'     => 'content_blocks_section',
-		'default'     => false,
 		'transport'   => 'refresh',
 	)
 );
@@ -918,7 +812,7 @@ my_config_kirki_add_field(
 );
 
 /**
- * Home Layout Repeater Control.
+ * Homepage Content Blocks Repeater Control.
  */
 my_config_kirki_add_field(
 	array(
@@ -954,11 +848,11 @@ my_config_kirki_add_field(
 				'description' => esc_attr__( 'Select number of content blocks per row.', 'elexis' ),
 				'default'     => 'col-12',
 				'choices'     => array(
-					'col-12'  => esc_attr__( '1', 'elexis' ),
-					'col-6'   => esc_attr__( '2', 'elexis' ),
-					'col-4'   => esc_attr__( '3', 'elexis' ),
-					'col-3'   => esc_attr__( '4', 'elexis' ),
-					'col-2'   => esc_attr__( '6', 'elexis' ),
+					'col-md-12'  => esc_attr__( '1', 'elexis' ),
+					'col-md-6'   => esc_attr__( '2', 'elexis' ),
+					'col-md-4'   => esc_attr__( '3', 'elexis' ),
+					'col-md-3'   => esc_attr__( '4', 'elexis' ),
+					'col-md-2'   => esc_attr__( '6', 'elexis' ),
 				),
 			),
 			'number_of_blocks' => array(
@@ -987,5 +881,230 @@ my_config_kirki_add_field(
     		'choices'     => $category_choices,
 			),
 		),
+	)
+);
+
+/**
+ * Display Post Categories on Cards
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'card_category_toggle',
+		'label'       => esc_attr__( 'Display Post Categories on Cards', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the post categories on card items.', 'elexis' ),
+		'section'     => 'home_blocks_section',
+		'default'     => true,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Author Avatar on Cards
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'card_avatar_toggle',
+		'label'       => esc_attr__( 'Display Author Avatar on Cards', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the author avatar on card items.', 'elexis' ),
+		'section'     => 'home_blocks_section',
+		'default'     => true,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Author Name on Cards
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'card_author_toggle',
+		'label'       => esc_attr__( 'Display Author Name on Cards', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the author name on card items.', 'elexis' ),
+		'section'     => 'home_blocks_section',
+		'default'     => true,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Post Date on Cards
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'card_postdate_toggle',
+		'label'       => esc_attr__( 'Display Post Date on Cards', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the post date on card items.', 'elexis' ),
+		'section'     => 'home_blocks_section',
+		'default'     => true,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Estimated Reading Time on Cards
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'card_readingtime_toggle',
+		'label'       => esc_attr__( 'Display Estimated Reading Time on Cards', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the estimated reading time on card items.', 'elexis' ),
+		'section'     => 'home_blocks_section',
+		'default'     => false,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Meta Icons on Cards
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'card_icons_toggle',
+		'label'       => esc_attr__( 'Display Meta Icons on Cards', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the meta icons on card items.', 'elexis' ),
+		'section'     => 'home_blocks_section',
+		'default'     => true,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Post Tags on Cards
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'card_tags_toggle',
+		'label'       => esc_attr__( 'Display Post Tags on Cards', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the post tags on card items.', 'elexis' ),
+		'section'     => 'home_blocks_section',
+		'default'     => false,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Post Categories on Posts
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'post_category_toggle',
+		'label'       => esc_attr__( 'Display Post Categories on Posts', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the post categories on post items.', 'elexis' ),
+		'section'     => 'single_posts_section',
+		'default'     => true,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Author Avatar on Posts
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'post_avatar_toggle',
+		'label'       => esc_attr__( 'Display Author Avatar on Posts', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the author avatar on post items.', 'elexis' ),
+		'section'     => 'single_posts_section',
+		'default'     => true,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Author Name on Posts
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'post_author_toggle',
+		'label'       => esc_attr__( 'Display Author Name on Posts', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the author name on post items.', 'elexis' ),
+		'section'     => 'single_posts_section',
+		'default'     => true,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Author Bio on Posts
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'post_authorbio_toggle',
+		'label'       => esc_attr__( 'Display Author Bio on Posts', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the author bio on post items.', 'elexis' ),
+		'section'     => 'single_posts_section',
+		'default'     => true,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Post Date on Posts
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'post_postdate_toggle',
+		'label'       => esc_attr__( 'Display Post Date on Posts', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the post date on post items.', 'elexis' ),
+		'section'     => 'single_posts_section',
+		'default'     => true,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Estimated Reading Time on Posts
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'post_readingtime_toggle',
+		'label'       => esc_attr__( 'Display Estimated Reading Time on Posts', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the estimated reading time on post items.', 'elexis' ),
+		'section'     => 'single_posts_section',
+		'default'     => false,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Meta Icons on Posts
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'post_icons_toggle',
+		'label'       => esc_attr__( 'Display Meta Icons on Posts', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the meta icons on post items.', 'elexis' ),
+		'section'     => 'single_posts_section',
+		'default'     => false,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Post Tags on Posts
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'post_tags_toggle',
+		'label'       => esc_attr__( 'Display Post Tags on Posts', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the post tags on post items.', 'elexis' ),
+		'section'     => 'single_posts_section',
+		'default'     => true,
+		'transport'   => 'refresh',
 	)
 );

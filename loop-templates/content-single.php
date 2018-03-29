@@ -10,17 +10,31 @@
 
 	<header class="entry-header">
 
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-
 		<div class="entry-meta">
 
-			<?php elexis_entry_meta(); ?>
+		<?php
+			$avatar = get_theme_mod( 'post_avatar_toggle', true );
+			$author = get_theme_mod( 'post_author_toggle', true );
+			$postdate = get_theme_mod( 'post_postdate_toggle', true );
+			$readingtime = get_theme_mod( 'post_readingtime_toggle', false );
+			$icons =  get_theme_mod( 'post_icons_toggle', false );
+			$tags =  get_theme_mod( 'post_tags_toggle', true );
+			$authorbio =  get_theme_mod( 'post_authorbio_toggle', true );
+			elexis_entry_meta($avatar, $author, $postdate, $readingtime, $icons, $tags, $authorbio, 60);
+		?>
 
 		</div><!-- .entry-meta -->
 
-	</header><!-- .entry-header -->
+    <?php 
+      $postThumbnail = get_the_post_thumbnail( $post->ID, 'large' ); 
+      if ($postThumbnail) { echo '<div class="entry-top-thumbnail">'.$postThumbnail.'</div>'; }
+    ?>
 
-	<?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
+		<?php $post_category_toggle = get_theme_mod( 'post_category_toggle', true ); if ($post_category_toggle) { elexis_entry_list_categories(); } ?>
+
+		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+
+	</header><!-- .entry-header -->
 
 	<div class="entry-content">
 

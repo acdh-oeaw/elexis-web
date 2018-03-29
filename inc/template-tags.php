@@ -11,7 +11,7 @@ if ( ! function_exists( 'elexis_entry_meta' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
  */
-function elexis_entry_meta($avatar = true, $author = true, $postdate = true, $readingtime = false, $icons = true, $tags = false) {
+function elexis_entry_meta($avatar = true, $author = true, $postdate = true, $readingtime = false, $icons = true, $tags = false, $authorbio = false, $avatarsize = 40) {
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 	$time_string = sprintf( $time_string,
 		esc_attr( get_the_date( 'c' ) ),
@@ -19,7 +19,7 @@ function elexis_entry_meta($avatar = true, $author = true, $postdate = true, $re
 	);
 	if ($avatar) {
   	$gravatar = sprintf(
-  		'<a class="author-avatar" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . get_avatar( get_the_author_meta( 'ID' ), 40 ) . '</a>'
+  		'<a class="author-avatar" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . get_avatar( get_the_author_meta( 'ID' ), $avatarsize ) . '</a>'
   	);
 	} else { $gravatar = ''; }
 	if ($author) {
@@ -44,29 +44,37 @@ function elexis_entry_meta($avatar = true, $author = true, $postdate = true, $re
   		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $estimated . '</a></span>'
   	);
   } else { $readingtime = ''; }
-	echo $gravatar . '<span class="author-meta">' . $authorname . $posted_on . $readingtime .'</span>'; // WPCS: XSS OK.
-  echo '<div class="entry-meta-icons">';
-  if ($icons) {
-  	$readicon = sprintf(
-  		'<a class="read-post-icon" href="' . esc_url( get_permalink() ) . '" rel="bookmark" title="' . __( 'Read More', 'elexis' ) . '"><i data-feather="bookmark"></i></a>'
+  if ($authorbio) {
+  	$authorbio = sprintf(
+  		'<span class="author-bio">' . esc_attr( get_the_author_meta('description') ) . '</span>'
   	);
-  	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-  		comments_popup_link( '', esc_html__( '1', 'elexis' ) . '<i data-feather="message-circle"></i>', esc_html__( '%', 'elexis' ) . '<i data-feather="message-circle"></i>', 'comments-link' );
-  	}
-    edit_post_link( '<i data-feather="edit-3"></i>' );
-  	echo $readicon;
-  }
-  if ($tags) {
-  	// Hide category and tag text for pages.
-  	if ( 'post' === get_post_type() ) {
-  		/* translators: used between list items, there is a space after the comma */
-  		$tags_list = get_the_tag_list( '<span><i data-feather="hash"></i>', '</span><span><i data-feather="hash"></i>', '</span>' );
-  		if ( $tags_list ) {
-  			printf( '<span class="tags-links">' . $tags_list . '</span>' ); // WPCS: XSS OK.
-  		}
-  	}
-  }
-	echo '</div>';
+  } else { $authorbio = ''; }
+	echo $gravatar . '<span class="author-meta">' . $authorname . $authorbio . $posted_on . $readingtime .'</span>'; // WPCS: XSS OK.
+	// Entry meta icons
+	if ($icons OR $tags) {
+    echo '<div class="entry-meta-icons">';
+    if ($icons) {
+    	$readicon = sprintf(
+    		'<a class="read-post-icon" href="' . esc_url( get_permalink() ) . '" rel="bookmark" title="' . __( 'Read More', 'elexis' ) . '"><i data-feather="bookmark"></i></a>'
+    	);
+    	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+    		comments_popup_link( '', esc_html__( '1', 'elexis' ) . '<i data-feather="message-circle"></i>', esc_html__( '%', 'elexis' ) . '<i data-feather="message-circle"></i>', 'comments-link' );
+    	}
+      edit_post_link( '<i data-feather="edit-3"></i>' );
+    	echo $readicon;
+    }
+    if ($tags) {
+    	// Hide category and tag text for pages.
+    	if ( 'post' === get_post_type() ) {
+    		/* translators: used between list items, there is a space after the comma */
+    		$tags_list = get_the_tag_list( '<span><i data-feather="hash"></i>', '</span><span><i data-feather="hash"></i>', '</span>' );
+    		if ( $tags_list ) {
+    			printf( '<span class="tags-links">' . $tags_list . '</span>' ); // WPCS: XSS OK.
+    		}
+    	}
+    }
+  	echo '</div>';
+	}
 }
 endif;
 

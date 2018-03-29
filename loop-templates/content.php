@@ -57,7 +57,7 @@ $articleClasses = array(
   			$readingtime = get_theme_mod( 'card_readingtime_toggle', false );
   			$icons =  get_theme_mod( 'card_icons_toggle', true );
   			$tags =  get_theme_mod( 'card_tags_toggle', false );
-  			elexis_entry_meta($avatar, $author, $postdate, $readingtime, $icons, $tags); 
+  			elexis_entry_meta($avatar, $author, $postdate, $readingtime, $icons, $tags);
   		?>
 		</div><!-- .entry-meta -->
 

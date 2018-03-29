@@ -24,6 +24,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 /*
  ** 01. General
  */
+html {
+  -webkit-font-smoothing: antialiased; }
+
 body {
   border-style: solid; }
 
@@ -78,68 +81,6 @@ svg.feather {
   width: 1.1rem;
   max-width: 100%;
   vertical-align: bottom; }
-
-.entry-top-thumbnail {
-  margin: -15px -15px 15px -15px;
-  max-height: 250px;
-  overflow: hidden;
-  justify-content: center;
-  display: flex;
-  align-items: center; }
-  .entry-top-thumbnail img {
-    width: 100%; }
-
-.entry-meta {
-  font-size: 0.85rem;
-  display: flex; }
-  .entry-meta .author-meta {
-    padding-right: 0.5rem; }
-    .entry-meta .author-meta .author-name {
-      display: block; }
-  @media (max-width: 575px) {
-    .entry-meta .reading-time {
-      display: block; } }
-  .entry-meta .reading-time a {
-    color: #6c757d; }
-    .entry-meta .reading-time a:hover {
-      color: #212529; }
-  .entry-meta .reading-time .dot::after {
-    content: "·";
-    margin-left: 3px;
-    margin-right: 3px; }
-    @media (max-width: 575px) {
-      .entry-meta .reading-time .dot::after {
-        display: none; } }
-  .entry-meta .post-date {
-    color: #6c757d; }
-    .entry-meta .post-date:hover {
-      color: #212529; }
-  .entry-meta .author-avatar {
-    margin-right: 0.5rem;
-    width: 40px; }
-    .entry-meta .author-avatar img {
-      border-radius: 100%; }
-  .entry-meta .entry-meta-icons {
-    margin-left: auto;
-    display: flex;
-    flex-wrap: wrap;
-    text-align: right;
-    justify-content: flex-end;
-    align-items: flex-start;
-    align-content: flex-start;
-    flex-grow: 1;
-    flex-basis: 0; }
-    .entry-meta .entry-meta-icons > a {
-      color: #6c757d;
-      margin-left: 0.5rem;
-      margin-top: -2px; }
-      .entry-meta .entry-meta-icons > a:hover {
-        color: #212529; }
-    .entry-meta .entry-meta-icons .comments-link {
-      display: inline-flex;
-      align-items: center; }
-      .entry-meta .entry-meta-icons .comments-link svg {
-        margin-left: 0.1rem; }
 
 .tags-links {
   font-size: 0.85rem;
@@ -220,6 +161,68 @@ svg.feather {
         vertical-align: text-bottom;
         color: #6c757d; }
 
+.entry-top-thumbnail {
+  margin: -15px -15px 15px -15px;
+  max-height: 250px;
+  overflow: hidden;
+  justify-content: center;
+  display: flex;
+  align-items: center; }
+  .entry-top-thumbnail img {
+    width: 100%; }
+
+.entry-meta {
+  font-size: 0.85rem;
+  display: flex; }
+  .entry-meta .author-meta {
+    padding-right: 0.5rem; }
+    .entry-meta .author-meta .author-name {
+      display: block; }
+  @media (max-width: 575px) {
+    .entry-meta .reading-time {
+      display: block; } }
+  .entry-meta .reading-time a {
+    color: #6c757d; }
+    .entry-meta .reading-time a:hover {
+      color: #212529; }
+  .entry-meta .reading-time .dot::after {
+    content: "·";
+    margin-left: 3px;
+    margin-right: 3px; }
+    @media (max-width: 575px) {
+      .entry-meta .reading-time .dot::after {
+        display: none; } }
+  .entry-meta .post-date {
+    color: #6c757d; }
+    .entry-meta .post-date:hover {
+      color: #212529; }
+  .entry-meta .author-avatar {
+    margin-right: 0.5rem;
+    min-width: 40px; }
+    .entry-meta .author-avatar img {
+      border-radius: 100%; }
+  .entry-meta .entry-meta-icons {
+    margin-left: auto;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: right;
+    justify-content: flex-end;
+    align-items: flex-start;
+    align-content: flex-start;
+    flex-grow: 1;
+    flex-basis: 0; }
+    .entry-meta .entry-meta-icons > a {
+      color: #6c757d;
+      margin-left: 0.5rem;
+      margin-top: -2px; }
+      .entry-meta .entry-meta-icons > a:hover {
+        color: #212529; }
+    .entry-meta .entry-meta-icons .comments-link {
+      display: inline-flex;
+      align-items: center; }
+      .entry-meta .entry-meta-icons .comments-link svg {
+        margin-left: 0.1rem; }
+
 .widget {
   margin-bottom: 30px; }
   .widget ul {
@@ -239,6 +242,24 @@ svg.feather {
 /*
  ** 04. Single Posts
  */
+.single article {
+  max-width: 760px;
+  margin: 0 auto; }
+  .single article .entry-meta {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.075); }
+    .single article .entry-meta .author-avatar {
+      margin-right: 1rem;
+      min-width: 60px; }
+    .single article .entry-meta .author-bio {
+      display: block; }
+    .single article .entry-meta .entry-meta-icons {
+      min-width: 15rem; }
+  .single article .entry-top-thumbnail {
+    margin: 0 0 2rem 0;
+    max-height: 25rem; }
+
 /*
  ** 05. Pages
  */

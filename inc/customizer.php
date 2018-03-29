@@ -76,33 +76,7 @@ if ( ! function_exists( 'elexis_theme_customize_register' ) ) {
         }
 
 
-		$wp_customize->add_setting( 'elexis_sidebar_position', array(
-			'default'           => 'right',
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'sanitize_text_field',
-			'capability'        => 'edit_theme_options',
-		) );
 
-		$wp_customize->add_control(
-			new WP_Customize_Control(
-				$wp_customize,
-				'elexis_sidebar_position', array(
-					'label'       => __( 'Sidebar Positioning', 'elexis' ),
-					'description' => __( "Set sidebar's default position. Can either be: right, left, both or none. Note: this can be overridden on individual pages.",
-					'elexis' ),
-					'section'     => 'elexis_theme_layout_options',
-					'settings'    => 'elexis_sidebar_position',
-					'type'        => 'select',
-					'sanitize_callback' => 'elexis_theme_slug_sanitize_select',
-					'choices'     => array(
-						'right' => __( 'Right sidebar', 'elexis' ),
-						'left'  => __( 'Left sidebar', 'elexis' ),
-						'both'  => __( 'Left & Right sidebars', 'elexis' ),
-						'none'  => __( 'No sidebar', 'elexis' ),
-					),
-					'priority'    => '20',
-				)
-			) );
 	}
 } // endif function_exists( 'elexis_theme_customize_register' ).
 add_action( 'customize_register', 'elexis_theme_customize_register' );

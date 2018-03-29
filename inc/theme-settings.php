@@ -17,11 +17,7 @@ if ( ! function_exists( 'elexis_setup_theme_default_settings' ) ) :
 			set_theme_mod( 'elexis_posts_index_style', 'default' );
 		}
 
-		// Sidebar position.
-		$elexis_sidebar_position = get_theme_mod( 'elexis_sidebar_position' );
-		if ( '' == $elexis_sidebar_position ) {
-			set_theme_mod( 'elexis_sidebar_position', 'right' );
-		}
+
 
 	}
 endif;

@@ -53,7 +53,7 @@ function elexis_entry_meta($avatar = true, $author = true, $postdate = true, $re
   echo '<div class="entry-meta-icons">';
   if ($icons) {
   	$readicon = sprintf(
-  		'<a class="read-post-icon" href="' . esc_url( get_permalink() ) . '" rel="bookmark" title="' . __( 'Read More...', 'elexis' ) . '"><i data-feather="bookmark"></i></a>'
+  		'<a class="read-post-icon" href="' . esc_url( get_permalink() ) . '" rel="bookmark" title="' . __( 'Read More', 'elexis' ) . '"><i data-feather="bookmark"></i></a>'
   	);
   	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
   		comments_popup_link( '', esc_html__( '1', 'elexis' ) . '<i data-feather="message-circle"></i>', esc_html__( '%', 'elexis' ) . '<i data-feather="message-circle"></i>', 'comments-link' );

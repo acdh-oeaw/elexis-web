@@ -404,6 +404,25 @@ my_config_kirki_add_field(
 	)
 );
 
+/**
+ * Sidebar Positioning
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'select',
+		'settings'    => 'theme_layout_sidebar',
+		'label'       => esc_attr__( 'Sidebar Positioning', 'elexis' ),
+		'description' => esc_attr__( 'Set the position of your sidebar. Can either be: right, left, or none. Note: this can be overridden on individual pages.', 'elexis' ),
+		'section'     => 'theme_layout_section',
+		'default'     => 'right',
+		'choices'     => array(
+			'right' => esc_attr__( 'Right sidebar', 'elexis' ),
+			'left' => esc_attr__( 'Left sidebar', 'elexis' ),
+			'none' => esc_attr__( 'No sidebar', 'elexis' ),
+		),
+		'transport'   => 'refresh',
+	)
+);
 
 /**
  * Outline Border Around Website Color
@@ -820,6 +839,66 @@ my_config_kirki_add_field(
 	)
 );
 
+/**
+ * Hero Color Scheme
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'radio',
+		'settings'    => 'hero_color_scheme',
+		'label'       => esc_attr__( 'Hero Text Color Scheme', 'elexis' ),
+		'description' => esc_attr__( 'Use the light scheme with a bright background color and the dark scheme with a dark background.', 'elexis' ),
+		'section'     => 'home_layout_section',
+		'default'     => 'hero-dark',
+		'choices'     => array(
+			'hero-light' => esc_attr__( 'Light Hero', 'elexis' ),
+			'hero-dark' => esc_attr__( 'Dark Hero', 'elexis' ),
+		),
+		'transport'   => 'refresh',
+    'required' => array(
+        array(
+    			'setting' => 'hero_type_setting', 
+    			'operator' => 'contains', 
+    			'value' => array('static-hero', 'post-hero')
+        )
+    ),
+	)
+);
+
+/**
+ * Hero Content Width
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'slider',
+		'settings'    => 'hero_content_width',
+		'label'       => esc_attr__( 'Hero Content Width', 'elexis' ),
+		'description' => esc_attr__( 'Define the width of the text content on the hero.', 'elexis' ),
+		'section'     => 'home_layout_section',
+		'default'     => '50',
+		'choices'     => array(
+			'min'  => 25,
+			'max'  => 100,
+			'step' => 1,
+			'suffix' => '%',
+		),
+		'output'      => array(
+			array(
+				'element' => array( '#wrapper-hero-inner h1', '#wrapper-hero-inner p' ),
+        'property' => 'width',
+        'units'    => '%',
+			),
+		),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+      array(
+				'element' => array( '#wrapper-hero-inner h1', '#wrapper-hero-inner p' ),
+        'property' => 'width',
+        'units'    => '%',
+      ),
+    ),
+	)
+);
 
 /**
  * Home Layout Repeater Control.

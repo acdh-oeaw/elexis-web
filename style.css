@@ -220,9 +220,15 @@ svg.feather {
     height: 100%;
     z-index: 1; }
   #wrapper-hero-content #wrapper-hero-inner {
-    padding: 0 30px;
     position: relative;
     z-index: 2; }
+    @media (max-width: 1199px) {
+      #wrapper-hero-content #wrapper-hero-inner h1, #wrapper-hero-content #wrapper-hero-inner p {
+        width: 100%; } }
+  #wrapper-hero-content .hero-dark {
+    color: #fff; }
+    #wrapper-hero-content .hero-dark h1 {
+      color: #fff; }
 
 /*
  ** 04. Single Posts

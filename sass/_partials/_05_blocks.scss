@@ -16,9 +16,20 @@
   }
 
   #wrapper-hero-inner {
-    padding: 0 $grid-gutter-width;
     position: relative;
     z-index: 2;
+
+    h1, p {
+      @include breakpoint-down($xl) { width: 100% }
+    }
+  }
+
+  .hero-dark {
+    color: $white;
+
+    h1 {
+      color: $white;
+    }
   }
 
 }

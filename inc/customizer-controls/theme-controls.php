@@ -907,6 +907,13 @@ my_config_kirki_add_field(
         'units'    => '%',
       ),
     ),
+    'required' => array(
+        array(
+    			'setting' => 'hero_type_setting', 
+    			'operator' => 'contains', 
+    			'value' => array('static-hero', 'post-hero')
+        )
+    ),
 	)
 );
 

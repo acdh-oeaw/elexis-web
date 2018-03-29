@@ -7,9 +7,13 @@
 
 //Extract variables from the query
 extract( $wp_query->query_vars );
+$articleClasses = array(
+  'card',
+  $blocks_per_row
+);
 ?>
 
-<article <?php post_class('card col-md-4'); ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class($articleClasses); ?> id="post-<?php the_ID(); ?>">
 
   <div class="card-inner">
 

@@ -945,7 +945,7 @@ my_config_kirki_add_field(
 				'type'        => 'select',
 				'label'       => esc_attr__( 'Elements per Row', 'elexis' ),
 				'description' => esc_attr__( 'Select number of content blocks per row.', 'elexis' ),
-				'default'     => '2',
+				'default'     => 'col-12',
 				'choices'     => array(
 					'col-12'  => esc_attr__( '1', 'elexis' ),
 					'col-6'   => esc_attr__( '2', 'elexis' ),

@@ -5,9 +5,13 @@
  * @package elexis
  */
 
+//Extract variables from the query
+extract( $wp_query->query_vars );
 ?>
 
-<article <?php post_class('card'); ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class('card col-md-4'); ?> id="post-<?php the_ID(); ?>">
+
+  <div class="card-inner">
 
   <?php 
     $postThumbnail = get_the_post_thumbnail( $post->ID, 'large' ); 
@@ -40,7 +44,7 @@
 
 	</div><!-- .entry-content -->
 
-	<?php if ( 'post' == get_post_type() ) : ?>
+	<?php if ( 'post' == get_post_type() ) { ?>
 		<div class="entry-meta">
 			<?php 
   			$avatar = get_theme_mod( 'card_avatar_toggle', true );
@@ -53,6 +57,8 @@
   		?>
 		</div><!-- .entry-meta -->
 
-	<?php endif; ?>
+	<?php } ?>
+
+	</div><!-- .card-inner -->
 
 </article><!-- #post-## -->

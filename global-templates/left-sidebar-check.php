@@ -8,7 +8,7 @@
 ?>
 
 <?php
-$sidebar_pos = get_theme_mod( 'elexis_sidebar_position' );
+$sidebar_pos = get_theme_mod( 'theme_layout_sidebar', 'right' );
 ?>
 
 <?php if ( 'left' === $sidebar_pos || 'both' === $sidebar_pos ) : ?>

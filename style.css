@@ -79,20 +79,6 @@ svg.feather {
   max-width: 100%;
   vertical-align: bottom; }
 
-.card {
-  padding: 15px;
-  margin-bottom: 30px;
-  border-radius: 2px;
-  border: 1px solid rgba(0, 0, 0, 0.1); }
-  .card .entry-content p {
-    color: #6f757c;
-    font-size: 0.9rem; }
-  .card.sticky .entry-title svg {
-    width: 1rem;
-    margin-right: 0.5rem;
-    vertical-align: text-bottom;
-    color: #6c757d; }
-
 .entry-top-thumbnail {
   margin: -15px -15px 15px -15px;
   max-height: 250px;
@@ -102,21 +88,6 @@ svg.feather {
   align-items: center; }
   .entry-top-thumbnail img {
     width: 100%; }
-
-.widget {
-  margin-bottom: 30px; }
-  .widget ul {
-    margin-bottom: 0;
-    padding-left: 0;
-    list-style: none; }
-  .widget .widget-title {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-    padding-bottom: 1rem;
-    margin-bottom: 1.2rem; }
-
-.separator-title {
-  border-bottom: 1px solid #212529;
-  padding-bottom: calc(1rem + 1px); }
 
 .entry-meta {
   font-size: 0.85rem;
@@ -229,6 +200,41 @@ svg.feather {
     color: #fff; }
     #wrapper-hero-content .hero-dark h1 {
       color: #fff; }
+
+.card-wrapper {
+  margin-right: -15px;
+  margin-left: -15px; }
+  .card-wrapper .card {
+    border: 0;
+    padding: 15px; }
+    .card-wrapper .card .card-inner {
+      padding: 15px;
+      border-radius: 2px;
+      border: 1px solid rgba(0, 0, 0, 0.1); }
+      .card-wrapper .card .card-inner .entry-content p {
+        color: #6f757c;
+        font-size: 0.9rem; }
+      .card-wrapper .card .card-inner.sticky .entry-title svg {
+        width: 1rem;
+        margin-right: 0.5rem;
+        vertical-align: text-bottom;
+        color: #6c757d; }
+
+.widget {
+  margin-bottom: 30px; }
+  .widget ul {
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none; }
+
+.widget-title, .content-block-title {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  padding-bottom: 1rem;
+  margin-bottom: 1.2rem; }
+
+.separator-title {
+  border-bottom: 1px solid #212529;
+  padding-bottom: calc(1rem + 1px); }
 
 /*
  ** 04. Single Posts

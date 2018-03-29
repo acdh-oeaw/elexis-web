@@ -90,26 +90,7 @@ svg.feather {
   vertical-align: bottom;
 }
 
-// Home items spacing
-.card {
-  padding: $grid-gutter-width/2;
-  margin-bottom: $grid-gutter-width;
-  border-radius: 2px;
-  border: 1px solid rgba(0,0,0,.1);
 
-  .entry-content p {
-    color: #6f757c;
-    font-size: 0.9rem;
-  }
-
-  &.sticky .entry-title svg {
-    width: 1rem;
-    margin-right: 0.5rem;
-    vertical-align: text-bottom;
-    color: $gray-600;
-  }
-
-}
 
 .entry-top-thumbnail {
   margin: (-$grid-gutter-width)/2 (-$grid-gutter-width)/2 $grid-gutter-width/2 (-$grid-gutter-width)/2;
@@ -123,28 +104,6 @@ svg.feather {
     width: 100%;
   }
 
-}
-
-.widget {
-  margin-bottom: $grid-gutter-width;
-
-  ul {
-    margin-bottom: 0;
-    padding-left: 0;
-    list-style: none;
-  }
-
-  .widget-title {
-    border-bottom: 1px solid rgba(0,0,0,.15);
-    padding-bottom: 1rem;
-    margin-bottom: 1.2rem;
-  }
-
-}
-
-.separator-title {
-  border-bottom: 1px solid $body-color;
-  padding-bottom: calc(1rem + 1px);
 }
 
 .entry-meta {

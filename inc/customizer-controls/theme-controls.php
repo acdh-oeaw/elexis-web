@@ -47,7 +47,8 @@ $sections = array(
 	'typography'      => array( esc_attr__( 'Typography', 'elexis' ), '' ),
 	'navbar'      => array( esc_attr__( 'Top Navigation', 'elexis' ), '' ),
 	'theme_layout'      => array( esc_attr__( 'Theme Layout', 'elexis' ), '' ),
-	'home_layout'      => array( esc_attr__( 'Homepage Layout', 'elexis' ), '' ),
+	'home_hero'      => array( esc_attr__( 'Homepage Hero Block', 'elexis' ), '' ),
+	'home_blocks'      => array( esc_attr__( 'Homepage Content Blocks', 'elexis' ), '' ),
 	'content_blocks'      => array( esc_attr__( 'Content Blocks Options', 'elexis' ), '' ),
 );
 foreach ( $sections as $section_id => $section ) {
@@ -61,6 +62,14 @@ foreach ( $sections as $section_id => $section ) {
 	}
 	Kirki::add_section( str_replace( '-', '_', $section_id ) . '_section', $section_args );
 }
+
+/* Get Categories for Query Selectors */
+$categories = get_categories( array('orderby' => 'name','order' => 'ASC') );
+$category_choices = array();
+foreach ( $categories as $category ) {
+	$category_choices[ $category->term_id ] = $category->name;
+}
+
 
 /**
  * A proxy function. Automatically passes-on the config-id.
@@ -412,12 +421,13 @@ my_config_kirki_add_field(
 		'type'        => 'select',
 		'settings'    => 'theme_layout_sidebar',
 		'label'       => esc_attr__( 'Sidebar Positioning', 'elexis' ),
-		'description' => esc_attr__( 'Set the position of your sidebar. Can either be: right, left, or none. Note: this can be overridden on individual pages.', 'elexis' ),
+		'description' => esc_attr__( 'Set the position of your sidebar. Can either be: right, left, both or none. After defining this setting, please go to Widgets section to add widgets to different sidebars. Note: this can be overridden on individual pages.', 'elexis' ),
 		'section'     => 'theme_layout_section',
 		'default'     => 'right',
 		'choices'     => array(
 			'right' => esc_attr__( 'Right sidebar', 'elexis' ),
 			'left' => esc_attr__( 'Left sidebar', 'elexis' ),
+			'both' => esc_attr__( 'Right & Left sidebar', 'elexis' ),
 			'none' => esc_attr__( 'No sidebar', 'elexis' ),
 		),
 		'transport'   => 'refresh',
@@ -528,7 +538,7 @@ my_config_kirki_add_field(
 		'settings'    => 'hero_type_setting',
 		'label'       => esc_attr__( 'Select Hero Type', 'elexis' ),
 		'description' => esc_attr__( 'A hero element will be visible on top of your homepage. You may use static hero content or generate your hero from post(s).', 'elexis' ),
-		'section'     => 'home_layout_section',
+		'section'     => 'home_hero_section',
 		'default'     => 'none',
 		'choices'     => array(
 			'none' => esc_attr__( 'No Hero', 'elexis' ),
@@ -548,7 +558,7 @@ my_config_kirki_add_field(
 		'settings'    => 'hero_post_query_type',
 		'label'       => esc_attr__( 'Hero Posts Query Source', 'elexis' ),
 		'description' => esc_attr__( 'Query posts from categories, tags or some selected posts.', 'elexis' ),
-		'section'     => 'home_layout_section',
+		'section'     => 'home_hero_section',
 		'default'     => 'categories',
 		'choices'     => array(
 			'categories' => esc_attr__( 'Categories', 'elexis' ),
@@ -575,7 +585,7 @@ my_config_kirki_add_field(
 		'settings'    => 'hero_post_category_query',
 		'label'       => esc_attr__( 'Select Categories to Query', 'elexis' ),
 		'description' => esc_attr__( 'You may select multiple categories to query your content from.', 'elexis' ),
-		'section'     => 'home_layout_section',
+		'section'     => 'home_hero_section',
 		'transport'   => 'refresh',
 		'default'     => 'option-1',
 		'multiple'    => 10,
@@ -610,7 +620,7 @@ my_config_kirki_add_field(
 		'settings'    => 'hero_post_tag_query',
 		'label'       => esc_attr__( 'Select Tags to Query', 'elexis' ),
 		'description' => esc_attr__( 'You may select multiple tags to query your content from.', 'elexis' ),
-		'section'     => 'home_layout_section',
+		'section'     => 'home_hero_section',
 		'transport'   => 'refresh',
 		'default'     => 'option-1',
 		'multiple'    => 10,
@@ -645,7 +655,7 @@ my_config_kirki_add_field(
 		'settings'    => 'hero_post_posts_query',
 		'label'       => esc_attr__( 'Select Posts to Query', 'elexis' ),
 		'description' => esc_attr__( 'You may select multiple posts to query your content from.', 'elexis' ),
-		'section'     => 'home_layout_section',
+		'section'     => 'home_hero_section',
 		'transport'   => 'refresh',
 		'default'     => 'option-1',
 		'multiple'    => 10,
@@ -679,7 +689,7 @@ my_config_kirki_add_field(
 		'type'        => 'number',
 		'settings'    => 'hero_post_number_of_items',
 		'label'       => esc_attr__( 'Number of Items', 'elexis' ),
-		'section'     => 'home_layout_section',
+		'section'     => 'home_hero_section',
 		'transport'   => 'refresh',
 		'choices'     => array(
 			'min'  => 1,
@@ -705,7 +715,7 @@ my_config_kirki_add_field(
 		'settings'    => 'hero_static_title',
 		'label'       => esc_attr__( 'Hero Title', 'elexis' ),
 		'description' => esc_attr__( 'The heading of your static hero content.', 'elexis' ),
-		'section'     => 'home_layout_section',
+		'section'     => 'home_hero_section',
 		'transport'   => 'refresh',
     'required' => array(
         array(
@@ -726,7 +736,7 @@ my_config_kirki_add_field(
 		'settings'    => 'hero_static_text',
 		'label'       => esc_attr__( 'Hero Text', 'elexis' ),
 		'description' => esc_attr__( 'Add your static hero text.', 'elexis' ),
-		'section'     => 'home_layout_section',
+		'section'     => 'home_hero_section',
 		'transport'   => 'refresh',
     'required' => array(
         array(
@@ -747,7 +757,7 @@ my_config_kirki_add_field(
 		'settings'    => 'hero_button',
 		'label'       => esc_attr__( 'Hero Button', 'elexis' ),
 		'description' => esc_attr__( 'Add your hero button label. Leave empty for no button.', 'elexis' ),
-		'section'     => 'home_layout_section',
+		'section'     => 'home_hero_section',
 		'transport'   => 'refresh',
     'required' => array(
         array(
@@ -769,7 +779,7 @@ my_config_kirki_add_field(
 		'label'       => esc_attr__( 'Hero URL', 'elexis' ),
 		'description' => esc_attr__( 'Enter the URL where you want to link your hero to. Leave empty for no linking.', 'elexis' ),
 		'transport'   => 'refresh',
-		'section'     => 'home_layout_section',
+		'section'     => 'home_hero_section',
     'required' => array(
         array(
     			'setting' => 'hero_type_setting', 
@@ -789,7 +799,7 @@ my_config_kirki_add_field(
 		'settings'    => 'hero_static_image',
 		'label'       => esc_attr__( 'Hero Background Image', 'elexis' ),
 		'description' => esc_attr__( 'Select the image you want to use in the background of your hero.', 'elexis' ),
-		'section'     => 'home_layout_section',
+		'section'     => 'home_hero_section',
 		'transport'   => 'refresh',
 		'default'     => '',
     'required' => array(
@@ -811,7 +821,7 @@ my_config_kirki_add_field(
 		'settings'    => 'hero_bg_color',
 		'label'       => __( 'Hero Background Color', 'elexis' ),
 		'description' => esc_attr__( 'Define the background color of your hero content. If the hero has a background image, you can decrease the opacity of this color to make a color overlay on the image.', 'elexis' ),
-		'section'     => 'home_layout_section',
+		'section'     => 'home_hero_section',
 		'default'     => 'rgba(108,117,125,0.75)',
 		'choices'     => array(
 			'alpha' => true,
@@ -848,7 +858,7 @@ my_config_kirki_add_field(
 		'settings'    => 'hero_color_scheme',
 		'label'       => esc_attr__( 'Hero Text Color Scheme', 'elexis' ),
 		'description' => esc_attr__( 'Use the light scheme with a bright background color and the dark scheme with a dark background.', 'elexis' ),
-		'section'     => 'home_layout_section',
+		'section'     => 'home_hero_section',
 		'default'     => 'hero-dark',
 		'choices'     => array(
 			'hero-light' => esc_attr__( 'Light Hero', 'elexis' ),
@@ -874,7 +884,7 @@ my_config_kirki_add_field(
 		'settings'    => 'hero_content_width',
 		'label'       => esc_attr__( 'Hero Content Width', 'elexis' ),
 		'description' => esc_attr__( 'Define the width of the text content on the hero.', 'elexis' ),
-		'section'     => 'home_layout_section',
+		'section'     => 'home_hero_section',
 		'default'     => '50',
 		'choices'     => array(
 			'min'  => 25,
@@ -906,78 +916,68 @@ my_config_kirki_add_field(
 my_config_kirki_add_field(
 	array(
 		'type'        => 'repeater',
-		'settings'    => 'repeater_setting',
+		'settings'    => 'home_content_blocks',
 		'label'       => esc_attr__( 'Homepage Content Blocks', 'elexis' ),
 		'description' => esc_attr__( 'Arrange and define your content blocks for your homepage.', 'elexis' ),
-		'section'     => 'home_layout_section',
+		'section'     => 'home_blocks_section',
+		'transport'   => 'refresh',
   	'row_label' => array(
   		'type' => 'text',
   		'value' => esc_attr__('Content Block', 'elexis' ),
   	),
 		'default'     => array(
 			array(
-				'link_text'   => esc_attr__( 'Kirki Site', 'elexis' ),
-				'link_url'    => 'https://aristath.github.io/kirki/',
-				'link_target' => '_self',
-				'number_of_items' => 2,
-				'checkbox'    => false,
-			),
-			array(
-				'link_text'   => esc_attr__( 'Kirki Repository', 'elexis' ),
-				'link_url'    => 'https://github.com/aristath/kirki',
-				'link_target' => '_self',
-				'number_of_items' => 4,
-				'checkbox'    => false,
+  			'block_title' => '',
+				'blocks_per_row'   => '2',
+				'number_of_blocks'    => '',
+				'blocks_post_query_type' => 'categories',
+				'blocks_post_category_query' => '',
 			),
 		),
 		'fields' => array(
-			'link_target' => array(
-				'type'        => 'select',
-				'label'       => esc_attr__( 'Element Type', 'elexis' ),
-				'description' => esc_attr__( 'Select the type of this content block element.', 'elexis' ),
-				'default'     => 'card',
-				'choices'     => array(
-					'_blank'  => esc_attr__( 'New Window', 'elexis' ),
-					'_self'   => esc_attr__( 'Same Frame', 'elexis' ),
-				),
-			),
-			'link_text' => array(
+			'block_title' => array(
 				'type'        => 'text',
-				'label'       => esc_attr__( 'Element Type', 'elexis' ),
-				'description' => esc_attr__( 'This will be the label for your link', 'elexis' ),
+				'label'       => esc_attr__( 'Content Block Title', 'elexis' ),
+				'description' => esc_attr__( 'This will be the heading above your content block. Leave empty for no heading.', 'elexis' ),
 				'default'     => '',
 			),
-			'link_url' => array(
-				'type'        => 'text',
-				'label'       => esc_attr__( 'Link URL', 'elexis' ),
-				'description' => esc_attr__( 'This will be the link URL', 'elexis' ),
-				'default'     => '',
-			),
-			'link_target' => array(
+			'blocks_per_row' => array(
 				'type'        => 'select',
-				'label'       => esc_attr__( 'Link Target', 'elexis' ),
-				'description' => esc_attr__( 'This will be the link target', 'elexis' ),
-				'default'     => '_self',
+				'label'       => esc_attr__( 'Elements per Row', 'elexis' ),
+				'description' => esc_attr__( 'Select number of content blocks per row.', 'elexis' ),
+				'default'     => '2',
 				'choices'     => array(
-					'_blank'  => esc_attr__( 'New Window', 'elexis' ),
-					'_self'   => esc_attr__( 'Same Frame', 'elexis' ),
+					'col-12'  => esc_attr__( '1', 'elexis' ),
+					'col-6'   => esc_attr__( '2', 'elexis' ),
+					'col-4'   => esc_attr__( '3', 'elexis' ),
+					'col-3'   => esc_attr__( '4', 'elexis' ),
+					'col-2'   => esc_attr__( '6', 'elexis' ),
 				),
 			),
-			'number_of_items' => array(
-				'type'        => 'number',
-				'label'       => esc_attr__( 'Number of Items', 'elexis' ),
-				'description' => esc_attr__( 'This will be the link target', 'elexis' ),
-				'default'     => 3,
+			'number_of_blocks' => array(
+				'type'        => 'text',
+				'label'       => esc_attr__( 'Total Number of Blocks', 'elexis' ),
+				'description' => esc_attr__( 'Set max limit for items or leave empty to display all (limited to 1000).', 'elexis' ),
+				'default'     => '12',
+			),
+			'blocks_post_query_type' => array(
+				'type'        => 'radio',
+				'label'       => esc_attr__( 'Blocks Post Query Source', 'elexis' ),
+				'description' => esc_attr__( 'Query posts from categories, tags or some selected posts.', 'elexis' ),
+				'default'     => 'categories',
     		'choices'     => array(
-    			'min'  => 0,
-    			'max'  => 10,
-    			'step' => 1,
+    			'categories' => esc_attr__( 'Categories', 'elexis' ),
+    			'tags' => esc_attr__( 'Tags', 'elexis' ),
+    			'posts' => esc_attr__( 'Specific posts', 'elexis' ),
     		),
 			),
-			'checkbox' => array(
-				'type'			=> 'checkbox',
-				'label'			=> esc_attr__( 'Checkbox', 'elexis' ),
-				'default'		=> false,
+			'blocks_post_category_query' => array(
+				'type'        => 'select',
+				'label'       => esc_attr__( 'Select Categories to Query', 'elexis' ),
+				'description' => esc_attr__( 'You may select multiple categories to query your content from.', 'elexis' ),
+				'default'     => 'categories',
+    		'multiple'    => 10,
+    		'choices'     => $category_choices,
 			),
 		),
 	)

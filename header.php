@@ -34,7 +34,7 @@ $navbar_placement = get_theme_mod( 'navbar_placement' );
 
 		<a class="skip-link screen-reader-text sr-only" href="#content"><?php esc_html_e( 'Skip to content', 'elexis' ); ?></a>
 
-		<nav class="navbar navbar-expand-md <?php echo $navbar_color_scheme; ?>">
+		<nav class="navbar navbar-expand-xl <?php echo $navbar_color_scheme; ?>">
 
 		<?php if ( 'container' == $container ) : ?>
 			<div class="container" >
@@ -64,7 +64,7 @@ $navbar_placement = get_theme_mod( 'navbar_placement' );
   					)
   				); ?>
 
-          <form class="form-inline my-2 my-lg-0" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
+          <form class="form-inline my-2 my-lg-0 navbar-search-form" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
             <input class="form-control ml-sm-2 navbar-search" id="s" name="s" type="text" placeholder="<?php esc_attr_e( 'Search', 'elexis' ); ?>" value="<?php the_search_query(); ?>">
             
             <button type="submit" class="navbar-search-icon">

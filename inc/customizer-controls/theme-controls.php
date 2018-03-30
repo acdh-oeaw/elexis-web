@@ -208,7 +208,7 @@ my_config_kirki_add_field(
 );
 
 /**
- * Navbar Logo Height
+ * Navbar Padding
  */
 my_config_kirki_add_field(
 	array(
@@ -220,8 +220,6 @@ my_config_kirki_add_field(
 		'default'     => array(
 			'padding-top'    => '0.5rem',
 			'padding-bottom' => '0.5rem',
-			'padding-left'   => '1rem',
-			'padding-right'  => '1rem',
 		),
     'output'    => array(
     	array(

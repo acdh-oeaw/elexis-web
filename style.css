@@ -125,11 +125,66 @@ svg.feather {
   top: 0;
   z-index: 99; }
 
+.admin-bar .sticky-navbar {
+  top: 32px; }
+
 #wrapper-navbar {
   border-top-style: solid; }
   @media (max-width: 767px) {
     #wrapper-navbar {
       border-top-width: 0 !important; } }
+
+.navbar-toggler {
+  border: 0;
+  font-size: 1.5rem; }
+  .navbar-toggler:focus {
+    outline: 0; }
+
+@media (max-width: 1199px) {
+  .navbar {
+    max-height: 100vh;
+    overflow-y: auto;
+    align-items: flex-start;
+    padding-left: 0;
+    padding-right: 0; } }
+
+@media (max-width: 1199px) {
+  .navbar > .container, .navbar > .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px; } }
+
+@media (max-width: 1199px) {
+  .navbar .navbar-brand {
+    max-width: calc(100% - 5rem); } }
+
+.navbar .dropdown-menu {
+  padding: 0;
+  border-radius: 0.2rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  left: 0.5rem; }
+  @media (max-width: 1199px) {
+    .navbar .dropdown-menu {
+      border: 0;
+      margin: -0.2rem 0 0 0.5rem; } }
+  @media (min-width: 1200px) {
+    .navbar .dropdown-menu > li {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05); } }
+  .navbar .dropdown-menu > li > a.nav-link {
+    padding: 0.5rem 0.75rem; }
+
+@media (max-width: 1199px) {
+  .navbar .navbar-search-form {
+    margin: 0.5rem 0 !important; } }
+
+@media (max-width: 1199px) {
+  .navbar-collapse {
+    border-top: 1px solid rgba(0, 0, 0, 0.075);
+    padding-top: 0.5rem;
+    margin-top: 1rem; } }
+
+@media (max-width: 1199px) {
+  .navbar-collapse .navbar-search {
+    margin-left: -0.25rem !important; } }
 
 /*
  ** 03. Blocks
@@ -159,6 +214,7 @@ svg.feather {
       color: #fff; }
 
 .card-wrapper {
+  margin-top: -15px;
   margin-right: -15px;
   margin-left: -15px; }
   .card-wrapper .card {
@@ -171,11 +227,11 @@ svg.feather {
       .card-wrapper .card .card-inner .entry-content p {
         color: #6f757c;
         font-size: 0.9rem; }
-      .card-wrapper .card .card-inner.sticky .entry-title svg {
-        width: 1rem;
-        margin-right: 0.5rem;
-        vertical-align: text-bottom;
-        color: #6c757d; }
+    .card-wrapper .card.sticky .entry-title svg {
+      width: 1rem;
+      margin-right: 0.5rem;
+      vertical-align: text-bottom;
+      color: #6c757d; }
 
 .entry-top-thumbnail {
   margin: -15px -15px 15px -15px;
@@ -249,7 +305,7 @@ svg.feather {
 .widget-title, .content-block-title {
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   padding-bottom: 1rem;
-  margin-bottom: 1.2rem; }
+  margin-bottom: 30px; }
 
 .separator-title {
   border-bottom: 1px solid #212529;

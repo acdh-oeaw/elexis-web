@@ -54,7 +54,6 @@ gulp.task('scripts', function() {
   var assetscripts = [
     paths.js + '/assets/bootstrap.bundle.js',
     paths.js + '/assets/isotope.pkgd.min.js',
-    paths.js + '/assets/fontawesome-all.min.js',
     paths.js + '/assets/feather.min.js',
     paths.js + '/assets/skip-link-focus-fix.js'
   ];

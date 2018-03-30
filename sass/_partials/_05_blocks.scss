@@ -49,20 +49,19 @@
       border-radius: 2px;
       border: 1px solid rgba(0, 0, 0, 0.1);
 
+      .entry-title svg.sticky-icon {
+        width: 1.25rem;
+        margin-right: 0.25rem;
+        vertical-align: text-bottom;
+        padding-bottom: 0.1rem;
+        color: $gray-600;
+      }
+
       .entry-content p {
         color: #6f757c;
         font-size: 0.9rem;
       }
-      
     }
-
-    &.sticky .entry-title svg {
-      width: 1rem;
-      margin-right: 0.5rem;
-      vertical-align: text-bottom;
-      color: $gray-600;
-    }
-
   }
 
 }

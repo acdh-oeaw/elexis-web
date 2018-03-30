@@ -28,7 +28,7 @@ $articleClasses = array(
   	<?php $card_category_toggle = get_theme_mod( 'card_category_toggle', true ); if ($card_category_toggle) { elexis_entry_list_categories(); } ?>
 
 		<?php 
-  		if ( is_sticky() ) { $sticky = '<i class="fas fa-thumbtack"></i>'; } else { $sticky = ''; } 
+  		if ( is_sticky() ) { $sticky = '<i data-feather="star" class="sticky-icon"></i>'; } else { $sticky = ''; } 
   		the_title( sprintf( '<h4 class="entry-title">'.$sticky.'<a href="%s" rel="bookmark">', esc_url( get_permalink() ) ),'</a></h4>' );
     ?>
 

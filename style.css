@@ -28,7 +28,11 @@ html {
   -webkit-font-smoothing: antialiased; }
 
 body {
-  border-style: solid; }
+  border-style: solid;
+  border-top-width: 0; }
+  @media (max-width: 767px) {
+    body {
+      border-width: 0 !important; } }
 
 .navbar {
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.15);
@@ -115,6 +119,18 @@ svg.feather {
 /*
  ** 02. Header
  */
+.sticky-navbar {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 99; }
+
+#wrapper-navbar {
+  border-top-style: solid; }
+  @media (max-width: 767px) {
+    #wrapper-navbar {
+      border-top-width: 0 !important; } }
+
 /*
  ** 03. Blocks
  */

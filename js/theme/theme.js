@@ -5,6 +5,7 @@
 // Init Feather
 feather.replace();
 
+// JQUERY
 jQuery(function ($) {
 "use strict";
 /* You can safely use $ in this code block to reference jQuery */
@@ -18,13 +19,6 @@ $(window).load(function() {
       columnWidth: '.card'
     }
   });
-
-  // Fixed navbard distance to main
-  var navbarHeight = $('.navbar.fixed-top').innerHeight();
-  if (navbarHeight) {
-    $('#wrapper-navbar').css("margin-bottom", navbarHeight);
-  }
-
 
 });
 

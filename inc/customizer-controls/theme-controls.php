@@ -298,10 +298,10 @@ my_config_kirki_add_field(
 		'label'       => esc_attr__( 'Navbar Placement', 'elexis' ),
 		'description' => esc_attr__( 'Choose between a static or fixed-to-top navbar.', 'elexis' ),
 		'section'     => 'navbar_section',
-		'default'     => 'static',
+		'default'     => 'static-navbar',
 		'choices'     => array(
-			'static' => esc_attr__( 'Static Navbar', 'elexis' ),
-			'fixed-top' => esc_attr__( 'Fixed-Top Navbar', 'elexis' ),
+			'static-navbar' => esc_attr__( 'Static Navbar', 'elexis' ),
+			'sticky-navbar' => esc_attr__( 'Fixed-Top Navbar', 'elexis' ),
 		),
 		'transport'   => 'refresh',
 	)
@@ -348,7 +348,7 @@ my_config_kirki_add_field(
 );
 
 /**
- * Outline Border Around Website Color
+ * HTML Background Color
  */
 my_config_kirki_add_field(
 	array(
@@ -396,47 +396,47 @@ my_config_kirki_add_field(
 			'suffix' => 'rem',
 		),
 		'output'      => array(
-			array(
+      array(
 				'element' => 'body',
-        'property' => 'border-width',
+        'property' => 'border-right-width',
         'units'    => 'rem',
-			),
+      ),
+      array(
+				'element' => 'body',
+        'property' => 'border-left-width',
+        'units'    => 'rem',
+      ),
+      array(
+				'element' => 'body',
+        'property' => 'border-bottom-width',
+        'units'    => 'rem',
+      ),
 			array(
-				'element' => '.navbar.fixed-top',
-        'property' => 'border-right',
-        'units'    => 'rem solid',
-			),
-			array(
-				'element' => '.navbar.fixed-top',
-        'property' => 'border-left',
-        'units'    => 'rem solid',
-			),
-			array(
-				'element' => '.navbar.fixed-top',
-        'property' => 'border-top',
-        'units'    => 'rem solid',
+				'element' => '#wrapper-navbar',
+        'property' => 'border-top-width',
+        'units'    => 'rem',
 			),
 		),
     'js_vars'     => array(
       array(
 				'element' => 'body',
-        'property' => 'border-width',
+        'property' => 'border-right-width',
+        'units'    => 'rem',
+      ),
+      array(
+				'element' => 'body',
+        'property' => 'border-left-width',
+        'units'    => 'rem',
+      ),
+      array(
+				'element' => 'body',
+        'property' => 'border-bottom-width',
         'units'    => 'rem',
       ),
 			array(
-				'element' => '.navbar.fixed-top',
-        'property' => 'border-right',
-        'units'    => 'rem solid',
-			),
-			array(
-				'element' => '.navbar.fixed-top',
-        'property' => 'border-left',
-        'units'    => 'rem solid',
-			),
-			array(
-				'element' => '.navbar.fixed-top',
-        'property' => 'border-top',
-        'units'    => 'rem solid',
+				'element' => '#wrapper-navbar',
+        'property' => 'border-top-width',
+        'units'    => 'rem',
 			),
     ),
 	)
@@ -462,8 +462,8 @@ my_config_kirki_add_field(
     		'property'        => 'border-color',
       ),
 			array(
-				'element' => '.navbar.fixed-top',
-        'property' => 'border-color',
+				'element' => '#wrapper-navbar',
+        'property' => 'border-top-color',
 			),
     ),
 		'transport'   => 'postMessage',
@@ -473,8 +473,8 @@ my_config_kirki_add_field(
     		'property'        => 'border-color',
       ),
 			array(
-				'element' => '.navbar.fixed-top',
-        'property' => 'border-color',
+				'element' => '#wrapper-navbar',
+        'property' => 'border-top-color',
 			),
     ),
 	)

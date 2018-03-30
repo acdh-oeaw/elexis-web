@@ -30,11 +30,11 @@ $navbar_placement = get_theme_mod( 'navbar_placement' );
 <div class="hfeed site" id="page">
 
 	<!-- ******************* The Navbar Area ******************* -->
-<div class="wrapper-fluid wrapper-navbar" id="wrapper-navbar" itemscope itemtype="http://schema.org/WebSite">
+<div class="wrapper-fluid wrapper-navbar <?php echo $navbar_placement; ?>" id="wrapper-navbar" itemscope itemtype="http://schema.org/WebSite">
 
 		<a class="skip-link screen-reader-text sr-only" href="#content"><?php esc_html_e( 'Skip to content', 'elexis' ); ?></a>
 
-		<nav class="navbar navbar-expand-md <?php echo $navbar_color_scheme .' '. $navbar_placement; ?>">
+		<nav class="navbar navbar-expand-md <?php echo $navbar_color_scheme; ?>">
 
 		<?php if ( 'container' == $container ) : ?>
 			<div class="container" >

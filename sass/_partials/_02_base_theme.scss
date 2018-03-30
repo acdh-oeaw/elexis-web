@@ -4,6 +4,10 @@ html {
 
 body {
   border-style: solid;
+  border-top-width: 0;
+  @include breakpoint-down($md) {
+    border-width: 0 !important;
+  }
 }
 
 .navbar {

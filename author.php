@@ -30,7 +30,7 @@ $container   = get_theme_mod( 'theme_layout_container', 'container' );
 						$author_name ) : get_userdata( intval( $author ) );
 					?>
 
-					<h1><?php esc_html_e( 'About:', 'elexis' ); ?><?php echo esc_html( $curauth->nickname ); ?></h1>
+					<h1><?php esc_html_e( 'About: ', 'elexis' ); ?><?php echo esc_html( $curauth->nickname ); ?></h1>
 
 					<?php if ( ! empty( $curauth->ID ) ) : ?>
 						<?php echo get_avatar( $curauth->ID ); ?>
@@ -55,19 +55,18 @@ $container   = get_theme_mod( 'theme_layout_container', 'container' );
 
 				</header><!-- .page-header -->
 
-				<ul>
-
 					<!-- The Loop -->
 					<?php if ( have_posts() ) : ?>
+
+            <div class="card-wrapper">
+
 						<?php while ( have_posts() ) : the_post(); ?>
-							<li>
-								<a rel="bookmark" href="<?php the_permalink() ?>"
-								   title="<?php esc_html_e( 'Permanent Link:', 'elexis' ); ?> <?php the_title(); ?>">
-									<?php the_title(); ?></a>,
-								<?php elexis_entry_meta(); ?> <?php esc_html_e( 'in',
-								'elexis' ); ?> <?php the_category( '&' ); ?>
-							</li>
+
+              <?php get_template_part( 'loop-templates/content' ); ?>
+
 						<?php endwhile; ?>
+
+            </div><!-- .card-wrapper -->
 
 					<?php else : ?>
 
@@ -76,8 +75,6 @@ $container   = get_theme_mod( 'theme_layout_container', 'container' );
 					<?php endif; ?>
 
 					<!-- End Loop -->
-
-				</ul>
 
 			</main><!-- #main -->
 

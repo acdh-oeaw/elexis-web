@@ -7,6 +7,7 @@
 
 //Extract variables from the query
 extract( $wp_query->query_vars );
+if (!$blocks_per_row) { $blocks_per_row = 'col-md-12'; }
 $articleClasses = array(
   'card',
   $blocks_per_row
@@ -19,7 +20,7 @@ $articleClasses = array(
 
   <?php 
     $postThumbnail = get_the_post_thumbnail( $post->ID, 'large' ); 
-    if ($postThumbnail) { echo '<div class="entry-top-thumbnail">'.$postThumbnail.'</div>'; }
+    if ($postThumbnail) { echo '<a href="'.esc_url( get_permalink() ).'" rel="bookmark"><div class="entry-top-thumbnail">'.$postThumbnail.'</div></a>'; }
   ?>
 
 	<header class="entry-header">

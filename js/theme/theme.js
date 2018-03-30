@@ -11,12 +11,20 @@ jQuery(function ($) {
 
 $(window).load(function() {
 
+  // Cards masonary layout
   $('.card-wrapper').isotope({
     itemSelector: '.card',
     masonry: {
       columnWidth: '.card'
     }
   });
+
+  // Fixed navbard distance to main
+  var navbarHeight = $('.navbar.fixed-top').innerHeight();
+  if (navbarHeight) {
+    $('#wrapper-navbar').css("margin-bottom", navbarHeight);
+  }
+
 
 });
 

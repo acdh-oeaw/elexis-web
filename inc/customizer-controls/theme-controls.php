@@ -289,6 +289,25 @@ my_config_kirki_add_field(
 );
 
 /**
+ * Navbar Placement
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'radio',
+		'settings'    => 'navbar_placement',
+		'label'       => esc_attr__( 'Navbar Placement', 'elexis' ),
+		'description' => esc_attr__( 'Choose between a static or fixed-to-top navbar.', 'elexis' ),
+		'section'     => 'navbar_section',
+		'default'     => 'static',
+		'choices'     => array(
+			'static' => esc_attr__( 'Static Navbar', 'elexis' ),
+			'fixed-top' => esc_attr__( 'Fixed-Top Navbar', 'elexis' ),
+		),
+		'transport'   => 'refresh',
+	)
+);
+
+/**
  * Container Width
  */
 my_config_kirki_add_field(
@@ -368,6 +387,7 @@ my_config_kirki_add_field(
 		'label'       => esc_attr__( 'Outline Border Around Website', 'elexis' ),
 		'description' => esc_attr__( 'Add an outline border around your website with the following thickness.', 'elexis' ),
 		'section'     => 'theme_layout_section',
+		'transport'   => 'postMessage',
 		'default'     => '0',
 		'choices'     => array(
 			'min'  => 0,
@@ -381,14 +401,43 @@ my_config_kirki_add_field(
         'property' => 'border-width',
         'units'    => 'rem',
 			),
+			array(
+				'element' => '.navbar.fixed-top',
+        'property' => 'border-right',
+        'units'    => 'rem solid',
+			),
+			array(
+				'element' => '.navbar.fixed-top',
+        'property' => 'border-left',
+        'units'    => 'rem solid',
+			),
+			array(
+				'element' => '.navbar.fixed-top',
+        'property' => 'border-top',
+        'units'    => 'rem solid',
+			),
 		),
-		'transport'   => 'postMessage',
     'js_vars'     => array(
       array(
 				'element' => 'body',
         'property' => 'border-width',
         'units'    => 'rem',
       ),
+			array(
+				'element' => '.navbar.fixed-top',
+        'property' => 'border-right',
+        'units'    => 'rem solid',
+			),
+			array(
+				'element' => '.navbar.fixed-top',
+        'property' => 'border-left',
+        'units'    => 'rem solid',
+			),
+			array(
+				'element' => '.navbar.fixed-top',
+        'property' => 'border-top',
+        'units'    => 'rem solid',
+			),
     ),
 	)
 );
@@ -412,6 +461,10 @@ my_config_kirki_add_field(
     		'element'         => 'body',
     		'property'        => 'border-color',
       ),
+			array(
+				'element' => '.navbar.fixed-top',
+        'property' => 'border-color',
+			),
     ),
 		'transport'   => 'postMessage',
     'js_vars'     => array(
@@ -419,6 +472,10 @@ my_config_kirki_add_field(
     		'element'         => 'body',
     		'property'        => 'border-color',
       ),
+			array(
+				'element' => '.navbar.fixed-top',
+        'property' => 'border-color',
+			),
     ),
 	)
 );

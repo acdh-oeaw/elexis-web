@@ -8,6 +8,8 @@
  */
 
 $container = get_theme_mod( 'theme_layout_container', 'container' );
+$navbar_color_scheme = get_theme_mod( 'navbar_color_scheme', 'navbar-light' );
+$navbar_placement = get_theme_mod( 'navbar_placement' );
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -32,7 +34,7 @@ $container = get_theme_mod( 'theme_layout_container', 'container' );
 
 		<a class="skip-link screen-reader-text sr-only" href="#content"><?php esc_html_e( 'Skip to content', 'elexis' ); ?></a>
 
-		<nav class="navbar navbar-expand-md <?php $navbar_color_scheme = get_theme_mod( 'navbar_color_scheme' ); if ($navbar_color_scheme) { echo $navbar_color_scheme; } else { echo 'navbar-light'; } ?>">
+		<nav class="navbar navbar-expand-md <?php echo $navbar_color_scheme .' '. $navbar_placement; ?>">
 
 		<?php if ( 'container' == $container ) : ?>
 			<div class="container" >

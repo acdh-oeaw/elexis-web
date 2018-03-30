@@ -247,13 +247,14 @@ svg.feather {
   margin: 0 auto; }
   .single article .entry-meta {
     margin-bottom: 2rem;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.075); }
     .single article .entry-meta .author-avatar {
       margin-right: 1rem;
       min-width: 60px; }
     .single article .entry-meta .author-bio {
-      display: block; }
+      display: block;
+      color: #6c757d; }
     .single article .entry-meta .entry-meta-icons {
       min-width: 15rem; }
   .single article .entry-top-thumbnail {
@@ -263,6 +264,11 @@ svg.feather {
 /*
  ** 05. Pages
  */
+.page-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem; }
+
 /*
  ** 06. Widgets
  */

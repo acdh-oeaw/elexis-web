@@ -34,6 +34,8 @@ $container   = get_theme_mod( 'theme_layout_container', 'container' );
 						?>
 					</header><!-- .page-header -->
 
+          <div class="card-wrapper">
+
 					<?php /* Start the Loop */ ?>
 					<?php while ( have_posts() ) : the_post(); ?>
 
@@ -48,6 +50,8 @@ $container   = get_theme_mod( 'theme_layout_container', 'container' );
 						?>
 
 					<?php endwhile; ?>
+
+					</div><!-- .card-wrapper -->
 
 				<?php else : ?>
 

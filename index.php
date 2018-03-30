@@ -57,7 +57,9 @@ if (!$home_content_blocks) {
             <h5 class="content-block-title"><span class="separator-title"><?php echo esc_attr( $block_title ); ?></span></h5>
           <?php } ?>
           <?php if ($blocks_per_row) { set_query_var( 'blocks_per_row', $blocks_per_row ); } else { set_query_var( 'blocks_per_row', 'col-md-12' ); } ?>
+
           <div class="card-wrapper">
+
   					<?php /* Start the Loop */ ?>
   					<?php while ( $query->have_posts() ) : $query->the_post(); ?>
   
@@ -72,7 +74,7 @@ if (!$home_content_blocks) {
   						?>
   
   					<?php endwhile; ?>
-          </div><!-- #primary -->
+          </div><!-- .card-wrapper -->
 
   				<?php else : //No results ?>
   					<?php get_template_part( 'loop-templates/content', 'none' ); ?>

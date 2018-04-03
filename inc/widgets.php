@@ -90,10 +90,20 @@ if ( ! function_exists( 'elexis_widgets_init' ) ) {
 		) );
 
 		register_sidebar( array(
-			'name'          => __( 'Footer Full', 'elexis' ),
+			'name'          => __( 'Primary Footer', 'elexis' ),
 			'id'            => 'footerfull',
-			'description'   => 'Widget area below main content and above footer',
+			'description'   => 'A footer widget area below main content.',
 		    'before_widget'  => '<div id="%1$s" class="footer-widget %2$s '. elexis_slbd_count_widgets( 'footerfull' ) .'">', 
+		    'after_widget'   => '</div><!-- .footer-widget -->', 
+		    'before_title'   => '<h5 class="widget-title">', 
+		    'after_title'    => '</h5>', 
+		) );
+
+		register_sidebar( array(
+			'name'          => __( 'Secondary Footer', 'elexis' ),
+			'id'            => 'footersecondary',
+			'description'   => 'A secondary footer widget area for displaying more footer content.',
+		    'before_widget'  => '<div id="%1$s" class="footer-widget %2$s '. elexis_slbd_count_widgets( 'footersecondary' ) .'">', 
 		    'after_widget'   => '</div><!-- .footer-widget -->', 
 		    'before_title'   => '<h5 class="widget-title">', 
 		    'after_title'    => '</h5>', 

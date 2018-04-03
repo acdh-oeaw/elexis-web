@@ -50,6 +50,7 @@ $sections = array(
 	'home_hero'      => array( esc_attr__( 'Homepage Hero Block', 'elexis' ), '' ),
 	'home_blocks'      => array( esc_attr__( 'Homepage Content Blocks', 'elexis' ), '' ),
 	'single_posts'      => array( esc_attr__( 'Single Posts', 'elexis' ), '' ),
+	'footer'      => array( esc_attr__( 'Footer', 'elexis' ), '' ),
 );
 foreach ( $sections as $section_id => $section ) {
 	$section_args = array(
@@ -916,6 +917,18 @@ my_config_kirki_add_field(
 				'description' => esc_attr__( 'Set max limit for items or leave empty to display all (limited to 1000).', 'elexis' ),
 				'default'     => '12',
 			),
+			'blocks_layout_type' => array(
+				'type'        => 'select',
+				'label'       => esc_attr__( 'Blocks Layout Type', 'elexis' ),
+				'description' => esc_attr__( 'Select type of layout for these blocks.', 'elexis' ),
+				'default'     => 'card-vertical',
+				'choices'     => array(
+					'card-vertical'  => esc_attr__( 'Cards with Image on Top', 'elexis' ),
+					'card-horizontal card-horizontal-left'   => esc_attr__( 'Cards with Image on Left', 'elexis' ),
+					'card-horizontal card-horizontal-right'   => esc_attr__( 'Cards with Image on Right', 'elexis' ),
+					'card-no-image'   => esc_attr__( 'Cards with no Image', 'elexis' )
+				),
+			),
 			'blocks_post_query_type' => array(
 				'type'        => 'radio',
 				'label'       => esc_attr__( 'Blocks Post Query Source', 'elexis' ),
@@ -1163,3 +1176,188 @@ my_config_kirki_add_field(
 		'transport'   => 'refresh',
 	)
 );
+
+/**
+ * Primary Footer Background Color
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'color',
+		'settings'    => 'footer_primary_bg_color',
+		'label'       => __( 'Primary Footer Background Color', 'elexis' ),
+		'description' => esc_attr__( 'Define the background color of your primary footer. This footer block will be visible if you add some widgets to this area.', 'elexis' ),
+		'section'     => 'footer_section',
+		'default'     => '#e9ecef',
+		'choices'     => array(
+			'alpha' => true,
+		),
+    'output'    => array(
+    	array(
+    		'element'         => '#wrapper-footer-full',
+    		'property'        => 'background-color',
+      ),
+    ),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+    	array(
+    		'element'         => '#wrapper-footer-full',
+    		'property'        => 'background-color',
+      ),
+    ),
+	)
+);
+
+/**
+ * Primary Footer Text Color
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'color',
+		'settings'    => 'footer_primary_text_color',
+		'label'       => __( 'Primary Footer Text Color', 'elexis' ),
+		'description' => esc_attr__( 'Define the text color of your primary footer.', 'elexis' ),
+		'section'     => 'footer_section',
+		'default'     => '#212529',
+		'choices'     => array(
+			'alpha' => true,
+		),
+    'output'    => array(
+    	array(
+    		'element'         => array('#wrapper-footer-full','#wrapper-footer-full h1','#wrapper-footer-full h2','#wrapper-footer-full h3','#wrapper-footer-full h4','#wrapper-footer-full h5','#wrapper-footer-full h6','#wrapper-footer-full a'),
+    		'property'        => 'color',
+      ),
+    ),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+    	array(
+    		'element'         => array('#wrapper-footer-full','#wrapper-footer-full h1','#wrapper-footer-full h2','#wrapper-footer-full h3','#wrapper-footer-full h4','#wrapper-footer-full h5','#wrapper-footer-full h6','#wrapper-footer-full a'),
+    		'property'        => 'color',
+      ),
+    ),
+	)
+);
+
+/**
+ * Primary Footer Widget Border Color
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'color',
+		'settings'    => 'footer_primary_border_color',
+		'label'       => __( 'Primary Footer Widget Border Color', 'elexis' ),
+		'description' => esc_attr__( 'Define the widget border color of your primary footer.', 'elexis' ),
+		'section'     => 'footer_section',
+		'default'     => 'rgba(0, 0, 0, 0.15)',
+		'choices'     => array(
+			'alpha' => true,
+		),
+    'output'    => array(
+    	array(
+    		'element'         => '#wrapper-footer-full .widget-title',
+    		'property'        => 'border-bottom-color',
+      ),
+    ),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+    	array(
+    		'element'         => '#wrapper-footer-full .widget-title',
+    		'property'        => 'border-bottom-color',
+      ),
+    ),
+	)
+);
+
+/**
+ * Secondary Footer Background Color
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'color',
+		'settings'    => 'footer_secondary_bg_color',
+		'label'       => __( 'Secondary Footer Background Color', 'elexis' ),
+		'description' => esc_attr__( 'Define the background color of your secondary footer. This footer block will be visible if you add some widgets to this area.', 'elexis' ),
+		'section'     => 'footer_section',
+		'default'     => '#212529',
+		'choices'     => array(
+			'alpha' => true,
+		),
+    'output'    => array(
+    	array(
+    		'element'         => '#wrapper-footer-secondary',
+    		'property'        => 'background-color',
+      ),
+    ),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+    	array(
+    		'element'         => '#wrapper-footer-secondary',
+    		'property'        => 'background-color',
+      ),
+    ),
+	)
+);
+
+/**
+ * Secondary Footer Widget Border Color
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'color',
+		'settings'    => 'footer_secondary_border_color',
+		'label'       => __( 'Secondary Footer Widget Border Color', 'elexis' ),
+		'description' => esc_attr__( 'Define the widget border color of your secondary footer.', 'elexis' ),
+		'section'     => 'footer_section',
+		'default'     => 'rgba(255, 255, 255, 0.3)',
+		'choices'     => array(
+			'alpha' => true,
+		),
+    'output'    => array(
+    	array(
+    		'element'         => '#wrapper-footer-secondary .widget-title',
+    		'property'        => 'border-bottom-color',
+      ),
+    ),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+    	array(
+    		'element'         => '#wrapper-footer-secondary .widget-title',
+    		'property'        => 'border-bottom-color',
+      ),
+    ),
+	)
+);
+
+/**
+ * Secondary Footer Text Color
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'color',
+		'settings'    => 'footer_secondary_text_color',
+		'label'       => __( 'Secondary Footer Text Color', 'elexis' ),
+		'description' => esc_attr__( 'Define the text color of your secondary footer.', 'elexis' ),
+		'section'     => 'footer_section',
+		'default'     => '#fff',
+		'choices'     => array(
+			'alpha' => true,
+		),
+    'output'    => array(
+    	array(
+    		'element'         => array('#wrapper-footer-secondary','#wrapper-footer-secondary h1','#wrapper-footer-secondary h2','#wrapper-footer-secondary h3','#wrapper-footer-secondary h4','#wrapper-footer-secondary h5','#wrapper-footer-secondary h6','#wrapper-footer-secondary a'),
+    		'property'        => 'color',
+      ),
+    ),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+    	array(
+    		'element'         => array('#wrapper-footer-secondary','#wrapper-footer-secondary h1','#wrapper-footer-secondary h2','#wrapper-footer-secondary h3','#wrapper-footer-secondary h4','#wrapper-footer-secondary h5','#wrapper-footer-secondary h6','#wrapper-footer-secondary a'),
+    		'property'        => 'color',
+      ),
+    ),
+	)
+);
+
+
+
+
+

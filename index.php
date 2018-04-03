@@ -41,6 +41,7 @@ if (!$home_content_blocks) {
         if (isset($home_content_block["number_of_blocks"])) { $number_of_blocks = $home_content_block["number_of_blocks"]; }
         if (isset($home_content_block["blocks_post_query_type"])) { $blocks_post_query_type = $home_content_block["blocks_post_query_type"]; }
         if (isset($home_content_block["blocks_post_category_query"])) { $blocks_post_category_query = implode(",",$home_content_block["blocks_post_category_query"]); }
+        if (isset($home_content_block["blocks_layout_type"])) { $blocks_layout_type = $home_content_block["blocks_layout_type"]; }
         //Query the defined content blocks
         $args = array(
         	'order' => 'ASC',
@@ -57,6 +58,7 @@ if (!$home_content_blocks) {
             <h5 class="content-block-title"><span class="separator-title"><?php echo esc_attr( $block_title ); ?></span></h5>
           <?php } ?>
           <?php if ($blocks_per_row) { set_query_var( 'blocks_per_row', $blocks_per_row ); } else { set_query_var( 'blocks_per_row', 'col-md-12' ); } ?>
+          <?php if ($blocks_layout_type) { set_query_var( 'blocks_layout_type', $blocks_layout_type ); } else { set_query_var( 'blocks_layout_type', 'card-vertical' ); } ?>
 
           <div class="card-wrapper">
 

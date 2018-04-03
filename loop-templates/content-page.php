@@ -10,11 +10,14 @@
 
 	<header class="entry-header">
 
+    <?php 
+      $postThumbnail = get_the_post_thumbnail( $post->ID, 'large' ); 
+      if ($postThumbnail) { echo '<div class="entry-top-thumbnail">'.$postThumbnail.'</div>'; }
+    ?>
+
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 	</header><!-- .entry-header -->
-
-	<?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
 
 	<div class="entry-content">
 
@@ -28,11 +31,5 @@
 		?>
 
 	</div><!-- .entry-content -->
-
-	<footer class="entry-footer">
-
-		<?php edit_post_link( __( 'Edit', 'elexis' ), '<span class="edit-link">', '</span>' ); ?>
-
-	</footer><!-- .entry-footer -->
 
 </article><!-- #post-## -->

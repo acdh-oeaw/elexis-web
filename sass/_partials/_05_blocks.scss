@@ -35,6 +35,12 @@
 }
 
 // Cards
+.content-block-title {
+  border-bottom: 1px solid rgba(0,0,0,.15);
+  padding-bottom: 1rem;
+  margin-bottom: $grid-gutter-width;
+}
+
 .card-wrapper {
   margin-top: (-$grid-gutter-width)/2;
   margin-right: (-$grid-gutter-width)/2;
@@ -48,6 +54,7 @@
       padding: $grid-gutter-width/2;
       border-radius: 2px;
       border: 1px solid rgba(0, 0, 0, 0.1);
+      overflow: hidden;
 
       .entry-title svg.sticky-icon {
         width: 1.25rem;
@@ -60,6 +67,38 @@
       .entry-content p {
         color: #6f757c;
         font-size: 0.9rem;
+      }
+
+      &.card-horizontal {
+        display: flex;
+        flex-wrap: nowrap;
+        max-height: 20rem;
+
+        .entry-top-thumbnail {
+          max-height: none;
+          height: auto;
+          margin: -15px 15px -15px -15px;
+          flex-basis: 40%;
+
+          > img {
+            height: 100%;
+            width: auto;
+            max-width: none;
+          }
+        }
+
+        .entry-text-content {
+          flex-basis: 60%;
+          flex-grow: 1;
+        }
+
+        &.card-horizontal-right {
+          flex-direction: row-reverse;
+
+          .entry-top-thumbnail {
+            margin: -15px -15px -15px 15px;
+          }
+        }
       }
     }
   }
@@ -158,25 +197,52 @@
   }
 }
 
-// Widgets
-.widget {
-  margin-bottom: $grid-gutter-width;
+// Post meta information
+.tags-links {
+  font-size: 0.85rem;
+  width: 100%;
+  margin-top: -3px;
 
-  ul {
-    margin-bottom: 0;
-    padding-left: 0;
-    list-style: none;
+  > span {
+    display: inline-block;
+  }
+
+  a {
+    color: $gray-600;
+
+    &:hover {
+      color: $gray-900;
+    }
+  }
+
+  svg {
+    width: 0.8rem;
+    margin-left: 0.25rem;
+    vertical-align: middle;
+    color: $gray-600;
   }
 
 }
 
-.widget-title, .content-block-title {
-  border-bottom: 1px solid rgba(0,0,0,.15);
-  padding-bottom: 1rem;
-  margin-bottom: $grid-gutter-width;
+.entry-cat-links {
+  font-size: 0.9rem;
+  color: $gray-600;
+  display: block;
+  margin-top: -5px;
+  margin-bottom: 5px;
+
+  a {
+    color: $gray-600;
+
+    &:hover {
+      color: $gray-900;
+    }
+  }
+
+  svg {
+    margin-right: 5px;
+    width: 0.9rem;
+  }
+
 }
 
-.separator-title {
-  border-bottom: 1px solid $body-color;
-  padding-bottom: calc(1rem + 1px);
-}

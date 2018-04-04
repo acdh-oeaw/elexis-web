@@ -30,6 +30,15 @@
     h1 {
       color: $white;
     }
+
+    .btn-round {
+      color: $white;
+      border-color: $white;
+      &:hover {
+        background-color: $white;
+        color: $gray-900;
+      }
+    }
   }
 
 }
@@ -245,4 +254,25 @@
   }
 
 }
+
+// Buttons
+.btn-round {
+  text-transform: uppercase;
+  background-color: transparent;
+  border-radius: 20px;
+  border: 1px solid $gray-900;
+  padding: 0.7rem 1.5rem;
+  font-size: 0.9rem;
+  line-height: 0.9rem;
+
+  &:hover {
+    background-color: $gray-900;
+    color: $white;
+  }
+
+}
+
+
+
+
 

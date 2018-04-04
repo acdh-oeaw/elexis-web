@@ -183,6 +183,12 @@ svg.feather {
     color: #fff; }
     #wrapper-hero-content .hero-dark h1 {
       color: #fff; }
+    #wrapper-hero-content .hero-dark .btn-round {
+      color: #fff;
+      border-color: #fff; }
+      #wrapper-hero-content .hero-dark .btn-round:hover {
+        background-color: #fff;
+        color: #212529; }
 
 .content-block-title {
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
@@ -322,6 +328,18 @@ svg.feather {
   .entry-cat-links svg {
     margin-right: 5px;
     width: 0.9rem; }
+
+.btn-round {
+  text-transform: uppercase;
+  background-color: transparent;
+  border-radius: 20px;
+  border: 1px solid #212529;
+  padding: 0.7rem 1.5rem;
+  font-size: 0.9rem;
+  line-height: 0.9rem; }
+  .btn-round:hover {
+    background-color: #212529;
+    color: #fff; }
 
 /*
  ** 04. Single Posts

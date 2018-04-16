@@ -44,8 +44,18 @@
         color: $gray-600;
       }
 
+      .entry-content {
+
+        a {
+          border-bottom: 1px solid $purple;
+          color: $purple;
+
+          &:hover {
+            text-decoration: none;
+            filter: brightness(75%);
+          }
+        }
+      }
     }
-
   }
-
 }

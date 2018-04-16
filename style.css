@@ -41,13 +41,6 @@ svg.feather {
   max-width: 100%;
   vertical-align: bottom; }
 
-.entry-content p a {
-  border-bottom: 1px solid #6f42c1;
-  color: #6f42c1; }
-  .entry-content p a:hover {
-    text-decoration: none;
-    filter: brightness(75%); }
-
 /*
  ** 02. Header
  */
@@ -367,10 +360,16 @@ svg.feather {
     margin: 0 0 2rem 0;
     max-height: 25rem; }
   .single main > article .entry-top-thumbnail-caption, .page main > article .entry-top-thumbnail-caption {
-    margin: -1.5rem 0 0.25rem 0;
+    margin: -1.5rem 0 0.5rem 0;
     text-align: right;
     font-size: 0.9rem;
     color: #6c757d; }
+  .single main > article .entry-content a, .page main > article .entry-content a {
+    border-bottom: 1px solid #6f42c1;
+    color: #6f42c1; }
+    .single main > article .entry-content a:hover, .page main > article .entry-content a:hover {
+      text-decoration: none;
+      filter: brightness(75%); }
 
 /*
  ** 05. Pages

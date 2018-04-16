@@ -17,15 +17,3 @@ svg.feather {
   max-width: 100%;
   vertical-align: bottom;
 }
-
-// Links in paragraphs
-.entry-content p a {
-  border-bottom: 1px solid $purple;
-  color: $purple;
-
-  &:hover {
-    text-decoration: none;
-    filter: brightness(75%);
-  }
-
-}

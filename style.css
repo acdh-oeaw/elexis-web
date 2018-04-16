@@ -338,22 +338,22 @@ svg.feather {
 /*
  ** 04. Single Posts
  */
-.single main article {
+.single main > article {
   max-width: 760px;
   margin: 0 auto; }
-  .single main article .entry-meta {
+  .single main > article .entry-meta {
     margin-bottom: 2rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.075); }
-    .single main article .entry-meta .author-avatar {
+    .single main > article .entry-meta .author-avatar {
       margin-right: 1rem;
       min-width: 60px; }
-    .single main article .entry-meta .author-bio {
+    .single main > article .entry-meta .author-bio {
       display: block;
       color: #6c757d; }
-    .single main article .entry-meta .entry-meta-icons {
+    .single main > article .entry-meta .entry-meta-icons {
       min-width: 15rem; }
-  .single main article .entry-top-thumbnail {
+  .single main > article .entry-top-thumbnail {
     margin: 0 0 2rem 0;
     max-height: 25rem; }
 

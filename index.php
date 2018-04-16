@@ -39,16 +39,35 @@ if (!$home_content_blocks) {
         if (isset($home_content_block["block_title"])) { $block_title = $home_content_block["block_title"]; }
         if (isset($home_content_block["blocks_per_row"])) { $blocks_per_row = $home_content_block["blocks_per_row"]; }
         if (isset($home_content_block["number_of_blocks"])) { $number_of_blocks = $home_content_block["number_of_blocks"]; }
-        if (isset($home_content_block["blocks_post_query_type"])) { $blocks_post_query_type = $home_content_block["blocks_post_query_type"]; }
-        if (isset($home_content_block["blocks_post_category_query"])) { $blocks_post_category_query = implode(",",$home_content_block["blocks_post_category_query"]); }
+        if (isset($home_content_block["blocks_orderby"])) { $blocks_orderby = $home_content_block["blocks_orderby"]; } else { $blocks_orderby = 'date'; }
+        if (isset($home_content_block["blocks_order"])) { $blocks_order = $home_content_block["blocks_order"]; } else { $blocks_order = 'DESC'; }
+        if (isset($home_content_block["blocks_orderby_metakey"])) { $blocks_orderby_metakey = $home_content_block["blocks_orderby_metakey"]; } else { $blocks_orderby_metakey = ''; }
+        if (isset($home_content_block["blocks_post_category_query"])) { $blocks_post_category_query = implode(",",$home_content_block["blocks_post_category_query"]); } else { $blocks_post_category_query = ''; }
+        if (isset($home_content_block["blocks_post_tags_query"])) { $blocks_post_tags_query = implode(",",$home_content_block["blocks_post_tags_query"]); } else { $blocks_post_tags_query = ''; }
         if (isset($home_content_block["blocks_layout_type"])) { $blocks_layout_type = $home_content_block["blocks_layout_type"]; }
+
         //Query the defined content blocks
         $args = array(
-        	'order' => 'ASC',
-        	'orderby' => 'date',
+        	'post_type' => 'post',
         	'posts_per_page' => $number_of_blocks,
-        	'cat' => $blocks_post_category_query
+        	'orderby' => $blocks_orderby,
+        	'order' => $blocks_order,
+        	'meta_key'  => $blocks_orderby_metakey,
+        	'tax_query' => array(
+        		'relation' => 'OR',
+        		array(
+        			'taxonomy' => 'category',
+        			'field'    => 'term_id',
+        			'terms'    => array( $blocks_post_category_query ),
+        		),
+        		array(
+        			'taxonomy' => 'post_tag',
+        			'field'    => 'term_id',
+        			'terms'    => array( $blocks_post_tags_query ),
+        		),
+        	),
         );
+
         $query = new WP_Query( $args );
       ?>
 

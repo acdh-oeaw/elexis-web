@@ -24,7 +24,11 @@ $hero_color_scheme = get_theme_mod( 'hero_color_scheme', 'hero-dark' );
 
 				<?php if ($hero_static_title) { ?><h1><?php echo esc_attr( $hero_static_title ); ?></h1><?php } ?>
 				<?php if ($hero_static_text) { ?><p><?php echo esc_attr( $hero_static_text ); ?></p><?php } ?>
-				<?php if ($hero_button) { ?><button class="btn btn-round"><?php echo esc_attr( $hero_button ); ?></button><?php } ?>
+				<?php if ($hero_button) { ?>
+				  <?php if ($hero_static_url) { ?><a href="<?php echo esc_url( $hero_static_url ); ?>"><?php } ?>
+				  <button class="btn btn-round"><?php echo esc_attr( $hero_button ); ?></button>
+				  <?php if ($hero_static_url) { ?></a><?php } ?>
+				<?php } ?>
 
 			</div>
 

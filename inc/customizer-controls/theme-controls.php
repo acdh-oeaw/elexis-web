@@ -70,7 +70,12 @@ $category_choices = array();
 foreach ( $categories as $category ) {
 	$category_choices[ $category->term_id ] = $category->name;
 }
-
+/* Get Tags for Query Selectors */
+$tags = get_tags( array('orderby' => 'name','order' => 'ASC') );
+$tag_choices = array();
+foreach ( $tags as $tag ) {
+	$tag_choices[ $tag->term_id ] = $tag->name;
+}
 
 /**
  * A proxy function. Automatically passes-on the config-id.
@@ -929,24 +934,55 @@ my_config_kirki_add_field(
 					'card-no-image'   => esc_attr__( 'Cards with no Image', 'elexis' )
 				),
 			),
-			'blocks_post_query_type' => array(
-				'type'        => 'radio',
-				'label'       => esc_attr__( 'Blocks Post Query Source', 'elexis' ),
-				'description' => esc_attr__( 'Query posts from categories, tags or some selected posts.', 'elexis' ),
-				'default'     => 'categories',
-    		'choices'     => array(
-    			'categories' => esc_attr__( 'Categories', 'elexis' ),
-    			'tags' => esc_attr__( 'Tags', 'elexis' ),
-    			'posts' => esc_attr__( 'Specific posts', 'elexis' ),
-    		),
-			),
 			'blocks_post_category_query' => array(
 				'type'        => 'select',
 				'label'       => esc_attr__( 'Select Categories to Query', 'elexis' ),
 				'description' => esc_attr__( 'You may select multiple categories to query your content from.', 'elexis' ),
-				'default'     => 'categories',
-    		'multiple'    => 10,
+				'default'     => '',
+    		'multiple'    => 12,
     		'choices'     => $category_choices,
+			),
+			'blocks_post_tags_query' => array(
+				'type'        => 'select',
+				'label'       => esc_attr__( 'Select Tags to Query', 'elexis' ),
+				'description' => esc_attr__( 'You may select multiple tags to query your content from.', 'elexis' ),
+				'default'     => '',
+    		'multiple'    => 12,
+    		'choices'     => $tag_choices,
+			),
+			'blocks_orderby' => array(
+				'type'        => 'select',
+				'label'       => esc_attr__( 'Blocks Ordered By', 'elexis' ),
+				'description' => esc_attr__( 'Sort retrieved posts by parameter for these blocks.', 'elexis' ),
+				'default'     => 'date',
+				'choices'     => array(
+  				'date'   => esc_attr__( 'Date', 'elexis' ),
+  				'modified'   => esc_attr__( 'Modified Date', 'elexis' ),
+					'ID'   => esc_attr__( 'ID', 'elexis' ),
+					'author'   => esc_attr__( 'Author', 'elexis' ),
+					'title'   => esc_attr__( 'Title', 'elexis' ),
+					'name'   => esc_attr__( 'Post Slug', 'elexis' ),
+					'rand'   => esc_attr__( 'Random', 'elexis' ),
+					'comment_count'   => esc_attr__( 'Comment Count', 'elexis' ),
+					'meta_value'   => esc_attr__( 'Meta Value', 'elexis' ),
+					'meta_value_num'   => esc_attr__( 'Numeric Meta Value', 'elexis' )
+				),
+			),
+			'blocks_order' => array(
+				'type'        => 'select',
+				'label'       => esc_attr__( 'Blocks Order', 'elexis' ),
+				'description' => esc_attr__( 'Sort retrieved posts in an ascending or descending order.', 'elexis' ),
+				'default'     => 'DESC',
+				'choices'     => array(
+  				'DESC'   => esc_attr__( 'Descending (highest to lowest)', 'elexis' ),
+  				'ASC'   => esc_attr__( 'Ascending (lowest to highest)', 'elexis' )
+				),
+			),
+			'blocks_orderby_metakey' => array(
+				'type'        => 'text',
+				'label'       => esc_attr__( 'Meta Key to Order By', 'elexis' ),
+				'description' => esc_attr__( 'If you choose to order by a meta value, please set the meta key you defined in your posts.', 'elexis' ),
+				'default'     => '',
 			),
 		),
 	)

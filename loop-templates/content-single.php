@@ -10,8 +10,6 @@
 
 	<header class="entry-header">
 
-		<div class="entry-meta">
-
 		<?php
 			$avatar = get_theme_mod( 'post_avatar_toggle', true );
 			$author = get_theme_mod( 'post_author_toggle', true );
@@ -20,10 +18,17 @@
 			$icons =  get_theme_mod( 'post_icons_toggle', false );
 			$tags =  get_theme_mod( 'post_tags_toggle', true );
 			$authorbio =  get_theme_mod( 'post_authorbio_toggle', true );
-			elexis_entry_meta($avatar, $author, $postdate, $readingtime, $icons, $tags, $authorbio, 60);
 		?>
 
-		</div><!-- .entry-meta -->
+    <?php if ($avatar OR $author OR $postdate OR $readingtime OR $icons OR $tags OR $authorbio) { ?>
+  		<div class="entry-meta">
+  
+  		<?php
+  			elexis_entry_meta($avatar, $author, $postdate, $readingtime, $icons, $tags, $authorbio, 60);
+  		?>
+  
+  		</div><!-- .entry-meta -->
+    <?php } ?>
 
     <?php 
       $postThumbnail = get_the_post_thumbnail( $post->ID, 'large' ); 

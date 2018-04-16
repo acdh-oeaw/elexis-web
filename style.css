@@ -217,6 +217,9 @@ svg.feather {
       .card-wrapper .card .card-inner .entry-content p {
         color: #6f757c;
         font-size: 0.9rem; }
+      .card-wrapper .card .card-inner .btn-round {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem; }
       .card-wrapper .card .card-inner.card-horizontal {
         display: flex;
         flex-wrap: nowrap;
@@ -331,11 +334,9 @@ svg.feather {
     width: 0.9rem; }
 
 .btn-round {
-  text-transform: uppercase;
   background-color: transparent;
-  border-radius: 20px;
-  border: 1px solid #212529;
-  padding: 0.7rem 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.6rem 1.2rem;
   font-size: 0.9rem;
   line-height: 0.9rem; }
   .btn-round:hover {

@@ -1082,6 +1082,21 @@ my_config_kirki_add_field(
 );
 
 /**
+ * Display Read More Button on Cards
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'card_readmore_toggle',
+		'label'       => esc_attr__( 'Display Read More Button on Cards', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the read more button on card items.', 'elexis' ),
+		'section'     => 'home_blocks_section',
+		'default'     => false,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
  * Display Post Categories on Posts
  */
 my_config_kirki_add_field(

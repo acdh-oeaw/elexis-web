@@ -42,7 +42,11 @@ $articleClasses = array(
     		<?php
     		the_excerpt();
     		?>
-    
+
+        <?php if (get_theme_mod( 'card_readmore_toggle', false )) { ?>
+          <a class="btn btn-round mb-1" href="<?php echo esc_url( get_permalink( get_the_ID() )); ?>"><?php echo __( 'Read More','elexis' ); ?></a>
+        <?php } ?>
+
     		<?php
     		wp_link_pages( array(
     			'before' => '<div class="page-links">' . __( 'Pages:', 'elexis' ),
@@ -53,7 +57,7 @@ $articleClasses = array(
     	</div><!-- .entry-content -->
     
     	<?php if ( 'post' == get_post_type() ) { ?>
-    		<div class="entry-meta">
+    		<div class="entry-meta <?php if (get_theme_mod( 'card_readmore_toggle', false )) { echo 'mt-3'; } ?>">
     			<?php 
       			$avatar = get_theme_mod( 'card_avatar_toggle', true );
       			$author = get_theme_mod( 'card_author_toggle', true );

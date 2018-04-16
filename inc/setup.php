@@ -94,33 +94,3 @@ if ( ! function_exists( 'elexis_setup' ) ) :
 endif; // elexis_setup.
 add_action( 'after_setup_theme', 'elexis_setup' );
 
-if ( ! function_exists( 'elexis_custom_excerpt_more' ) ) {
-	/**
-	 * Removes the ... from the excerpt read more link
-	 *
-	 * @param string $more The excerpt.
-	 *
-	 * @return string
-	 */
-	function elexis_custom_excerpt_more( $more ) {
-		return '';
-	}
-}
-add_filter( 'excerpt_more', 'elexis_custom_excerpt_more' );
-
-/**
- * Find the last period in the excerpt and remove everything after it.
- * If no period is found, just return the entire excerpt.
- *
- * @param string $excerpt The post excerpt.
- */
-if ( ! function_exists( 'elexis_end_with_sentence' ) ) {
-  function elexis_end_with_sentence( $excerpt ) {
-    if ( ( $pos = mb_strrpos( $excerpt, '.' ) ) !== false ) {
-      $excerpt = substr( $excerpt, 0, $pos + 1 );
-    } else { $excerpt = $excerpt . '...'; }
-    return $excerpt;
-  }
-}
-add_filter( 'the_excerpt', 'elexis_end_with_sentence' );
-

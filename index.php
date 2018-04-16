@@ -41,10 +41,55 @@ if (!$home_content_blocks) {
         if (isset($home_content_block["number_of_blocks"])) { $number_of_blocks = $home_content_block["number_of_blocks"]; }
         if (isset($home_content_block["blocks_orderby"])) { $blocks_orderby = $home_content_block["blocks_orderby"]; } else { $blocks_orderby = 'date'; }
         if (isset($home_content_block["blocks_order"])) { $blocks_order = $home_content_block["blocks_order"]; } else { $blocks_order = 'DESC'; }
-        if (isset($home_content_block["blocks_orderby_metakey"])) { $blocks_orderby_metakey = $home_content_block["blocks_orderby_metakey"]; } else { $blocks_orderby_metakey = ''; }
-        if (isset($home_content_block["blocks_post_category_query"])) { $blocks_post_category_query = implode(",",$home_content_block["blocks_post_category_query"]); } else { $blocks_post_category_query = ''; }
-        if (isset($home_content_block["blocks_post_tags_query"])) { $blocks_post_tags_query = implode(",",$home_content_block["blocks_post_tags_query"]); } else { $blocks_post_tags_query = ''; }
-        if (isset($home_content_block["blocks_layout_type"])) { $blocks_layout_type = $home_content_block["blocks_layout_type"]; }
+        if (isset($home_content_block["blocks_orderby_meta_key"])) { $blocks_orderby_meta_key = $home_content_block["blocks_orderby_meta_key"]; } else { $blocks_orderby_meta_key = ''; }
+        // Process the tag selection
+        if (isset($home_content_block["blocks_post_tags_query"])) { 
+          $blocks_post_tags_query = implode(",",$home_content_block["blocks_post_tags_query"]);
+          if ($blocks_post_tags_query) {
+            $blocks_post_tags_query = array(
+          		'taxonomy' => 'post_tag',
+          		'field'    => 'term_id',
+          		'terms'    => array( $blocks_post_tags_query ),
+            );
+          }
+        } else { 
+          $blocks_post_tags_query = ''; 
+        }
+        // Process the category selection
+        if (isset($home_content_block["blocks_post_category_query"])) {
+          $blocks_post_category_query = implode(",",$home_content_block["blocks_post_category_query"]);
+          if ($blocks_post_category_query) {
+            $blocks_post_category_query = array(
+          		'taxonomy' => 'category',
+          		'field'    => 'term_id',
+          		'terms'    => array( $blocks_post_category_query ),
+            );
+          }
+        } else { 
+          $blocks_post_category_query = ''; 
+        }
+        // Process the taxonomy relationship
+        if ($blocks_post_tags_query && $blocks_post_category_query) {
+          $blocks_tax_query = array(
+        		'relation' => 'OR',
+        		$blocks_post_tags_query,
+        		$blocks_post_category_query
+        	);
+        } else if ($blocks_post_tags_query) { 
+          $blocks_tax_query = array(
+        		$blocks_post_tags_query
+        	);
+        } else if ($blocks_post_category_query) { 
+          $blocks_tax_query = array(
+        		$blocks_post_category_query
+        	);
+        } else {
+          $blocks_tax_query = array();
+        }
+        // Process the layout type selection
+        if (isset($home_content_block["blocks_layout_type"]) && $home_content_block["blocks_layout_type"]) { 
+          $blocks_layout_type = $home_content_block["blocks_layout_type"]; 
+        }
 
         //Query the defined content blocks
         $args = array(
@@ -52,20 +97,8 @@ if (!$home_content_blocks) {
         	'posts_per_page' => $number_of_blocks,
         	'orderby' => $blocks_orderby,
         	'order' => $blocks_order,
-        	'meta_key'  => $blocks_orderby_metakey,
-        	'tax_query' => array(
-        		'relation' => 'OR',
-        		array(
-        			'taxonomy' => 'category',
-        			'field'    => 'term_id',
-        			'terms'    => array( $blocks_post_category_query ),
-        		),
-        		array(
-        			'taxonomy' => 'post_tag',
-        			'field'    => 'term_id',
-        			'terms'    => array( $blocks_post_tags_query ),
-        		),
-        	),
+        	'meta_key'  => $blocks_orderby_meta_key,
+        	'tax_query' => $blocks_tax_query
         );
 
         $query = new WP_Query( $args );

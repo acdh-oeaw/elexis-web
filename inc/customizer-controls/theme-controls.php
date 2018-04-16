@@ -885,42 +885,32 @@ my_config_kirki_add_field(
 		'transport'   => 'refresh',
   	'row_label' => array(
   		'type' => 'text',
-  		'value' => esc_attr__('Content Block', 'elexis' ),
+  		'value' => esc_attr__('Content Block', 'elexis' )
   	),
-		'default'     => array(
-			array(
-  			'block_title' => '',
-				'blocks_per_row'   => '2',
-				'number_of_blocks'    => '',
-				'blocks_post_query_type' => 'categories',
-				'blocks_post_category_query' => '',
-			),
-		),
 		'fields' => array(
 			'block_title' => array(
 				'type'        => 'text',
 				'label'       => esc_attr__( 'Content Block Title', 'elexis' ),
 				'description' => esc_attr__( 'This will be the heading above your content block. Leave empty for no heading.', 'elexis' ),
-				'default'     => '',
 			),
 			'blocks_per_row' => array(
 				'type'        => 'select',
 				'label'       => esc_attr__( 'Elements per Row', 'elexis' ),
 				'description' => esc_attr__( 'Select number of content blocks per row.', 'elexis' ),
-				'default'     => 'col-12',
+				'default'     => 'col-md-12',
 				'choices'     => array(
 					'col-md-12'  => esc_attr__( '1', 'elexis' ),
 					'col-md-6'   => esc_attr__( '2', 'elexis' ),
 					'col-md-4'   => esc_attr__( '3', 'elexis' ),
 					'col-md-3'   => esc_attr__( '4', 'elexis' ),
-					'col-md-2'   => esc_attr__( '6', 'elexis' ),
-				),
+					'col-md-2'   => esc_attr__( '6', 'elexis' )
+				)
 			),
 			'number_of_blocks' => array(
 				'type'        => 'text',
 				'label'       => esc_attr__( 'Total Number of Blocks', 'elexis' ),
 				'description' => esc_attr__( 'Set max limit for items or leave empty to display all (limited to 1000).', 'elexis' ),
-				'default'     => '12',
+				'default'     => '12'
 			),
 			'blocks_layout_type' => array(
 				'type'        => 'select',
@@ -938,17 +928,15 @@ my_config_kirki_add_field(
 				'type'        => 'select',
 				'label'       => esc_attr__( 'Select Categories to Query', 'elexis' ),
 				'description' => esc_attr__( 'You may select multiple categories to query your content from.', 'elexis' ),
-				'default'     => '',
     		'multiple'    => 12,
-    		'choices'     => $category_choices,
+    		'choices'     => $category_choices
 			),
 			'blocks_post_tags_query' => array(
 				'type'        => 'select',
 				'label'       => esc_attr__( 'Select Tags to Query', 'elexis' ),
 				'description' => esc_attr__( 'You may select multiple tags to query your content from.', 'elexis' ),
-				'default'     => '',
     		'multiple'    => 12,
-    		'choices'     => $tag_choices,
+    		'choices'     => $tag_choices
 			),
 			'blocks_orderby' => array(
 				'type'        => 'select',
@@ -976,15 +964,15 @@ my_config_kirki_add_field(
 				'choices'     => array(
   				'DESC'   => esc_attr__( 'Descending (highest to lowest)', 'elexis' ),
   				'ASC'   => esc_attr__( 'Ascending (lowest to highest)', 'elexis' )
-				),
+				)
 			),
-			'blocks_orderby_metakey' => array(
+			'blocks_orderby_meta_key' => array(
 				'type'        => 'text',
 				'label'       => esc_attr__( 'Meta Key to Order By', 'elexis' ),
-				'description' => esc_attr__( 'If you choose to order by a meta value, please set the meta key you defined in your posts.', 'elexis' ),
-				'default'     => '',
-			),
-		),
+				'description' => esc_attr__( 'If you choose to order by meta value, then enter the meta key defined in post custom fields.', 'elexis' ),
+				'default'     => ''
+			)
+		)
 	)
 );
 

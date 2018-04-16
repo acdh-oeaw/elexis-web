@@ -162,7 +162,7 @@ my_config_kirki_add_field(
 		),
 		'output'      => array(
 			array(
-				'element' => array( '.single article .entry-content' ),
+				'element' => array( '.single main > article .entry-content', '.page main > article .entry-content' ),
 			),
 		),
 		'choices' => array(

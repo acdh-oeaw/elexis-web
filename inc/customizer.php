@@ -5,7 +5,6 @@
  * @package elexis
  */
 
-
 /**
  * Remove unneeded sections from the Theme Customizer.
  *

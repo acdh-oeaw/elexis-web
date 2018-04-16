@@ -20,6 +20,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 .. 05. Pages
 .. 06. Widgets Styling
 .. 07. Footer
+.. 08. Extras
 */
 
 /*
@@ -28,30 +29,32 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 @import 'sass/_partials/_functions';
 @import 'sass/_partials/_variables';
 @import 'sass/_partials/_01_mixins';
-@import 'sass/_partials/_02_base_theme';
-@import 'sass/_partials/_03_general';
+@import 'sass/_partials/_02_general';
 /*
  ** 02. Header
  */
-@import 'sass/_partials/_04_header';
+@import 'sass/_partials/_03_header';
 /*
  ** 03. Blocks
  */
-@import 'sass/_partials/_05_blocks';
+@import 'sass/_partials/_04_blocks';
 /*
  ** 04. Single Posts
  */
-@import 'sass/_partials/_06_posts';
+@import 'sass/_partials/_05_posts';
 /*
  ** 05. Pages
  */
-@import 'sass/_partials/_07_pages';
+@import 'sass/_partials/_06_pages';
 /*
  ** 06. Widgets
  */
-@import 'sass/_partials/_08_widgets';
+@import 'sass/_partials/_07_widgets';
 /*
  ** 07. Footer
  */
-@import 'sass/_partials/_09_footer';
-
+@import 'sass/_partials/_08_footer';
+/*
+ ** 08. Extras
+ */
+@import 'sass/_partials/_09_extras';

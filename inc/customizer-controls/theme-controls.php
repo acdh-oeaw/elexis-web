@@ -1097,6 +1097,27 @@ my_config_kirki_add_field(
 );
 
 /**
+ * Single Posts Layout Order
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'sortable',
+		'settings'    => 'single_posts_layout_order',
+		'label'       => esc_attr__( 'Single Posts Layout Order.', 'elexis' ),
+		'description' => esc_attr__( 'Set your order for the single posts layout.', 'elexis' ),
+		'section'     => 'single_posts_section',
+		'transport'   => 'refresh',
+		'default'     => array( 'entry_meta', 'featured_image', 'post_title' ),
+		'choices'     => array(
+  		'entry_meta' => esc_attr__( 'Post Meta Area', 'elexis' ),
+			'featured_image' => esc_attr__( 'Featured Image', 'elexis' ),
+			'post_title' => esc_attr__( 'Post Title', 'elexis' ),
+			'post_teaser' => esc_attr__( 'Post Teaser (when excerpt is set)', 'elexis' ),
+		),
+	)
+);
+
+/**
  * Display Post Categories on Posts
  */
 my_config_kirki_add_field(

@@ -107,3 +107,24 @@ if ( ! function_exists( 'elexis_post_nav' ) ) :
 		<?php
 	}
 endif;
+
+/**
+ * Find the last period in the excerpt and remove everything after it.
+ * If no period is found, just return the entire excerpt.
+ *
+ * @param string $excerpt The post excerpt.
+ */
+if ( ! function_exists( 'elexis_end_with_sentence' ) ) :
+
+  function elexis_end_with_sentence( $excerpt ) {
+  
+    if ( ( $pos = mb_strrpos( $excerpt, '.' ) ) !== false ) {
+      $excerpt = substr( $excerpt, 0, $pos + 1 );
+    }
+  
+    return $excerpt;
+  }
+  add_filter( 'the_excerpt', 'elexis_end_with_sentence' );
+
+endif;
+

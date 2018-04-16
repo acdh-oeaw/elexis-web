@@ -41,6 +41,13 @@ svg.feather {
   max-width: 100%;
   vertical-align: bottom; }
 
+.entry-content p a {
+  border-bottom: 1px solid #6f42c1;
+  color: #6f42c1; }
+  .entry-content p a:hover {
+    text-decoration: none;
+    filter: brightness(75%); }
+
 /*
  ** 02. Header
  */

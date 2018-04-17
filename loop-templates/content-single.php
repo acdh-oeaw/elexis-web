@@ -43,6 +43,11 @@
           elexis_entry_list_categories(); 
         }
         the_title( '<h1 class="entry-title">', '</h1>' );
+      } else if ($layout_area == 'post_teaser') {
+  			if ( has_excerpt() ) {
+    			$excerpt = get_the_excerpt();
+  				echo '<p class="post-teaser">'.esc_attr($excerpt).'</p>';
+  			}
       }
     }
   ?>

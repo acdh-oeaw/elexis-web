@@ -10,18 +10,24 @@
 
 	<header class="entry-header">
 
-    <?php 
-      $postThumbnail = get_the_post_thumbnail( $post->ID, 'large' ); 
-      if ($postThumbnail) { 
-        $postThumbnailCaption = get_post(get_post_thumbnail_id())->post_excerpt;
-        echo '<div class="entry-top-thumbnail">'.$postThumbnail.'</div>'; 
-        if(!empty($postThumbnailCaption)){ 
-          echo '<div class="entry-top-thumbnail-caption">' . $postThumbnailCaption . '</div>';
-        }
-      }
-    ?>
+  <?php 
+    $single_posts_layout_order = get_theme_mod( 'single_posts_layout_order', array( 'featured_image', 'post_title' ) );
 
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+    foreach ($single_posts_layout_order as $layout_area) {
+      if ($layout_area == 'featured_image') {
+        $postThumbnail = get_the_post_thumbnail( $post->ID, 'large' ); 
+        if ($postThumbnail) { 
+          $postThumbnailCaption = get_post(get_post_thumbnail_id())->post_excerpt;
+          echo '<div class="entry-top-thumbnail">'.$postThumbnail.'</div>'; 
+          if(!empty($postThumbnailCaption)){ 
+            echo '<div class="entry-top-thumbnail-caption">' . $postThumbnailCaption . '</div>';
+          }
+        }
+      } else if ($layout_area == 'post_title') {
+        the_title( '<h1 class="entry-title">', '</h1>' );
+      }
+    }
+  ?>
 
 	</header><!-- .entry-header -->
 

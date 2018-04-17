@@ -24,7 +24,11 @@ $container   = get_theme_mod( 'theme_layout_container', 'container' );
 
 					<?php get_template_part( 'loop-templates/content', 'single' ); ?>
 
-						<?php elexis_post_nav(); ?>
+          <?php 
+            if (get_theme_mod( 'post_related_posts_toggle', true )) {
+              elexis_post_nav();
+            }
+          ?>
 
 					<?php
 					// If comments are open or we have at least one comment, load up the comment template.

@@ -26,10 +26,10 @@ $container   = get_theme_mod( 'theme_layout_container', 'container' );
 
 					<header class="page-header">
 						
-							<h1 class="page-title"><?php printf(
+							<h2 class="page-title"><?php printf(
 							/* translators:*/
 							 esc_html__( 'Search Results for: %s', 'elexis' ),
-								'<span>' . get_search_query() . '</span>' ); ?></h1>
+								'<span>' . get_search_query() . '</span>' ); ?></h2>
 
 					</header><!-- .page-header -->
 

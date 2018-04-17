@@ -167,7 +167,7 @@ my_config_kirki_add_field(
 		),
 		'output'      => array(
 			array(
-				'element' => array( '.single main > article .entry-content', '.page main > article .entry-content' ),
+				'element' => array( '.single main > article .entry-content', '.page main > article .entry-content', '.post-teaser' ),
 			),
 		),
 		'choices' => array(
@@ -367,14 +367,30 @@ my_config_kirki_add_field(
 		),
     'output'    => array(
     	array(
-    		'element'         => 'html',
+    		'element'         => array('.btn-round','.separator-title','#wrapper-hero-content .hero-dark .btn-round:hover','.single main > article .entry-content a', '.page main > article .entry-content a', '.page-header .page-title'),
+    		'property'        => 'color',
+      ),
+    	array(
+    		'element'         => array('.separator-title','.single main > article .entry-content a', '.page main > article .entry-content a'),
+    		'property'        => 'border-color',
+      ),
+    	array(
+    		'element'         => array('.btn-round:hover'),
     		'property'        => 'background-color',
       ),
     ),
 		'transport'   => 'postMessage',
     'js_vars'     => array(
     	array(
-    		'element'         => 'html',
+    		'element'         => array('.btn-round','.separator-title','#wrapper-hero-content .hero-dark .btn-round:hover','.single main > article .entry-content a', '.page main > article .entry-content a', '.page-header .page-title'),
+    		'property'        => 'color',
+      ),
+    	array(
+    		'element'         => array('.separator-title','.single main > article .entry-content a', '.page main > article .entry-content a'),
+    		'property'        => 'border-color',
+      ),
+    	array(
+    		'element'         => array('.btn-round:hover'),
     		'property'        => 'background-color',
       ),
     ),
@@ -398,30 +414,14 @@ my_config_kirki_add_field(
 		),
     'output'    => array(
     	array(
-    		'element'         => array('.btn-round','.separator-title','#wrapper-hero-content .hero-dark .btn-round:hover','.single main > article .entry-content a', '.page main > article .entry-content a'),
-    		'property'        => 'color',
-      ),
-    	array(
-    		'element'         => array('.separator-title','.single main > article .entry-content a', '.page main > article .entry-content a'),
-    		'property'        => 'border-color',
-      ),
-    	array(
-    		'element'         => array('.btn-round:hover'),
+    		'element'         => 'html',
     		'property'        => 'background-color',
       ),
     ),
 		'transport'   => 'postMessage',
     'js_vars'     => array(
     	array(
-    		'element'         => array('.btn-round','.separator-title','#wrapper-hero-content .hero-dark .btn-round:hover','.single main > article .entry-content a', '.page main > article .entry-content a'),
-    		'property'        => 'color',
-      ),
-    	array(
-    		'element'         => array('.separator-title','.single main > article .entry-content a', '.page main > article .entry-content a'),
-    		'property'        => 'border-color',
-      ),
-    	array(
-    		'element'         => array('.btn-round:hover'),
+    		'element'         => 'html',
     		'property'        => 'background-color',
       ),
     ),
@@ -1151,7 +1151,7 @@ my_config_kirki_add_field(
 		'type'        => 'sortable',
 		'settings'    => 'single_posts_layout_order',
 		'label'       => esc_attr__( 'Single Posts Layout Order.', 'elexis' ),
-		'description' => esc_attr__( 'Set your order for the single posts layout.', 'elexis' ),
+		'description' => esc_attr__( 'Set your order for the single posts layout. The order of featured image and post title applies to default page templates as well.', 'elexis' ),
 		'section'     => 'single_posts_section',
 		'transport'   => 'refresh',
 		'default'     => array( 'entry_meta', 'featured_image', 'post_title' ),
@@ -1161,6 +1161,43 @@ my_config_kirki_add_field(
 			'post_title' => esc_attr__( 'Post Title', 'elexis' ),
 			'post_teaser' => esc_attr__( 'Post Teaser (when excerpt is set)', 'elexis' ),
 		),
+	)
+);
+
+/**
+ * Color of Links in Articles
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'color',
+		'settings'    => 'single_posts_link_color',
+		'label'       => __( 'Color of Links in Articles', 'elexis' ),
+		'description' => esc_attr__( 'Define the color of the links in single posts and default page texts.', 'elexis' ),
+		'section'     => 'single_posts_section',
+		'choices'     => array(
+			'alpha' => true,
+		),
+    'output'    => array(
+    	array(
+    		'element'         => array('.single main > article .entry-content a', '.page main > article .entry-content a'),
+    		'property'        => 'color',
+      ),
+    	array(
+    		'element'         => array('.single main > article .entry-content a', '.page main > article .entry-content a'),
+    		'property'        => 'border-color',
+      ),
+    ),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+    	array(
+    		'element'         => array('.single main > article .entry-content a', '.page main > article .entry-content a'),
+    		'property'        => 'color',
+      ),
+    	array(
+    		'element'         => array('.single main > article .entry-content a', '.page main > article .entry-content a'),
+    		'property'        => 'border-color',
+      ),
+    ),
 	)
 );
 
@@ -1278,6 +1315,21 @@ my_config_kirki_add_field(
 		'settings'    => 'post_tags_toggle',
 		'label'       => esc_attr__( 'Display Post Tags on Posts', 'elexis' ),
 		'description' => esc_attr__( 'Select if you want to display the post tags on post items.', 'elexis' ),
+		'section'     => 'single_posts_section',
+		'default'     => true,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Display Related Posts below an Article
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'post_related_posts_toggle',
+		'label'       => esc_attr__( 'Display Related Posts below an Article', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display related posts below an article.', 'elexis' ),
 		'section'     => 'single_posts_section',
 		'default'     => true,
 		'transport'   => 'refresh',

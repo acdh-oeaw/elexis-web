@@ -350,6 +350,8 @@ svg.feather {
   margin-bottom: 2rem; }
   .single main > article .entry-title, .page main > article .entry-title {
     margin-bottom: 1rem; }
+  .single main > article .post-teaser, .page main > article .post-teaser {
+    font-size: 1.5rem; }
   .single main > article .entry-meta, .page main > article .entry-meta {
     margin-bottom: 1.5rem;
     padding-bottom: 1.5rem;
@@ -375,7 +377,7 @@ svg.feather {
     color: #6f42c1; }
     .single main > article .entry-content a:hover, .page main > article .entry-content a:hover {
       text-decoration: none;
-      filter: brightness(150%); }
+      filter: brightness(50%); }
 
 /*
  ** 05. Pages
@@ -383,7 +385,11 @@ svg.feather {
 .page-header {
   border-bottom: 1px solid rgba(0, 0, 0, 0.075);
   padding-bottom: 0.5rem;
-  margin-bottom: 1rem; }
+  margin-bottom: 1.75rem; }
+  .page-header .page-title {
+    margin-bottom: 0.25rem; }
+  .page-header .taxonomy-description p {
+    margin-bottom: 0; }
 
 /*
  ** 06. Widgets

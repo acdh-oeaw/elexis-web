@@ -17,6 +17,10 @@
         margin-bottom: 1rem;
       }
 
+      .post-teaser {
+        font-size: 1.5rem;
+      }
+
       .entry-meta {
         margin-bottom: 1.5rem;
         padding-bottom: 1.5rem;
@@ -58,7 +62,7 @@
 
           &:hover {
             text-decoration: none;
-            filter: brightness(150%);
+            filter: brightness(50%);
           }
         }
       }

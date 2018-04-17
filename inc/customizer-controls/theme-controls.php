@@ -352,6 +352,37 @@ my_config_kirki_add_field(
 );
 
 /**
+ * Site Uniform Color
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'color',
+		'settings'    => 'theme_layout_uniform_color',
+		'label'       => __( 'Site Uniform Color', 'elexis' ),
+		'description' => esc_attr__( 'Define the uniform color of your website, which will be used on many elements such as buttons, borders and icons. These settings can be overwritten by the specific color definitions in the further sections.', 'elexis' ),
+		'section'     => 'theme_layout_section',
+		'default'     => '#212529',
+		'choices'     => array(
+			'alpha' => true,
+		),
+    'output'    => array(
+    	array(
+    		'element'         => 'html',
+    		'property'        => 'background-color',
+      ),
+    ),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+    	array(
+    		'element'         => 'html',
+    		'property'        => 'background-color',
+      ),
+    ),
+	)
+);
+
+
+/**
  * HTML Background Color
  */
 my_config_kirki_add_field(
@@ -367,14 +398,30 @@ my_config_kirki_add_field(
 		),
     'output'    => array(
     	array(
-    		'element'         => 'html',
+    		'element'         => array('.btn-round','.separator-title','#wrapper-hero-content .hero-dark .btn-round:hover','.single main > article .entry-content a', '.page main > article .entry-content a'),
+    		'property'        => 'color',
+      ),
+    	array(
+    		'element'         => array('.separator-title','.single main > article .entry-content a', '.page main > article .entry-content a'),
+    		'property'        => 'border-color',
+      ),
+    	array(
+    		'element'         => array('.btn-round:hover'),
     		'property'        => 'background-color',
       ),
     ),
 		'transport'   => 'postMessage',
     'js_vars'     => array(
     	array(
-    		'element'         => 'html',
+    		'element'         => array('.btn-round','.separator-title','#wrapper-hero-content .hero-dark .btn-round:hover','.single main > article .entry-content a', '.page main > article .entry-content a'),
+    		'property'        => 'color',
+      ),
+    	array(
+    		'element'         => array('.separator-title','.single main > article .entry-content a', '.page main > article .entry-content a'),
+    		'property'        => 'border-color',
+      ),
+    	array(
+    		'element'         => array('.btn-round:hover'),
     		'property'        => 'background-color',
       ),
     ),

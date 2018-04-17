@@ -192,7 +192,8 @@ svg.feather {
 .card-wrapper {
   margin-top: -15px;
   margin-right: -15px;
-  margin-left: -15px; }
+  margin-left: -15px;
+  margin-bottom: 30px; }
   .card-wrapper .card {
     border: 0;
     padding: 15px; }
@@ -374,7 +375,7 @@ svg.feather {
     color: #6f42c1; }
     .single main > article .entry-content a:hover, .page main > article .entry-content a:hover {
       text-decoration: none;
-      filter: brightness(75%); }
+      filter: brightness(150%); }
 
 /*
  ** 05. Pages

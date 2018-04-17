@@ -57,7 +57,7 @@
     if(isset($fields['event_date']) OR isset($fields['event_location'])) {
       echo '<div class="elexis-custom-meta">';
       if(isset($fields['event_date'])) {
-        echo '<span class="elexis-custom-meta-event"><i data-feather="calendar"></i> Event Date: '.date("d.m.Y", strtotime($fields['event_date'][0])).'</span>';
+        echo '<span class="elexis-custom-meta-event"><i data-feather="calendar"></i> Event Start Date: '.date("d.m.Y", strtotime($fields['event_date'][0])).'</span>';
       }
       if(isset($fields['event_location'])) {
         echo '<span class="elexis-custom-meta-event"><i data-feather="map-pin"></i> Event Location: '.$fields['event_location'][0].'</span>';

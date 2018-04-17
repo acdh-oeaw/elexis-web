@@ -12,7 +12,13 @@
 
     <?php 
       $postThumbnail = get_the_post_thumbnail( $post->ID, 'large' ); 
-      if ($postThumbnail) { echo '<div class="entry-top-thumbnail">'.$postThumbnail.'</div>'; }
+      if ($postThumbnail) { 
+        $postThumbnailCaption = get_post(get_post_thumbnail_id())->post_excerpt;
+        echo '<div class="entry-top-thumbnail">'.$postThumbnail.'</div>'; 
+        if(!empty($postThumbnailCaption)){ 
+          echo '<div class="entry-top-thumbnail-caption">' . $postThumbnailCaption . '</div>';
+        }
+      }
     ?>
 
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>

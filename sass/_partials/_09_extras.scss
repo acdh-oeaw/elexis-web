@@ -4,6 +4,8 @@
   margin-bottom: 1rem;
   display: flex;
   flex-flow: row nowrap;
+  font-size: 1rem;
+  font-weight: 600;
 
   .elexis-custom-meta-event {
     flex-basis: 50%;
@@ -15,7 +17,8 @@
     }
     
     svg {
-      vertical-align: sub;
+      vertical-align: bottom;
+      color: #1c4d93;
     }
 
   }

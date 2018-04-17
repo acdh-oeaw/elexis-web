@@ -56,20 +56,19 @@ $articleClasses = array(
     
     	</div><!-- .entry-content -->
     
-    	<?php if ( 'post' == get_post_type() ) { ?>
-    		<div class="entry-meta <?php if (get_theme_mod( 'card_readmore_toggle', false )) { echo 'mt-3'; } ?>">
-    			<?php 
-      			$avatar = get_theme_mod( 'card_avatar_toggle', true );
-      			$author = get_theme_mod( 'card_author_toggle', true );
-      			$postdate = get_theme_mod( 'card_postdate_toggle', true );
-      			$readingtime = get_theme_mod( 'card_readingtime_toggle', false );
-      			$icons =  get_theme_mod( 'card_icons_toggle', true );
-      			$tags =  get_theme_mod( 'card_tags_toggle', false );
-      			elexis_entry_meta($avatar, $author, $postdate, $readingtime, $icons, $tags);
-      		?>
-    		</div><!-- .entry-meta -->
-    
-    	<?php } ?>
+    	<?php if ( 'post' == get_post_type() ) {
+  			$avatar = get_theme_mod( 'card_avatar_toggle', true );
+  			$author = get_theme_mod( 'card_author_toggle', true );
+  			$postdate = get_theme_mod( 'card_postdate_toggle', true );
+  			$readingtime = get_theme_mod( 'card_readingtime_toggle', false );
+  			$icons =  get_theme_mod( 'card_icons_toggle', true );
+  			$tags =  get_theme_mod( 'card_tags_toggle', false );
+        if ($avatar OR $author OR $postdate OR $readingtime OR $icons OR $tags) {
+      ?>
+          <div class="entry-meta <?php if (get_theme_mod( 'card_readmore_toggle', false )) { echo 'mt-3'; } ?>">
+          <?php elexis_entry_meta($avatar, $author, $postdate, $readingtime, $icons, $tags); ?>
+    		  </div><!-- .entry-meta -->
+    	<?php } } ?>
   
     </div><!-- .entry-text-content -->
 

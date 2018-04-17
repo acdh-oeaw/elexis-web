@@ -13,7 +13,7 @@ $container   = get_theme_mod( 'theme_layout_container', 'container' );
 
 	<!-- ******************* The Secondary Footer Full-width Widget Area ******************* -->
 
-	<div class="wrapper" id="wrapper-footer-secondary">
+	<div class="wrapper" id="wrapper-footer-secondary" <?php if ( !is_active_sidebar( 'footerfull' ) ) { ?>style="margin-top:auto;"<?php } ?>>
 
 		<div class="<?php echo esc_attr( $container ); ?>" id="footer-secondary-content" tabindex="-1">
 

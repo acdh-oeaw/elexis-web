@@ -31,10 +31,20 @@ html {
 body {
   border-style: solid;
   border-top-width: 0;
-  min-height: 100vh; }
+  min-height: 100vh;
+  display: flex; }
   @media (max-width: 767px) {
     body {
       border-width: 0 !important; } }
+
+.site {
+  display: flex;
+  flex-flow: column;
+  flex-wrap: nowrap;
+  flex-grow: 1; }
+
+.site > * {
+  width: 100%; }
 
 svg.feather {
   width: 1.1rem;
@@ -414,6 +424,9 @@ svg.feather {
 /*
  ** 07. Footer
  */
+#wrapper-footer-full {
+  margin-top: auto; }
+
 /*
  ** 08. Extras
  */

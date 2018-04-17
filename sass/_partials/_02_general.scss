@@ -9,6 +9,18 @@ body {
   @include breakpoint-down($md) {
     border-width: 0 !important;
   }
+  display: flex;
+}
+
+.site {
+  display: flex;
+  flex-flow: column;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+}
+
+.site > * {
+  width: 100%;
 }
 
 // Feather Icons

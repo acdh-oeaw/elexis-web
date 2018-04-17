@@ -1,0 +1,23 @@
+.elexis-custom-meta {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+  border-top: 1px solid rgba(0, 0, 0, 0.075);
+  margin-bottom: 1rem;
+  display: flex;
+  flex-flow: row nowrap;
+
+  .elexis-custom-meta-event {
+    flex-basis: 50%;
+    padding: 10px;
+
+    &:nth-child(1) {
+      border-right: 1px solid rgba(0, 0, 0, 0.075);
+    }
+    
+    svg {
+      vertical-align: sub;
+    }
+
+  }
+
+}
+

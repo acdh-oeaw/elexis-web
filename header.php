@@ -76,14 +76,14 @@ $navbar_placement = get_theme_mod( 'navbar_placement' );
 
           <?php $navbar_social_twitter = get_theme_mod( 'navbar_social_twitter', '' );
             if ($navbar_social_twitter) { ?>
-              <a href="<?php echo $navbar_social_twitter; ?>" class="navbar-social-icon">
+              <a href="<?php echo $navbar_social_twitter; ?>" class="navbar-social-icon" target="_blank" rel="noopener">
                 <i data-feather="twitter"></i>
               </a>
           <?php } ?>
 
           <?php $navbar_social_facebook = get_theme_mod( 'navbar_social_facebook', '' );
             if ($navbar_social_facebook) { ?>
-              <a href="<?php echo $navbar_social_facebook; ?>" class="navbar-social-icon">
+              <a href="<?php echo $navbar_social_facebook; ?>" class="navbar-social-icon" target="_blank" rel="noopener">
                 <i data-feather="facebook"></i>
               </a>
           <?php } ?>

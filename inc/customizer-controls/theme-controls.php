@@ -312,6 +312,49 @@ my_config_kirki_add_field(
 );
 
 /**
+ * Display Navbar Search Field
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'toggle',
+		'settings'    => 'navbar_search_toggle',
+		'label'       => esc_attr__( 'Display Navbar Search Field', 'elexis' ),
+		'description' => esc_attr__( 'Select if you want to display the search field on the top navigation.', 'elexis' ),
+		'section'     => 'navbar_section',
+		'default'     => true,
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Navbar Social Media: Twitter Icon
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'text',
+		'settings'    => 'navbar_social_twitter',
+		'label'       => esc_attr__( 'Navbar Social Media: Twitter Icon', 'elexis' ),
+		'description' => esc_attr__( 'To display a Twitter icon please add your Twitter URL below.', 'elexis' ),
+		'section'     => 'navbar_section',
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Navbar Social Media: Facebook Icon
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'text',
+		'settings'    => 'navbar_social_facebook',
+		'label'       => esc_attr__( 'Navbar Social Media: Facebook Icon', 'elexis' ),
+		'description' => esc_attr__( 'To display a Facebook icon please add your Facebook URL below.', 'elexis' ),
+		'section'     => 'navbar_section',
+		'transport'   => 'refresh',
+	)
+);
+
+/**
  * Container Width
  */
 my_config_kirki_add_field(

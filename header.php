@@ -64,13 +64,29 @@ $navbar_placement = get_theme_mod( 'navbar_placement' );
   					)
   				); ?>
 
-          <form class="form-inline my-2 my-lg-0 navbar-search-form" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
-            <input class="form-control ml-sm-2 navbar-search" id="s" name="s" type="text" placeholder="<?php esc_attr_e( 'Search', 'elexis' ); ?>" value="<?php the_search_query(); ?>">
-            
-            <button type="submit" class="navbar-search-icon">
-              <i data-feather="search"></i>
-            </button>
-          </form>
+          <?php $navbar_search_toggle = get_theme_mod( 'navbar_search_toggle', true );
+            if ($navbar_search_toggle) { ?>
+            <form class="form-inline my-2 my-lg-0 navbar-search-form" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" role="search">
+              <input class="form-control ml-sm-2 navbar-search" id="s" name="s" type="text" placeholder="<?php esc_attr_e( 'Search', 'elexis' ); ?>" value="<?php the_search_query(); ?>">
+              <button type="submit" class="navbar-search-icon">
+                <i data-feather="search"></i>
+              </button>
+            </form>
+          <?php } ?>
+
+          <?php $navbar_social_twitter = get_theme_mod( 'navbar_social_twitter', '' );
+            if ($navbar_social_twitter) { ?>
+              <a href="<?php echo $navbar_social_twitter; ?>" class="navbar-social-icon">
+                <i data-feather="twitter"></i>
+              </a>
+          <?php } ?>
+
+          <?php $navbar_social_facebook = get_theme_mod( 'navbar_social_facebook', '' );
+            if ($navbar_social_facebook) { ?>
+              <a href="<?php echo $navbar_social_facebook; ?>" class="navbar-social-icon">
+                <i data-feather="facebook"></i>
+              </a>
+          <?php } ?>
 
         </div><!-- .collapse navbar-collapse -->
 

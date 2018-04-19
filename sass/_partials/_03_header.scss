@@ -136,6 +136,20 @@
     }
   }
 
+  .navbar-social-icon {
+    margin-left: 1rem;
+    color: rgba(0, 0, 0, 0.6);
+
+    &:nth-of-type(n+2) {
+      margin-left: 0.5rem;
+    }
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.9);
+    }
+  }
+
+
   &.navbar-dark {
 
     .navbar-search {
@@ -148,7 +162,7 @@
       }
     }
 
-    button.navbar-search-icon {
+    button.navbar-search-icon, .navbar-social-icon {
       color: rgba(255, 255, 255, 0.5);
       &:hover {
         color: $white;

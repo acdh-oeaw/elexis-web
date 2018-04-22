@@ -10,7 +10,7 @@ jQuery(function ($) {
 "use strict";
 /* You can safely use $ in this code block to reference jQuery */
 
-$(window).load(function() {
+$(document).ready(function() {
 
   // Cards masonary layout
   $('.card-wrapper').isotope({

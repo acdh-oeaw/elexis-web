@@ -55,13 +55,16 @@
   margin-right: (-$grid-gutter-width)/2;
   margin-left: (-$grid-gutter-width)/2;
   margin-bottom: $grid-gutter-width;
+  display: flex;
+  flex-wrap: wrap;
 
   .card {
     border: 0;
-    padding: $grid-gutter-width/2;
+    padding: 0;
 
     .card-inner {
       padding: $grid-gutter-width/2;
+      margin: $grid-gutter-width/2;
       border-radius: 2px;
       border: 1px solid rgba(0, 0, 0, 0.1);
       overflow: hidden;
@@ -275,8 +278,4 @@
   }
 
 }
-
-
-
-
 

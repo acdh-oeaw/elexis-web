@@ -29,7 +29,11 @@ $container   = get_theme_mod( 'theme_layout_container', 'container' );
 
 					<header class="page-header">
 						<?php
-						the_archive_title( '<h2 class="page-title">', '</h2>' );
+  				  // @specific-elexis start
+  				  $term_id = get_queried_object_id();
+  				  $term_rss_link = '<a href="'.get_term_link($term_id).'/feed" class="archive-rss-icon" target="_blank" rel="noopener"><i data-feather="rss"></i></a>';
+  				  // @specific-elexis end
+						the_archive_title( '<h2 class="page-title">'.$term_rss_link, '</h2>' );
 						the_archive_description( '<div class="taxonomy-description">', '</div>' );
 						?>
 					</header><!-- .page-header -->

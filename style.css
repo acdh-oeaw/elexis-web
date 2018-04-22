@@ -210,12 +210,15 @@ svg.feather {
   margin-top: -15px;
   margin-right: -15px;
   margin-left: -15px;
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap; }
   .card-wrapper .card {
     border: 0;
-    padding: 15px; }
+    padding: 0; }
     .card-wrapper .card .card-inner {
       padding: 15px;
+      margin: 15px;
       border-radius: 2px;
       border: 1px solid rgba(0, 0, 0, 0.1);
       overflow: hidden; }
@@ -464,5 +467,21 @@ svg.feather {
 
 .home .pagination {
   display: none; }
+
+.navbar-light .navbar-nav .nav-link, .navbar .navbar-social-icon {
+  color: #495057; }
+
+.navbar-light .navbar-nav .nav-link:hover, .navbar .navbar-social-icon:hover {
+  color: #212529; }
+
+.archive-rss-icon {
+  margin-right: 0.25rem;
+  color: #495057; }
+  .archive-rss-icon:hover {
+    color: #212529; }
+  .archive-rss-icon svg {
+    width: 2rem;
+    vertical-align: baseline;
+    margin-left: -0.25rem; }
 
 /*# sourceMappingURL=style.css.map */

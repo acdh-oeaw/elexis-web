@@ -37,3 +37,32 @@
 .home .pagination {
   display: none;
 }
+
+.navbar-light .navbar-nav .nav-link, .navbar .navbar-social-icon {
+  color: $gray-700;
+}
+
+.navbar-light .navbar-nav .nav-link:hover, .navbar .navbar-social-icon:hover {
+  color: $gray-900;
+}
+
+.archive-rss-icon {
+  margin-right: 0.25rem;
+  color: $gray-700;
+
+  &:hover {
+    color: $gray-900;
+  }
+
+  svg {
+    width: 2rem;
+    vertical-align: baseline;
+    margin-left: -0.25rem;
+  }
+}
+
+
+
+
+
+

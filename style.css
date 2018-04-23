@@ -123,9 +123,11 @@ svg.feather {
       padding-top: 0.5rem;
       margin-top: 1rem; } }
   .navbar .navbar-collapse li {
-    font-size: 0.9rem; }
+    font-size: 1rem; }
+  .navbar .navbar-collapse .navbar-search-form {
+    position: relative; }
   .navbar .navbar-collapse .navbar-search {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     width: 9rem;
     border-radius: 30px;
     padding: .3rem 1.75rem .3rem .75rem;
@@ -146,7 +148,10 @@ svg.feather {
     margin-left: -1.6rem;
     width: 1rem;
     cursor: pointer;
-    color: rgba(0, 0, 0, 0.6); }
+    color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    right: 0.6rem;
+    top: 0.25rem; }
     .navbar button.navbar-search-icon:hover {
       color: rgba(0, 0, 0, 0.9); }
     .navbar button.navbar-search-icon:focus {
@@ -233,7 +238,7 @@ svg.feather {
         color: #6f757c;
         font-size: 1rem; }
       .card-wrapper .card .card-inner .btn-round {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         padding: 0.5rem 1rem; }
       .card-wrapper .card .card-inner.card-horizontal {
         display: flex;
@@ -468,12 +473,6 @@ svg.feather {
 
 .home .pagination {
   display: none; }
-
-.navbar-light .navbar-nav .nav-link, .navbar .navbar-social-icon {
-  color: #495057; }
-
-.navbar-light .navbar-nav .nav-link:hover, .navbar .navbar-social-icon:hover {
-  color: #212529; }
 
 .archive-rss-icon {
   margin-right: 0.25rem;

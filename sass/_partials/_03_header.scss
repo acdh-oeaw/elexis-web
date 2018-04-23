@@ -95,11 +95,15 @@
     }
 
     li {
-      font-size: 0.9rem;
+      font-size: 1rem;
+    }
+
+    .navbar-search-form {
+      position: relative
     }
 
     .navbar-search {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       width: 9rem;
       border-radius: 30px;
       padding: .3rem 1.75rem .3rem .75rem;
@@ -127,6 +131,9 @@
     width: 1rem;
     cursor: pointer;
     color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    right: 0.6rem;
+    top: 0.25rem;
 
     &:hover {
       color: rgba(0, 0, 0, 0.9);

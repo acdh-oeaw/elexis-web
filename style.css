@@ -26,7 +26,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
  ** 01. General
  */
 html {
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
 
 body {
   border-style: solid;
@@ -230,7 +231,7 @@ svg.feather {
         color: #6c757d; }
       .card-wrapper .card .card-inner .entry-content p {
         color: #6f757c;
-        font-size: 0.9rem; }
+        font-size: 1rem; }
       .card-wrapper .card .card-inner .btn-round {
         font-size: 0.8rem;
         padding: 0.5rem 1rem; }

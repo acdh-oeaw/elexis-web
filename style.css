@@ -465,7 +465,7 @@ svg.feather {
       color: #1c4d93; }
 
 .card-wrapper .card .card-inner.card-horizontal {
-  max-height: 18rem; }
+  min-height: 18rem; }
 
 #wrapper-hero-content .btn-round {
   font-size: 1rem;

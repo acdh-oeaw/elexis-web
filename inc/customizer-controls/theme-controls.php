@@ -50,6 +50,7 @@ $sections = array(
 	'home_hero'      => array( esc_attr__( 'Homepage Hero Block', 'elexis' ), '' ),
 	'home_blocks'      => array( esc_attr__( 'Homepage Content Blocks', 'elexis' ), '' ),
 	'single_posts'      => array( esc_attr__( 'Single Posts', 'elexis' ), '' ),
+	'archive_pages'      => array( esc_attr__( 'Archive Pages', 'elexis' ), '' ),
 	'footer'      => array( esc_attr__( 'Footer', 'elexis' ), '' ),
 );
 foreach ( $sections as $section_id => $section ) {
@@ -1378,6 +1379,51 @@ my_config_kirki_add_field(
 		'transport'   => 'refresh',
 	)
 );
+
+
+/**
+ * Archive Pages Columns per Row
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'select',
+		'settings'    => 'archive_columns_per_row',
+		'label'       => esc_attr__( 'Archive Pages Columns per Row', 'elexis' ),
+		'description' => esc_attr__( 'Select number of content blocks per row on archive pages such as categories and tags.', 'elexis' ),
+		'section'     => 'archive_pages_section',
+		'default'     => 'col-md-12',
+		'choices'     => array(
+			'col-md-12'  => esc_attr__( '1', 'elexis' ),
+			'col-md-6'   => esc_attr__( '2', 'elexis' ),
+			'col-md-4'   => esc_attr__( '3', 'elexis' ),
+			'col-md-3'   => esc_attr__( '4', 'elexis' ),
+			'col-md-2'   => esc_attr__( '6', 'elexis' )
+		),
+		'transport'   => 'refresh',
+	)
+);
+
+/**
+ * Archive Pages Blocks Layout Type
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'select',
+		'settings'    => 'archive_blocks_layout_type',
+		'label'       => esc_attr__( 'Archive Pages Blocks Layout Type', 'elexis' ),
+		'description' => esc_attr__( 'Select type of layout for blocks on archive pages such as categories and tags.', 'elexis' ),
+		'section'     => 'archive_pages_section',
+		'default'     => 'card-vertical',
+		'choices'     => array(
+			'card-vertical'  => esc_attr__( 'Cards with Image on Top', 'elexis' ),
+			'card-horizontal card-horizontal-left'   => esc_attr__( 'Cards with Image on Left', 'elexis' ),
+			'card-horizontal card-horizontal-right'   => esc_attr__( 'Cards with Image on Right', 'elexis' ),
+			'card-no-image'   => esc_attr__( 'Cards with no Image', 'elexis' )
+		),
+		'transport'   => 'refresh',
+	)
+);
+
 
 /**
  * Primary Footer Background Color

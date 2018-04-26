@@ -33,7 +33,16 @@ $articleClasses = array(
     	<header class="entry-header">
       	
       	<?php $card_category_toggle = get_theme_mod( 'card_category_toggle', true ); if ($card_category_toggle) { elexis_entry_list_categories(); } ?>
-    
+
+        <?php
+          // @specific-elexis start
+          $fields = get_post_custom();
+          if(isset($fields['card_overlay_icon'])) {
+            echo '<i data-feather="'.$fields['card_overlay_icon'][0].'" class="card-overlay-icon"></i>';
+          }
+          // @specific-elexis end
+        ?>
+
     		<?php 
       		if ( is_sticky() ) { $sticky = '<i data-feather="star" class="sticky-icon"></i>'; } else { $sticky = ''; } 
       		the_title( sprintf( '<h4 class="entry-title">'.$sticky.'<a href="%s" rel="bookmark">', esc_url( get_permalink() ) ),'</a></h4>' );

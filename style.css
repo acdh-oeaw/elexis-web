@@ -265,8 +265,6 @@ svg.feather {
         position: absolute;
         height: 100%;
         margin: -15px -15px -15px -15px; }
-        .card-wrapper .card .card-inner.card-image-overlay .entry-top-thumbnail img {
-          height: 100%; }
       .card-wrapper .card .card-inner.card-image-overlay .entry-text-content {
         position: relative; }
 
@@ -494,13 +492,16 @@ svg.feather {
     margin-left: -0.25rem; }
 
 .card-image-overlay {
-  min-height: 15rem; }
+  min-height: 10rem; }
   .card-image-overlay .entry-meta, .card-image-overlay .entry-cat-links, .card-image-overlay .entry-content {
     display: none; }
   .card-image-overlay .entry-text-content {
     position: absolute !important;
-    bottom: 0.25rem;
-    z-index: 2; }
+    top: calc(50% - 45px);
+    left: 0;
+    z-index: 2;
+    text-align: center;
+    width: 100%; }
     .card-image-overlay .entry-text-content .entry-title a {
       color: #1d4e94 !important;
       font-size: 1.65rem; }
@@ -528,5 +529,11 @@ svg.feather {
     -o-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
     transition: all 0.3s ease; }
+
+svg.feather.card-overlay-icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff; }
 
 /*# sourceMappingURL=style.css.map */

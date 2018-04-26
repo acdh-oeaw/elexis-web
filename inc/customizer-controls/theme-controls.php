@@ -411,7 +411,7 @@ my_config_kirki_add_field(
 		),
     'output'    => array(
     	array(
-    		'element'         => array('.btn-round','.separator-title','#wrapper-hero-content .hero-dark .btn-round:hover','.single main > article .entry-content a', '.page main > article .entry-content a', '.page-header .page-title'),
+    		'element'         => array('.btn-round','.separator-title','#wrapper-hero-content .hero-dark .btn-round:hover','.single main > article .entry-content a', '.page main > article .entry-content a'),
     		'property'        => 'color',
       ),
     	array(
@@ -426,7 +426,7 @@ my_config_kirki_add_field(
 		'transport'   => 'postMessage',
     'js_vars'     => array(
     	array(
-    		'element'         => array('.btn-round','.separator-title','#wrapper-hero-content .hero-dark .btn-round:hover','.single main > article .entry-content a', '.page main > article .entry-content a', '.page-header .page-title'),
+    		'element'         => array('.btn-round','.separator-title','#wrapper-hero-content .hero-dark .btn-round:hover','.single main > article .entry-content a', '.page main > article .entry-content a'),
     		'property'        => 'color',
       ),
     	array(

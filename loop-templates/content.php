@@ -29,7 +29,7 @@ $articleClasses = array(
   ?>
 
     <div class="entry-text-content">
-  
+
     	<header class="entry-header">
       	
       	<?php $card_category_toggle = get_theme_mod( 'card_category_toggle', true ); if ($card_category_toggle) { elexis_entry_list_categories(); } ?>
@@ -38,7 +38,7 @@ $articleClasses = array(
           // @specific-elexis start
           $fields = get_post_custom();
           if(isset($fields['card_overlay_icon'])) {
-            echo '<i data-feather="'.$fields['card_overlay_icon'][0].'" class="card-overlay-icon"></i>';
+            echo '<a href="'.esc_url( get_permalink() ).'" rel="bookmark"><i data-feather="'.$fields['card_overlay_icon'][0].'" class="card-overlay-icon"></i></a>';
           }
           // @specific-elexis end
         ?>

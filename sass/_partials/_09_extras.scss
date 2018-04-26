@@ -66,7 +66,13 @@
     z-index: 2;
 
     .entry-title a {
-      color: #fff !important;
+      color: #1d4e94 !important;
+      font-size: 1.65rem;
+      
+      &:hover {
+        color: #1d4e94 !important;
+      }
+      
     }
 
   }
@@ -79,7 +85,7 @@
     width: 100%;
     height: 100%;
     z-index: 1;
-    background-color: rgba(28,79,148,0.75);
+    background-color: rgba(224, 221, 60, 0.88);
     z-index: 1;
   }
 

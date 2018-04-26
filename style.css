@@ -502,7 +502,10 @@ svg.feather {
     bottom: 0.25rem;
     z-index: 2; }
     .card-image-overlay .entry-text-content .entry-title a {
-      color: #fff !important; }
+      color: #1d4e94 !important;
+      font-size: 1.65rem; }
+      .card-image-overlay .entry-text-content .entry-title a:hover {
+        color: #1d4e94 !important; }
   .card-image-overlay .entry-top-thumbnail::after {
     content: "";
     position: absolute;
@@ -511,7 +514,7 @@ svg.feather {
     width: 100%;
     height: 100%;
     z-index: 1;
-    background-color: rgba(28, 79, 148, 0.75);
+    background-color: rgba(224, 221, 60, 0.88);
     z-index: 1; }
   .card-image-overlay:hover .entry-top-thumbnail img {
     -webkit-transform: scale(1.06);

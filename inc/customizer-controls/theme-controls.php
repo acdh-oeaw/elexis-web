@@ -1012,6 +1012,7 @@ my_config_kirki_add_field(
 					'card-vertical'  => esc_attr__( 'Cards with Image on Top', 'elexis' ),
 					'card-horizontal card-horizontal-left'   => esc_attr__( 'Cards with Image on Left', 'elexis' ),
 					'card-horizontal card-horizontal-right'   => esc_attr__( 'Cards with Image on Right', 'elexis' ),
+					'card-image-overlay'   => esc_attr__( 'Cards with Image Overlay', 'elexis' ),
 					'card-no-image'   => esc_attr__( 'Cards with no Image', 'elexis' )
 				),
 			),
@@ -1418,6 +1419,7 @@ my_config_kirki_add_field(
 			'card-vertical'  => esc_attr__( 'Cards with Image on Top', 'elexis' ),
 			'card-horizontal card-horizontal-left'   => esc_attr__( 'Cards with Image on Left', 'elexis' ),
 			'card-horizontal card-horizontal-right'   => esc_attr__( 'Cards with Image on Right', 'elexis' ),
+			'card-image-overlay'   => esc_attr__( 'Cards with Image Overlay', 'elexis' ),
 			'card-no-image'   => esc_attr__( 'Cards with no Image', 'elexis' )
 		),
 		'transport'   => 'refresh',

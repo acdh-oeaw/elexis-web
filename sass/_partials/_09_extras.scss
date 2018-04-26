@@ -53,7 +53,53 @@
   }
 }
 
+.card-image-overlay {
+  min-height: 15rem;
 
+  .entry-meta, .entry-cat-links, .entry-content {
+    display: none;
+  }
+
+  .entry-text-content {
+    position: absolute !important;
+    bottom: 0.25rem;
+    z-index: 2;
+
+    .entry-title a {
+      color: #fff !important;
+    }
+
+  }
+
+  .entry-top-thumbnail::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(28,79,148,0.75);
+    z-index: 1;
+  }
+
+  &:hover .entry-top-thumbnail img {
+      -webkit-transform: scale(1.06);
+      -moz-transform: scale(1.06);
+      -o-transform: scale(1.06);
+      -ms-transform: scale(1.06);
+      transform: scale(1.06);
+  }
+
+  .entry-top-thumbnail img {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+
+}
 
 
 

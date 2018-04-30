@@ -38,7 +38,9 @@ if (!$home_content_blocks) {
       <?php foreach ($home_content_blocks as $home_content_block) { 
         if (isset($home_content_block["block_title"])) { $block_title = $home_content_block["block_title"]; }
         if (isset($home_content_block["blocks_per_row"])) { $blocks_per_row = $home_content_block["blocks_per_row"]; }
-        if (isset($home_content_block["number_of_blocks"])) { $number_of_blocks = $home_content_block["number_of_blocks"]; }
+        if (isset($home_content_block["number_of_blocks"])) { $number_of_blocks = $home_content_block["number_of_blocks"]; } else {
+          $number_of_blocks = get_option( 'posts_per_page' );
+        }
         if (isset($home_content_block["blocks_orderby"])) { $blocks_orderby = $home_content_block["blocks_orderby"]; } else { $blocks_orderby = 'date'; }
         if (isset($home_content_block["blocks_order"])) { $blocks_order = $home_content_block["blocks_order"]; } else { $blocks_order = 'DESC'; }
         if (isset($home_content_block["blocks_orderby_meta_key"])) { $blocks_orderby_meta_key = $home_content_block["blocks_orderby_meta_key"]; } else { $blocks_orderby_meta_key = ''; }
@@ -46,7 +48,7 @@ if (!$home_content_blocks) {
         // Process the tag selection
         if (isset($home_content_block["blocks_post_tags_query"])) { 
           $blocks_post_tags_query = $home_content_block["blocks_post_tags_query"];
-          if ($blocks_post_tags_query) {
+          if (strlen(implode($blocks_post_tags_query)) !== 0) {
             $blocks_post_tags_query = array(
           		'taxonomy' => 'post_tag',
           		'field'    => 'term_id',
@@ -59,7 +61,7 @@ if (!$home_content_blocks) {
         // Process the category selection
         if (isset($home_content_block["blocks_post_category_query"])) {
           $blocks_post_category_query = $home_content_block["blocks_post_category_query"];
-          if ($blocks_post_category_query) {
+          if (strlen(implode($blocks_post_category_query)) !== 0) {
             $blocks_post_category_query = array(
           		'taxonomy' => 'category',
           		'field'    => 'term_id',
@@ -105,7 +107,7 @@ if (!$home_content_blocks) {
         // Process the page selection
         if (isset($home_content_block["blocks_post_pages_query"])) { 
           $blocks_post_pages_query = $home_content_block["blocks_post_pages_query"];
-          if ($blocks_post_pages_query) {
+          if (strlen(implode($blocks_post_pages_query)) !== 0) {
             $args = array(
               'post_type' => 'page',
               'post__in' => $blocks_post_pages_query,

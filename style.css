@@ -104,9 +104,9 @@ svg.feather {
         border-bottom: 1px solid rgba(0, 0, 0, 0.05); } }
     .navbar .dropdown-menu > li > a.nav-link {
       padding: 0.5rem 0.75rem; }
-  @media (max-width: 1199px) {
+  @media (max-width: 991px) {
     .navbar .navbar-search-form {
-      margin: 0.5rem 0 !important; } }
+      margin: 0.5rem 0 0.5rem -0.25rem !important; } }
   .navbar .navbar-brand {
     display: flex;
     align-items: center;
@@ -117,7 +117,7 @@ svg.feather {
     .navbar .navbar-brand img {
       max-height: 100%;
       width: auto; }
-  @media (max-width: 1199px) {
+  @media (max-width: 991px) {
     .navbar .navbar-collapse {
       border-top: 1px solid rgba(0, 0, 0, 0.075);
       padding-top: 0.5rem;
@@ -125,7 +125,8 @@ svg.feather {
   .navbar .navbar-collapse li {
     font-size: 1rem; }
   .navbar .navbar-collapse .navbar-search-form {
-    position: relative; }
+    position: relative;
+    margin-left: 0.5rem; }
   .navbar .navbar-collapse .navbar-search {
     font-size: 0.9rem;
     width: 9rem;
@@ -134,9 +135,6 @@ svg.feather {
     border: 1px solid rgba(0, 0, 0, 0.075);
     background-color: rgba(255, 255, 255, 0.1);
     color: rgba(0, 0, 0, 0.9); }
-    @media (max-width: 1199px) {
-      .navbar .navbar-collapse .navbar-search {
-        margin-left: -0.25rem !important; } }
     .navbar .navbar-collapse .navbar-search::placeholder {
       color: rgba(0, 0, 0, 0.6); }
     .navbar .navbar-collapse .navbar-search:focus {
@@ -150,7 +148,7 @@ svg.feather {
     cursor: pointer;
     color: rgba(0, 0, 0, 0.6);
     position: absolute;
-    right: 0.6rem;
+    left: 8.75rem;
     top: 0.25rem; }
     .navbar button.navbar-search-icon:hover {
       color: rgba(0, 0, 0, 0.9); }
@@ -159,6 +157,9 @@ svg.feather {
   .navbar .navbar-social-icon {
     margin-left: 1rem;
     color: rgba(0, 0, 0, 0.6); }
+    @media (max-width: 991px) {
+      .navbar .navbar-social-icon {
+        margin-left: 0; } }
     .navbar .navbar-social-icon:nth-of-type(n+2) {
       margin-left: 0.5rem; }
     .navbar .navbar-social-icon:hover {
@@ -478,9 +479,11 @@ svg.feather {
   font-size: 1rem;
   padding: 0.75rem 1.5rem; }
 
+/*
 .home .pagination {
-  display: none; }
-
+  display: none;
+}
+*/
 .archive-rss-icon {
   margin-right: 0.25rem;
   color: #495057; }

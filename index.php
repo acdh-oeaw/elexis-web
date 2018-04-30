@@ -42,6 +42,7 @@ if (!$home_content_blocks) {
         if (isset($home_content_block["blocks_orderby"])) { $blocks_orderby = $home_content_block["blocks_orderby"]; } else { $blocks_orderby = 'date'; }
         if (isset($home_content_block["blocks_order"])) { $blocks_order = $home_content_block["blocks_order"]; } else { $blocks_order = 'DESC'; }
         if (isset($home_content_block["blocks_orderby_meta_key"])) { $blocks_orderby_meta_key = $home_content_block["blocks_orderby_meta_key"]; } else { $blocks_orderby_meta_key = ''; }
+
         // Process the tag selection
         if (isset($home_content_block["blocks_post_tags_query"])) { 
           $blocks_post_tags_query = implode(",",$home_content_block["blocks_post_tags_query"]);
@@ -100,6 +101,21 @@ if (!$home_content_blocks) {
         	'meta_key'  => $blocks_orderby_meta_key,
         	'tax_query' => $blocks_tax_query
         );
+
+        // Process the page selection
+        if (isset($home_content_block["blocks_post_pages_query"])) { 
+          $blocks_post_pages_query = $home_content_block["blocks_post_pages_query"];
+          if ($blocks_post_pages_query) {
+            $args = array(
+              'post_type' => 'page',
+              'post__in' => $blocks_post_pages_query,
+              'orderby' => $blocks_orderby,
+              'order' => $blocks_order,
+              'meta_key'  => $blocks_orderby_meta_key,
+              'tax_query' => $blocks_tax_query
+            );
+          }
+        }
 
         $query = new WP_Query( $args );
       ?>

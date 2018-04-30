@@ -52,6 +52,7 @@ $sections = array(
 	'single_posts'      => array( esc_attr__( 'Single Posts', 'elexis' ), '' ),
 	'archive_pages'      => array( esc_attr__( 'Archive Pages', 'elexis' ), '' ),
 	'footer'      => array( esc_attr__( 'Footer', 'elexis' ), '' ),
+	'test'      => array( esc_attr__( 'Test', 'elexis' ), '' ),
 );
 foreach ( $sections as $section_id => $section ) {
 	$section_args = array(
@@ -1067,6 +1068,96 @@ my_config_kirki_add_field(
 		)
 	)
 );
+
+my_config_kirki_add_field(
+	array(
+		'type'        => 'select',
+		'settings'    => 'test_select_setting_multiple',
+		'label'       => esc_attr__( 'Select Control', 'kirki' ),
+		'description' => esc_attr__( 'The description here.', 'kirki' ),
+		'section'     => 'test_section',
+		'default'     => 'option-3',
+		'multiple'    => 3,
+		'choices'     => array(
+			'option-1' => esc_attr__( 'Option 1', 'kirki' ),
+			'option-2' => esc_attr__( 'Option 2', 'kirki' ),
+			'option-3' => esc_attr__( 'Option 3', 'kirki' ),
+			'option-4' => esc_attr__( 'Option 4', 'kirki' ),
+			'option-5' => esc_attr__( 'Option 5', 'kirki' ),
+		),
+	)
+);
+
+/**
+ * Repeater Control.
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'repeater',
+		'settings'    => 'test_repeater_setting',
+		'label'       => esc_attr__( 'Repeater Control', 'kirki' ),
+		'description' => esc_attr__( 'The description here.', 'kirki' ),
+		'section'     => 'test_section',
+		'default'     => array(
+			array(
+				'link_text'   => esc_attr__( 'Kirki Site', 'kirki' ),
+				'link_url'    => 'https://aristath.github.io/kirki/',
+				'link_target' => '_self',
+				'checkbox'    => false,
+			),
+			array(
+				'link_text'   => esc_attr__( 'Kirki Repository', 'kirki' ),
+				'link_url'    => 'https://github.com/aristath/kirki',
+				'link_target' => '_self',
+				'checkbox'    => false,
+			),
+		),
+		'fields' => array(
+			'link_text' => array(
+				'type'        => 'text',
+				'label'       => esc_attr__( 'Link Text', 'kirki' ),
+				'description' => esc_attr__( 'This will be the label for your link', 'kirki' ),
+				'default'     => '',
+			),
+      'repeat_test' => array(
+    		'type'        => 'select',
+    		'label'       => esc_attr__( 'Select Control', 'kirki' ),
+    		'description' => esc_attr__( 'The description here.', 'kirki' ),
+    		'default'     => 'option-3',
+    		'multiple'    => true,
+    		'choices'     => array(
+    			'option-1' => esc_attr__( 'Option 1', 'kirki' ),
+    			'option-2' => esc_attr__( 'Option 2', 'kirki' ),
+    			'option-3' => esc_attr__( 'Option 3', 'kirki' ),
+    			'option-4' => esc_attr__( 'Option 4', 'kirki' ),
+    			'option-5' => esc_attr__( 'Option 5', 'kirki' ),
+    		),
+    	),
+			'link_url' => array(
+				'type'        => 'text',
+				'label'       => esc_attr__( 'Link URL', 'kirki' ),
+				'description' => esc_attr__( 'This will be the link URL', 'kirki' ),
+				'default'     => '',
+			),
+			'link_target' => array(
+				'type'        => 'select',
+				'label'       => esc_attr__( 'Link Target', 'kirki' ),
+				'description' => esc_attr__( 'This will be the link target', 'kirki' ),
+				'default'     => '_self',
+				'choices'     => array(
+					'_blank'  => esc_attr__( 'New Window', 'kirki' ),
+					'_self'   => esc_attr__( 'Same Frame', 'kirki' ),
+				),
+			),
+			'checkbox' => array(
+				'type'			=> 'checkbox',
+				'label'			=> esc_attr__( 'Checkbox', 'kirki' ),
+				'default'		=> false,
+			),
+		),
+	)
+);
+
 
 /**
  * Display Post Categories on Cards

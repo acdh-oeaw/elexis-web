@@ -45,12 +45,12 @@ if (!$home_content_blocks) {
 
         // Process the tag selection
         if (isset($home_content_block["blocks_post_tags_query"])) { 
-          $blocks_post_tags_query = implode(",",$home_content_block["blocks_post_tags_query"]);
+          $blocks_post_tags_query = $home_content_block["blocks_post_tags_query"];
           if ($blocks_post_tags_query) {
             $blocks_post_tags_query = array(
           		'taxonomy' => 'post_tag',
           		'field'    => 'term_id',
-          		'terms'    => array( $blocks_post_tags_query ),
+          		'terms'    => $blocks_post_tags_query,
             );
           }
         } else { 
@@ -58,12 +58,12 @@ if (!$home_content_blocks) {
         }
         // Process the category selection
         if (isset($home_content_block["blocks_post_category_query"])) {
-          $blocks_post_category_query = implode(",",$home_content_block["blocks_post_category_query"]);
+          $blocks_post_category_query = $home_content_block["blocks_post_category_query"];
           if ($blocks_post_category_query) {
             $blocks_post_category_query = array(
           		'taxonomy' => 'category',
           		'field'    => 'term_id',
-          		'terms'    => array( $blocks_post_category_query ),
+          		'terms'    => $blocks_post_category_query,
             );
           }
         } else { 
@@ -112,7 +112,6 @@ if (!$home_content_blocks) {
               'orderby' => $blocks_orderby,
               'order' => $blocks_order,
               'meta_key'  => $blocks_orderby_meta_key,
-              'tax_query' => $blocks_tax_query
             );
           }
         }

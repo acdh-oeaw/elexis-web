@@ -425,6 +425,10 @@ my_config_kirki_add_field(
     		'property'        => 'border-color',
       ),
     	array(
+    		'element'         => array('.card-wrapper .card .card-inner'),
+    		'property'        => 'border-top-color',
+      ),
+    	array(
     		'element'         => array('.btn-round:hover'),
     		'property'        => 'background-color',
       ),
@@ -440,6 +444,10 @@ my_config_kirki_add_field(
     		'property'        => 'border-color',
       ),
     	array(
+    		'element'         => array('.card-wrapper .card .card-inner'),
+    		'property'        => 'border-top-color',
+      ),
+    	array(
     		'element'         => array('.btn-round:hover'),
     		'property'        => 'background-color',
       ),
@@ -447,6 +455,35 @@ my_config_kirki_add_field(
 	)
 );
 
+/**
+ * Body Background Color
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'color',
+		'settings'    => 'theme_layout_body_bg_color',
+		'label'       => __( 'Body Document Background Color', 'elexis' ),
+		'description' => esc_attr__( 'Define the background color of your website body.', 'elexis' ),
+		'section'     => 'theme_layout_section',
+		'default'     => '#fff',
+		'choices'     => array(
+			'alpha' => true,
+		),
+    'output'    => array(
+    	array(
+    		'element'         => 'body',
+    		'property'        => 'background-color',
+      ),
+    ),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+    	array(
+    		'element'         => 'body',
+    		'property'        => 'background-color',
+      ),
+    ),
+	)
+);
 
 /**
  * HTML Background Color
@@ -1078,6 +1115,194 @@ my_config_kirki_add_field(
 				'default'     => ''
 			)
 		)
+	)
+);
+
+/**
+ * Predefined Card Style
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'select',
+		'settings'    => 'card_predefined_style',
+		'label'       => esc_attr__( 'Predefined Card Style', 'elexis' ),
+		'description' => esc_attr__( 'Select one of the predefined card styles. You may overwrite these with settings below.', 'elexis' ),
+		'section'     => 'home_blocks_section',
+		'transport'   => 'refresh',
+		'default'     => 'flat-style',
+		'choices'     => array(
+			'flat-style'      => esc_attr__( 'Flat Style', 'elexis' ),
+			'light-shadow'    => esc_attr__( 'Light Shadow', 'elexis' ),
+			'material-style'  => esc_attr__( 'Material Style', 'elexis' ),
+		),
+	)
+);
+
+/**
+ * Card Border Thickness
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'slider',
+		'settings'    => 'card_border_size',
+		'label'       => esc_attr__( 'Card Border Thickness', 'elexis' ),
+		'description' => esc_attr__( 'Set the size of the border around cards.', 'elexis' ),
+		'section'     => 'home_blocks_section',
+		'default'     => '1',
+		'choices'     => array(
+			'min'  => 0,
+			'max'  => 6.0,
+			'step' => 0.25,
+			'suffix' => 'px',
+		),
+		'output'      => array(
+			array(
+				'element' => array( '.card-wrapper .card .card-inner' ),
+        'property' => 'border-width',
+        'units'    => 'px',
+			),
+		),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+      array(
+				'element' => array( '.card-wrapper .card .card-inner' ),
+        'property' => 'border-width',
+        'units'    => 'px',
+      ),
+    ),
+	)
+);
+
+/**
+ * Card Border Thickness
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'slider',
+		'settings'    => 'card_border_size',
+		'label'       => esc_attr__( 'Card Border Thickness', 'elexis' ),
+		'description' => esc_attr__( 'Set the size of the border around cards.', 'elexis' ),
+		'section'     => 'home_blocks_section',
+		'default'     => '1',
+		'choices'     => array(
+			'min'  => 0,
+			'max'  => 6.0,
+			'step' => 0.25,
+			'suffix' => 'px',
+		),
+		'output'      => array(
+			array(
+				'element' => array( '.card-wrapper .card .card-inner' ),
+        'property' => 'border-width',
+        'units'    => 'px',
+			),
+		),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+      array(
+				'element' => array( '.card-wrapper .card .card-inner' ),
+        'property' => 'border-width',
+        'units'    => 'px',
+      ),
+    ),
+	)
+);
+
+/**
+ * Card Border Color
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'color',
+		'settings'    => 'card_border_color',
+		'label'       => __( 'Card Border Color', 'elexis' ),
+		'description' => esc_attr__( 'Define the color of the border on cards.', 'elexis' ),
+		'section'     => 'home_blocks_section',
+		'default'     => 'rgba(0, 0, 0, 0.1);',
+		'choices'     => array(
+			'alpha' => true,
+		),
+    'output'    => array(
+    	array(
+    		'element'         => '.card-wrapper .card .card-inner',
+    		'property'        => 'border-color',
+      ),
+    ),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+    	array(
+    		'element'         => '.card-wrapper .card .card-inner',
+    		'property'        => 'border-color',
+      ),
+    ),
+	)
+);
+
+/**
+ * Card Top Border
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'slider',
+		'settings'    => 'card_border_top_size',
+		'label'       => esc_attr__( 'Card Top Border', 'elexis' ),
+		'description' => esc_attr__( 'Set the size of the top border on cards.', 'elexis' ),
+		'section'     => 'home_blocks_section',
+		'default'     => '0',
+		'choices'     => array(
+			'min'  => 0,
+			'max'  => 16.0,
+			'step' => 0.5,
+			'suffix' => 'px',
+		),
+		'output'      => array(
+			array(
+				'element' => array( '.card-wrapper .card .card-inner' ),
+        'property' => 'border-top-width',
+        'units'    => 'px',
+        'suffix' => ' !important',
+			),
+		),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+      array(
+				'element' => array( '.card-wrapper .card .card-inner' ),
+        'property' => 'border-top-width',
+        'units'    => 'px',
+        'suffix' => ' !important',
+      ),
+    ),
+	)
+);
+
+/**
+ * Card Top Border Color
+ */
+my_config_kirki_add_field(
+	array(
+		'type'        => 'color',
+		'settings'    => 'card_border_top_color',
+		'label'       => __( 'Card Top Border Color', 'elexis' ),
+		'description' => esc_attr__( 'Define the color of the top border on cards.', 'elexis' ),
+		'section'     => 'home_blocks_section',
+		'choices'     => array(
+			'alpha' => true,
+		),
+    'output'    => array(
+    	array(
+    		'element'         => array('.card-wrapper .card .card-inner'),
+    		'property'        => 'border-top-color',
+    		'suffix' => ' !important',
+      ),
+    ),
+		'transport'   => 'postMessage',
+    'js_vars'     => array(
+    	array(
+    		'element'         => array('.card-wrapper .card .card-inner'),
+    		'property'        => 'border-top-color',
+    		'suffix' => ' !important',
+      ),
+    ),
 	)
 );
 

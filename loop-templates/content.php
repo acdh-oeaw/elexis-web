@@ -13,9 +13,13 @@ if (!$blocks_per_row) {
 if (!$blocks_layout_type) {
   $blocks_layout_type = get_theme_mod( 'archive_blocks_layout_type', 'card-vertical' );
 }
+// Get the card style selection
+$card_predefined_style = get_theme_mod( 'card_predefined_style', 'flat-style' );
+
 $articleClasses = array(
   'card',
-  $blocks_per_row
+  $blocks_per_row,
+  $card_predefined_style
 );
 ?>
 

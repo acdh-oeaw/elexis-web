@@ -222,12 +222,19 @@ svg.feather {
   flex-wrap: wrap; }
   .card-wrapper .card {
     border: 0;
-    padding: 0; }
+    padding: 0;
+    background-color: transparent; }
+    .card-wrapper .card.light-shadow .card-inner {
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.03); }
+    .card-wrapper .card.material-style .card-inner {
+      border-radius: 2px;
+      box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); }
     .card-wrapper .card .card-inner {
       padding: 15px;
       margin: 15px;
       border-radius: 2px;
       border: 1px solid rgba(0, 0, 0, 0.1);
+      background-color: #fff;
       overflow: hidden;
       position: relative; }
       .card-wrapper .card .card-inner .entry-title svg.sticky-icon {

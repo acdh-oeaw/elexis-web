@@ -22,7 +22,7 @@ $container = get_theme_mod( 'theme_layout_container', 'container' );
 
 <?php
   include("config_acdh.php");
-  if (ACDH_DEV == "PROD") { /* Matomo tracking only on production */
+  if (ACDH_DEPLOYMENT == "PROD") { /* Matomo tracking only on production */
 ?>
   <!-- Matomo -->
   <script type="text/javascript">

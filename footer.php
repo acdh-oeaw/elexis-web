@@ -21,6 +21,7 @@ $container = get_theme_mod( 'theme_layout_container', 'container' );
 
 
 <?php
+  // @specific-elexis start
   include("config_acdh.php");
   if (ACDH_DEPLOYMENT == "PROD") { /* Matomo tracking only on production */
 ?>
@@ -41,6 +42,7 @@ $container = get_theme_mod( 'theme_layout_container', 'container' );
   <!-- End Matomo Code -->
 <?php
   }
+  // @specific-elexis end
 ?>
 
 </body>

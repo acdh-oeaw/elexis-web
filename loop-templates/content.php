@@ -7,10 +7,10 @@
 
 //Extract variables from the query
 extract( $wp_query->query_vars );
-if (!$blocks_per_row) { 
+if (!isset($blocks_per_row)) { 
   $blocks_per_row = get_theme_mod( 'archive_columns_per_row', 'col-md-12' );
 }
-if (!$blocks_layout_type) {
+if (!isset($blocks_layout_type)) {
   $blocks_layout_type = get_theme_mod( 'archive_blocks_layout_type', 'card-vertical' );
 }
 // Get the card style selection

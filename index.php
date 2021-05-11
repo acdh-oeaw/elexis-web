@@ -10,160 +10,191 @@
  *
  * @package elexis
  */
-
 get_header();
 
-$container = get_theme_mod( 'theme_layout_container', 'container' );
-$home_content_blocks = get_theme_mod( 'home_content_blocks' );
-if (!$home_content_blocks) { 
-  $home_content_blocks[0]["blocks_per_row"] = 'col-md-12'; 
+$container = get_theme_mod('theme_layout_container', 'container');
+$home_content_blocks = get_theme_mod('home_content_blocks');
+if (!$home_content_blocks) {
+    $home_content_blocks[0]["blocks_per_row"] = 'col-md-12';
 }
 ?>
 
-<?php if ( is_front_page() && is_home() ) : ?>
-	<?php get_template_part( 'global-templates/hero' ); ?>
+<?php if (is_front_page() && is_home()) : ?>
+    <?php get_template_part('global-templates/hero'); ?>
 <?php endif; ?>
 
 <div class="wrapper" id="index-wrapper">
 
-	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
+    <div class="<?php echo esc_attr($container); ?>" id="content" tabindex="-1">
 
-		<div class="row">
+        <div class="row">
 
-			<!-- Do the left sidebar check and opens the primary div -->
-			<?php get_template_part( 'global-templates/left-sidebar-check' ); ?>
+            <!-- Do the left sidebar check and opens the primary div -->
+            <?php get_template_part('global-templates/left-sidebar-check'); ?>
 
-			<main class="site-main" id="main">
+            <main class="site-main" id="main">
 
-      <?php foreach ($home_content_blocks as $home_content_block) { 
-        if (isset($home_content_block["block_title"])) { $block_title = $home_content_block["block_title"]; }
-        if (isset($home_content_block["blocks_per_row"])) { $blocks_per_row = $home_content_block["blocks_per_row"]; }
-        if (isset($home_content_block["number_of_blocks"])) { $number_of_blocks = $home_content_block["number_of_blocks"]; } else {
-          $number_of_blocks = get_option( 'posts_per_page' );
-        }
-        if (isset($home_content_block["blocks_orderby"])) { $blocks_orderby = $home_content_block["blocks_orderby"]; } else { $blocks_orderby = 'date'; }
-        if (isset($home_content_block["blocks_order"])) { $blocks_order = $home_content_block["blocks_order"]; } else { $blocks_order = 'DESC'; }
-        if (isset($home_content_block["blocks_orderby_meta_key"])) { $blocks_orderby_meta_key = $home_content_block["blocks_orderby_meta_key"]; } else { $blocks_orderby_meta_key = ''; }
+                <?php
+                foreach ($home_content_blocks as $home_content_block) {
+                    if (isset($home_content_block["block_title"])) {
+                        $block_title = $home_content_block["block_title"];
+                    }
+                    if (isset($home_content_block["blocks_per_row"])) {
+                        $blocks_per_row = $home_content_block["blocks_per_row"];
+                    }
+                    if (isset($home_content_block["number_of_blocks"])) {
+                        $number_of_blocks = $home_content_block["number_of_blocks"];
+                    }
+                    if (isset($home_content_block["blocks_orderby"])) {
+                        $blocks_orderby = $home_content_block["blocks_orderby"];
+                    } else {
+                        $blocks_orderby = 'date';
+                    }
+                    if (isset($home_content_block["blocks_order"])) {
+                        $blocks_order = $home_content_block["blocks_order"];
+                    } else {
+                        $blocks_order = 'DESC';
+                    }
+                    if (isset($home_content_block["blocks_orderby_meta_key"])) {
+                        $blocks_orderby_meta_key = $home_content_block["blocks_orderby_meta_key"];
+                    } else {
+                        $blocks_orderby_meta_key = '';
+                    }
+                    // Process the tag selection
+                    if (isset($home_content_block["blocks_post_tags_query"])) {
+                        $blocks_post_tags_query = implode(",", $home_content_block["blocks_post_tags_query"]);
+                        if ($blocks_post_tags_query) {
+                            $blocks_post_tags_query = array(
+                                'taxonomy' => 'post_tag',
+                                'field' => 'term_id',
+                                'terms' => array($blocks_post_tags_query),
+                            );
+                        }
+                    } else {
+                        $blocks_post_tags_query = '';
+                    }
+                    // Process the category selection
+                    if (isset($home_content_block["blocks_post_category_query"])) {
+                        $blocks_post_category_query = implode(",", $home_content_block["blocks_post_category_query"]);
+                        if ($blocks_post_category_query) {
+                            $blocks_post_category_query = array(
+                                'taxonomy' => 'category',
+                                'field' => 'term_id',
+                                'terms' => array($blocks_post_category_query),
+                            );
+                        }
+                    } else {
+                        $blocks_post_category_query = '';
+                    }
+                    // Process the taxonomy relationship
+                    if ($blocks_post_tags_query && $blocks_post_category_query) {
+                        $blocks_tax_query = array(
+                            'relation' => 'OR',
+                            $blocks_post_tags_query,
+                            $blocks_post_category_query
+                        );
+                    } else if ($blocks_post_tags_query) {
+                        $blocks_tax_query = array(
+                            $blocks_post_tags_query
+                        );
+                    } else if ($blocks_post_category_query) {
+                        $blocks_tax_query = array(
+                            $blocks_post_category_query
+                        );
+                    } else {
+                        $blocks_tax_query = array();
+                    }
+                    // Process the layout type selection
+                    if (isset($home_content_block["blocks_layout_type"]) && $home_content_block["blocks_layout_type"]) {
+                        $blocks_layout_type = $home_content_block["blocks_layout_type"];
+                    }
 
-        // Process the tag selection
-        if (isset($home_content_block["blocks_post_tags_query"])) { 
-          $blocks_post_tags_query = $home_content_block["blocks_post_tags_query"];
-          if (strlen(implode($blocks_post_tags_query)) !== 0) {
-            $blocks_post_tags_query = array(
-          		'taxonomy' => 'post_tag',
-          		'field'    => 'term_id',
-          		'terms'    => $blocks_post_tags_query,
-            );
-          }
-        } else { 
-          $blocks_post_tags_query = ''; 
-        }
-        // Process the category selection
-        if (isset($home_content_block["blocks_post_category_query"])) {
-          $blocks_post_category_query = $home_content_block["blocks_post_category_query"];
-          if (strlen(implode($blocks_post_category_query)) !== 0) {
-            $blocks_post_category_query = array(
-          		'taxonomy' => 'category',
-          		'field'    => 'term_id',
-          		'terms'    => $blocks_post_category_query,
-            );
-          }
-        } else { 
-          $blocks_post_category_query = ''; 
-        }
-        // Process the taxonomy relationship
-        if ($blocks_post_tags_query && $blocks_post_category_query) {
-          $blocks_tax_query = array(
-        		'relation' => 'OR',
-        		$blocks_post_tags_query,
-        		$blocks_post_category_query
-        	);
-        } else if ($blocks_post_tags_query) { 
-          $blocks_tax_query = array(
-        		$blocks_post_tags_query
-        	);
-        } else if ($blocks_post_category_query) { 
-          $blocks_tax_query = array(
-        		$blocks_post_category_query
-        	);
-        } else {
-          $blocks_tax_query = array();
-        }
-        // Process the layout type selection
-        if (isset($home_content_block["blocks_layout_type"]) && $home_content_block["blocks_layout_type"]) { 
-          $blocks_layout_type = $home_content_block["blocks_layout_type"]; 
-        }
+                    //get sticky posts 
+                    $argsSticky = array(
+                        'post__in' => get_option('sticky_posts'),
+                        'post_type' => 'post',
+                        'posts_per_page' => $number_of_blocks,
+                        'orderby' => $blocks_orderby,
+                        'order' => $blocks_order,
+                        'meta_key' => $blocks_orderby_meta_key,
+                        'tax_query' => $blocks_tax_query
+                    );
+                    $querySticky = new WP_Query($argsSticky);
 
-        //Query the defined content blocks
-        $args = array(
-        	'post_type' => 'post',
-        	'posts_per_page' => $number_of_blocks,
-        	'orderby' => $blocks_orderby,
-        	'order' => $blocks_order,
-        	'meta_key'  => $blocks_orderby_meta_key,
-        	'tax_query' => $blocks_tax_query
-        );
+                    //get the basic posts minus the sticky posts because we have a
+                    // posts limit from the admin
+                    $args = array(
+                        'post_type' => 'post',
+                        'posts_per_page' => $number_of_blocks - $querySticky->post_count,
+                        'orderby' => $blocks_orderby,
+                        'order' => $blocks_order,
+                        'meta_key' => $blocks_orderby_meta_key,
+                        'tax_query' => $blocks_tax_query
+                    );
+                    $queryPosts = new WP_Query($args);
 
-        // Process the page selection
-        if (isset($home_content_block["blocks_post_pages_query"])) { 
-          $blocks_post_pages_query = $home_content_block["blocks_post_pages_query"];
-          if (strlen(implode($blocks_post_pages_query)) !== 0) {
-            $args = array(
-              'post_type' => 'page',
-              'post__in' => $blocks_post_pages_query,
-              'orderby' => $blocks_orderby,
-              'order' => $blocks_order,
-              'meta_key'  => $blocks_orderby_meta_key,
-            );
-          }
-        }
+                    //create a new query to merge the posts
+                    $query = new WP_Query();
+                    $query->posts = array_merge($querySticky->posts, $queryPosts->posts);
+                    $query->post_count = $querySticky->post_count + $queryPosts->post_count;
+                    ?>
 
-        $query = new WP_Query( $args );
-      ?>
+                    <?php if (!is_null($query) && $query->have_posts()) : ?>
 
-				<?php if ( $query->have_posts() ) : ?>
+                        <?php if ($block_title) { ?>
+                            <h5 class="content-block-title"><span class="separator-title"><?php echo esc_attr($block_title); ?></span></h5>
+                        <?php } ?>
+                        <?php
+                        if ($blocks_per_row) {
+                            set_query_var('blocks_per_row', $blocks_per_row);
+                        } else {
+                            set_query_var('blocks_per_row', 'col-md-12');
+                        }
+                        ?>
+                        <?php
+                        if ($blocks_layout_type) {
+                            set_query_var('blocks_layout_type', $blocks_layout_type);
+                        } else {
+                            set_query_var('blocks_layout_type', 'card-vertical');
+                        }
+                        ?>
 
-          <?php if ($block_title) { ?>
-            <h5 class="content-block-title"><span class="separator-title"><?php echo esc_attr( $block_title ); ?></span></h5>
-          <?php } ?>
-          <?php if ($blocks_per_row) { set_query_var( 'blocks_per_row', $blocks_per_row ); } else { set_query_var( 'blocks_per_row', 'col-md-12' ); } ?>
-          <?php if ($blocks_layout_type) { set_query_var( 'blocks_layout_type', $blocks_layout_type ); } else { set_query_var( 'blocks_layout_type', 'card-vertical' ); } ?>
+                        <div class="card-wrapper">
 
-          <div class="card-wrapper">
+                            <?php /* Start the Loop */ ?>
+                            <?php while ($query->have_posts()) : $query->the_post(); ?>
 
-  					<?php /* Start the Loop */ ?>
-  					<?php while ( $query->have_posts() ) : $query->the_post(); ?>
-  
-  						<?php
-  
-  						/*
-  						 * Include the Post-Format-specific template for the content.
-  						 * If you want to override this in a child theme, then include a file
-  						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-  						 */
-  						get_template_part( 'loop-templates/content', get_post_format() );
-  						?>
-  
-  					<?php endwhile; ?>
-          </div><!-- .card-wrapper -->
+                                <?php
+                                /*
+                                 * Include the Post-Format-specific template for the content.
+                                 * If you want to override this in a child theme, then include a file
+                                 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+                                 */
+                                get_template_part('loop-templates/content', get_post_format());
+                                ?>
 
-  				<?php else : //No results ?>
-  					<?php get_template_part( 'loop-templates/content', 'none' ); ?>
-  				<?php endif; ?>
-        
-      <?php wp_reset_query(); } ?>
-			</main><!-- #main -->
+                        <?php endwhile; ?>
+                        </div><!-- .card-wrapper -->
 
-			<!-- The pagination component -->
-			<?php elexis_pagination(); ?>
+                    <?php else : //No results   ?>
+                        <?php get_template_part('loop-templates/content', 'none'); ?>
+                    <?php endif; ?>
 
-		</div><!-- #primary -->
+    <?php wp_reset_query();
+}
+?>
+            </main><!-- #main -->
 
-		<!-- Do the right sidebar check -->
-		<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
-		
+            <!-- The pagination component -->
+        <?php elexis_pagination(); ?>
 
-	</div><!-- .row -->
+        </div><!-- #primary -->
+
+        <!-- Do the right sidebar check -->
+<?php get_template_part('global-templates/right-sidebar-check'); ?>
+
+
+    </div><!-- .row -->
 
 </div><!-- Container end -->
 

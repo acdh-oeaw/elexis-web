@@ -57,7 +57,7 @@
 	<div class="entry-content">
 
     <?php
-    // @specific-elexis start
+    /* @custom elexis start */
     $fields = get_post_custom();
     if(isset($fields['event_date']) OR isset($fields['event_location'])) {
       echo '<div class="elexis-custom-meta">';
@@ -69,7 +69,7 @@
       }
       echo '</div>';
     }
-    // @specific-elexis end
+    /* @custom elexis end */
     ?>
 
 		<?php the_content(); ?>

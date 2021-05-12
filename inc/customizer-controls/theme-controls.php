@@ -50,7 +50,6 @@ $sections = array(
 	'home_hero'      => array( esc_attr__( 'Homepage Hero Block', 'elexis' ), '' ),
 	'home_blocks'      => array( esc_attr__( 'Homepage Content Blocks', 'elexis' ), '' ),
 	'single_posts'      => array( esc_attr__( 'Single Posts', 'elexis' ), '' ),
-	'archive_pages'      => array( esc_attr__( 'Archive Pages', 'elexis' ), '' ),
 	'footer'      => array( esc_attr__( 'Footer', 'elexis' ), '' ),
 );
 foreach ( $sections as $section_id => $section ) {
@@ -76,12 +75,6 @@ $tags = get_tags( array('orderby' => 'name','order' => 'ASC') );
 $tag_choices = array();
 foreach ( $tags as $tag ) {
 	$tag_choices[ $tag->term_id ] = $tag->name;
-}
-/* Get Pages for Query Selectors */
-$pages = get_pages( array('sort_column' => 'post_title','sort_order' => 'asc', 'post_type' => 'page','post_status' => 'publish') );
-$page_choices = array();
-foreach ( $pages as $page ) {
-	$page_choices[ $page->ID ] = $page->post_title;
 }
 
 /**
@@ -417,16 +410,12 @@ my_config_kirki_add_field(
 		),
     'output'    => array(
     	array(
-    		'element'         => array('.btn-round','.separator-title','#wrapper-hero-content .hero-dark .btn-round:hover','.single main > article .entry-content a', '.page main > article .entry-content a'),
+    		'element'         => array('.btn-round','.separator-title','#wrapper-hero-content .hero-dark .btn-round:hover','.single main > article .entry-content a', '.page main > article .entry-content a', '.page-header .page-title'),
     		'property'        => 'color',
       ),
     	array(
     		'element'         => array('.separator-title','.single main > article .entry-content a', '.page main > article .entry-content a'),
     		'property'        => 'border-color',
-      ),
-    	array(
-    		'element'         => array('.card-wrapper .card .card-inner'),
-    		'property'        => 'border-top-color',
       ),
     	array(
     		'element'         => array('.btn-round:hover'),
@@ -436,16 +425,12 @@ my_config_kirki_add_field(
 		'transport'   => 'postMessage',
     'js_vars'     => array(
     	array(
-    		'element'         => array('.btn-round','.separator-title','#wrapper-hero-content .hero-dark .btn-round:hover','.single main > article .entry-content a', '.page main > article .entry-content a'),
+    		'element'         => array('.btn-round','.separator-title','#wrapper-hero-content .hero-dark .btn-round:hover','.single main > article .entry-content a', '.page main > article .entry-content a', '.page-header .page-title'),
     		'property'        => 'color',
       ),
     	array(
     		'element'         => array('.separator-title','.single main > article .entry-content a', '.page main > article .entry-content a'),
     		'property'        => 'border-color',
-      ),
-    	array(
-    		'element'         => array('.card-wrapper .card .card-inner'),
-    		'property'        => 'border-top-color',
       ),
     	array(
     		'element'         => array('.btn-round:hover'),
@@ -455,35 +440,6 @@ my_config_kirki_add_field(
 	)
 );
 
-/**
- * Body Background Color
- */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'color',
-		'settings'    => 'theme_layout_body_bg_color',
-		'label'       => __( 'Body Document Background Color', 'elexis' ),
-		'description' => esc_attr__( 'Define the background color of your website body.', 'elexis' ),
-		'section'     => 'theme_layout_section',
-		'default'     => '#fff',
-		'choices'     => array(
-			'alpha' => true,
-		),
-    'output'    => array(
-    	array(
-    		'element'         => 'body',
-    		'property'        => 'background-color',
-      ),
-    ),
-		'transport'   => 'postMessage',
-    'js_vars'     => array(
-    	array(
-    		'element'         => 'body',
-    		'property'        => 'background-color',
-      ),
-    ),
-	)
-);
 
 /**
  * HTML Background Color
@@ -1055,7 +1011,6 @@ my_config_kirki_add_field(
 					'card-vertical'  => esc_attr__( 'Cards with Image on Top', 'elexis' ),
 					'card-horizontal card-horizontal-left'   => esc_attr__( 'Cards with Image on Left', 'elexis' ),
 					'card-horizontal card-horizontal-right'   => esc_attr__( 'Cards with Image on Right', 'elexis' ),
-					'card-image-overlay'   => esc_attr__( 'Cards with Image Overlay', 'elexis' ),
 					'card-no-image'   => esc_attr__( 'Cards with no Image', 'elexis' )
 				),
 			),
@@ -1072,13 +1027,6 @@ my_config_kirki_add_field(
 				'description' => esc_attr__( 'You may select multiple tags to query your content from.', 'elexis' ),
     		'multiple'    => 12,
     		'choices'     => $tag_choices
-			),
-			'blocks_post_pages_query' => array(
-				'type'        => 'select',
-				'label'       => esc_attr__( 'Select Specific Pages to Query', 'elexis' ),
-				'description' => esc_attr__( 'If you select pages, then the category and tag queries will be ignored.', 'elexis' ),
-    		'multiple'    => 12,
-    		'choices'     => $page_choices
 			),
 			'blocks_orderby' => array(
 				'type'        => 'select',
@@ -1115,194 +1063,6 @@ my_config_kirki_add_field(
 				'default'     => ''
 			)
 		)
-	)
-);
-
-/**
- * Predefined Card Style
- */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'select',
-		'settings'    => 'card_predefined_style',
-		'label'       => esc_attr__( 'Predefined Card Style', 'elexis' ),
-		'description' => esc_attr__( 'Select one of the predefined card styles. You may overwrite these with settings below.', 'elexis' ),
-		'section'     => 'home_blocks_section',
-		'transport'   => 'refresh',
-		'default'     => 'flat-style',
-		'choices'     => array(
-			'flat-style'      => esc_attr__( 'Flat Style', 'elexis' ),
-			'light-shadow'    => esc_attr__( 'Light Shadow', 'elexis' ),
-			'material-style'  => esc_attr__( 'Material Style', 'elexis' ),
-		),
-	)
-);
-
-/**
- * Card Border Thickness
- */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'slider',
-		'settings'    => 'card_border_size',
-		'label'       => esc_attr__( 'Card Border Thickness', 'elexis' ),
-		'description' => esc_attr__( 'Set the size of the border around cards.', 'elexis' ),
-		'section'     => 'home_blocks_section',
-		'default'     => '1',
-		'choices'     => array(
-			'min'  => 0,
-			'max'  => 6.0,
-			'step' => 0.25,
-			'suffix' => 'px',
-		),
-		'output'      => array(
-			array(
-				'element' => array( '.card-wrapper .card .card-inner' ),
-        'property' => 'border-width',
-        'units'    => 'px',
-			),
-		),
-		'transport'   => 'postMessage',
-    'js_vars'     => array(
-      array(
-				'element' => array( '.card-wrapper .card .card-inner' ),
-        'property' => 'border-width',
-        'units'    => 'px',
-      ),
-    ),
-	)
-);
-
-/**
- * Card Border Thickness
- */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'slider',
-		'settings'    => 'card_border_size',
-		'label'       => esc_attr__( 'Card Border Thickness', 'elexis' ),
-		'description' => esc_attr__( 'Set the size of the border around cards.', 'elexis' ),
-		'section'     => 'home_blocks_section',
-		'default'     => '1',
-		'choices'     => array(
-			'min'  => 0,
-			'max'  => 6.0,
-			'step' => 0.25,
-			'suffix' => 'px',
-		),
-		'output'      => array(
-			array(
-				'element' => array( '.card-wrapper .card .card-inner' ),
-        'property' => 'border-width',
-        'units'    => 'px',
-			),
-		),
-		'transport'   => 'postMessage',
-    'js_vars'     => array(
-      array(
-				'element' => array( '.card-wrapper .card .card-inner' ),
-        'property' => 'border-width',
-        'units'    => 'px',
-      ),
-    ),
-	)
-);
-
-/**
- * Card Border Color
- */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'color',
-		'settings'    => 'card_border_color',
-		'label'       => __( 'Card Border Color', 'elexis' ),
-		'description' => esc_attr__( 'Define the color of the border on cards.', 'elexis' ),
-		'section'     => 'home_blocks_section',
-		'default'     => 'rgba(0, 0, 0, 0.1);',
-		'choices'     => array(
-			'alpha' => true,
-		),
-    'output'    => array(
-    	array(
-    		'element'         => '.card-wrapper .card .card-inner',
-    		'property'        => 'border-color',
-      ),
-    ),
-		'transport'   => 'postMessage',
-    'js_vars'     => array(
-    	array(
-    		'element'         => '.card-wrapper .card .card-inner',
-    		'property'        => 'border-color',
-      ),
-    ),
-	)
-);
-
-/**
- * Card Top Border
- */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'slider',
-		'settings'    => 'card_border_top_size',
-		'label'       => esc_attr__( 'Card Top Border', 'elexis' ),
-		'description' => esc_attr__( 'Set the size of the top border on cards.', 'elexis' ),
-		'section'     => 'home_blocks_section',
-		'default'     => '0',
-		'choices'     => array(
-			'min'  => 0,
-			'max'  => 16.0,
-			'step' => 0.5,
-			'suffix' => 'px',
-		),
-		'output'      => array(
-			array(
-				'element' => array( '.card-wrapper .card .card-inner' ),
-        'property' => 'border-top-width',
-        'units'    => 'px',
-        'suffix' => ' !important',
-			),
-		),
-		'transport'   => 'postMessage',
-    'js_vars'     => array(
-      array(
-				'element' => array( '.card-wrapper .card .card-inner' ),
-        'property' => 'border-top-width',
-        'units'    => 'px',
-        'suffix' => ' !important',
-      ),
-    ),
-	)
-);
-
-/**
- * Card Top Border Color
- */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'color',
-		'settings'    => 'card_border_top_color',
-		'label'       => __( 'Card Top Border Color', 'elexis' ),
-		'description' => esc_attr__( 'Define the color of the top border on cards.', 'elexis' ),
-		'section'     => 'home_blocks_section',
-		'choices'     => array(
-			'alpha' => true,
-		),
-    'output'    => array(
-    	array(
-    		'element'         => array('.card-wrapper .card .card-inner'),
-    		'property'        => 'border-top-color',
-    		'suffix' => ' !important',
-      ),
-    ),
-		'transport'   => 'postMessage',
-    'js_vars'     => array(
-    	array(
-    		'element'         => array('.card-wrapper .card .card-inner'),
-    		'property'        => 'border-top-color',
-    		'suffix' => ' !important',
-      ),
-    ),
 	)
 );
 
@@ -1618,52 +1378,6 @@ my_config_kirki_add_field(
 		'transport'   => 'refresh',
 	)
 );
-
-
-/**
- * Archive Pages Columns per Row
- */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'select',
-		'settings'    => 'archive_columns_per_row',
-		'label'       => esc_attr__( 'Archive Pages Columns per Row', 'elexis' ),
-		'description' => esc_attr__( 'Select number of content blocks per row on archive pages such as categories and tags.', 'elexis' ),
-		'section'     => 'archive_pages_section',
-		'default'     => 'col-md-12',
-		'choices'     => array(
-			'col-md-12'  => esc_attr__( '1', 'elexis' ),
-			'col-md-6'   => esc_attr__( '2', 'elexis' ),
-			'col-md-4'   => esc_attr__( '3', 'elexis' ),
-			'col-md-3'   => esc_attr__( '4', 'elexis' ),
-			'col-md-2'   => esc_attr__( '6', 'elexis' )
-		),
-		'transport'   => 'refresh',
-	)
-);
-
-/**
- * Archive Pages Blocks Layout Type
- */
-my_config_kirki_add_field(
-	array(
-		'type'        => 'select',
-		'settings'    => 'archive_blocks_layout_type',
-		'label'       => esc_attr__( 'Archive Pages Blocks Layout Type', 'elexis' ),
-		'description' => esc_attr__( 'Select type of layout for blocks on archive pages such as categories and tags.', 'elexis' ),
-		'section'     => 'archive_pages_section',
-		'default'     => 'card-vertical',
-		'choices'     => array(
-			'card-vertical'  => esc_attr__( 'Cards with Image on Top', 'elexis' ),
-			'card-horizontal card-horizontal-left'   => esc_attr__( 'Cards with Image on Left', 'elexis' ),
-			'card-horizontal card-horizontal-right'   => esc_attr__( 'Cards with Image on Right', 'elexis' ),
-			'card-image-overlay'   => esc_attr__( 'Cards with Image Overlay', 'elexis' ),
-			'card-no-image'   => esc_attr__( 'Cards with no Image', 'elexis' )
-		),
-		'transport'   => 'refresh',
-	)
-);
-
 
 /**
  * Primary Footer Background Color

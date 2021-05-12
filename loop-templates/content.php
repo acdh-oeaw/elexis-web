@@ -7,46 +7,28 @@
 
 //Extract variables from the query
 extract( $wp_query->query_vars );
-if (!isset($blocks_per_row)) { 
-  $blocks_per_row = get_theme_mod( 'archive_columns_per_row', 'col-md-12' );
-}
-if (!isset($blocks_layout_type)) {
-  $blocks_layout_type = get_theme_mod( 'archive_blocks_layout_type', 'card-vertical' );
-}
-// Get the card style selection
-$card_predefined_style = get_theme_mod( 'card_predefined_style', 'flat-style' );
-
+if (!isset($blocks_per_row)) { $blocks_per_row = 'col-md-6'; }
+if (!isset($blocks_layout_type)) { $blocks_layout_type = 'card-vertical'; }
 $articleClasses = array(
   'card',
-  $blocks_per_row,
-  $card_predefined_style
+  $blocks_per_row
 );
 ?>
 
 <article <?php post_class($articleClasses); ?> id="post-<?php the_ID(); ?>">
 
   <div class="card-inner <?php echo esc_attr( $blocks_layout_type ); ?>">
-
   <?php 
     $postThumbnail = get_the_post_thumbnail( $post->ID, 'large' ); 
     if ($postThumbnail && $blocks_layout_type != 'card-no-image' ) { echo '<a class="entry-top-thumbnail" href="'.esc_url( get_permalink() ).'" rel="bookmark">'.$postThumbnail.'</a>'; }
   ?>
 
     <div class="entry-text-content">
-
+  
     	<header class="entry-header">
       	
       	<?php $card_category_toggle = get_theme_mod( 'card_category_toggle', true ); if ($card_category_toggle) { elexis_entry_list_categories(); } ?>
-
-        <?php
-          // @specific-elexis start
-          $fields = get_post_custom();
-          if(isset($fields['card_overlay_icon'])) {
-            echo '<a href="'.esc_url( get_permalink() ).'" rel="bookmark"><i data-feather="'.$fields['card_overlay_icon'][0].'" class="card-overlay-icon"></i></a>';
-          }
-          // @specific-elexis end
-        ?>
-
+    
     		<?php 
       		if ( is_sticky() ) { $sticky = '<i data-feather="star" class="sticky-icon"></i>'; } else { $sticky = ''; } 
       		the_title( sprintf( '<h4 class="entry-title">'.$sticky.'<a href="%s" rel="bookmark">', esc_url( get_permalink() ) ),'</a></h4>' );
@@ -61,7 +43,7 @@ $articleClasses = array(
     		?>
 
         <?php if (get_theme_mod( 'card_readmore_toggle', false )) { ?>
-          <a class="btn btn-round mb-1" href="<?php echo esc_url( get_permalink( get_the_ID() )); ?>"><?php echo __( 'Read More','elexis' ); ?></a>
+          <a class="btn btn-round mb-1" href="<?php echo esc_url( get_permalink( get_the_ID() )); ?>"><?php echo __( 'Mehr lesen','elexis' ); ?></a>
         <?php } ?>
 
     		<?php

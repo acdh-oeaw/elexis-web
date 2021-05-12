@@ -26,7 +26,7 @@
 }
 
 .card-wrapper .card .card-inner.card-horizontal {
-  min-height: 18rem;
+  max-height: 18rem;
 }
 
 #wrapper-hero-content .btn-round {
@@ -34,11 +34,9 @@
   padding: 0.75rem 1.5rem;
 }
 
-/*
 .home .pagination {
   display: none;
 }
-*/
 
 .archive-rss-icon {
   margin-right: 0.25rem;
@@ -55,71 +53,8 @@
   }
 }
 
-.card-image-overlay {
-  min-height: 10rem;
 
-  .entry-meta, .entry-cat-links, .entry-content {
-    display: none;
-  }
 
-  .entry-text-content {
-    position: absolute !important;
-    top: calc(50% - 45px);
-    left: 0;
-    text-align: center;
-    width: 100%;
 
-    .entry-title a {
-      color: #1d4e94 !important;
-      font-size: 1.65rem;
-      z-index: 2;
-      position: relative;
-      
-      &:hover {
-        color: #1d4e94 !important;
-      }
-      
-    }
-
-  }
-
-  .entry-top-thumbnail::after {
-    content: "";
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background-color: rgba(224, 221, 60, 0.88);
-    z-index: 1;
-  }
-
-  &:hover .entry-top-thumbnail img {
-      -webkit-transform: scale(1.06);
-      -moz-transform: scale(1.06);
-      -o-transform: scale(1.06);
-      -ms-transform: scale(1.06);
-      transform: scale(1.06);
-  }
-
-  .entry-top-thumbnail img {
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-  }
-
-}
-
-svg.feather.card-overlay-icon {
-    height: 2.5rem;
-    width: 2.5rem;
-    margin-bottom: 0.5rem;
-    color: #ffffff;
-    z-index: 2;
-    position: relative;
-}
 
 

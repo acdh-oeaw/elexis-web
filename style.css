@@ -5,7 +5,7 @@ Theme URI: https://www.oeaw.ac.at/acdh
 Author: ACDH
 Author URI: https://www.oeaw.ac.at/acdh
 Description: Elexis WordPress Theme.
-Version: 1.0
+Version: 1.3
 License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -104,9 +104,9 @@ svg.feather {
         border-bottom: 1px solid rgba(0, 0, 0, 0.05); } }
     .navbar .dropdown-menu > li > a.nav-link {
       padding: 0.5rem 0.75rem; }
-  @media (max-width: 991px) {
+  @media (max-width: 1199px) {
     .navbar .navbar-search-form {
-      margin: 0.5rem 0 0.5rem -0.25rem !important; } }
+      margin: 0.5rem 0 !important; } }
   .navbar .navbar-brand {
     display: flex;
     align-items: center;
@@ -117,7 +117,7 @@ svg.feather {
     .navbar .navbar-brand img {
       max-height: 100%;
       width: auto; }
-  @media (max-width: 991px) {
+  @media (max-width: 1199px) {
     .navbar .navbar-collapse {
       border-top: 1px solid rgba(0, 0, 0, 0.075);
       padding-top: 0.5rem;
@@ -125,8 +125,7 @@ svg.feather {
   .navbar .navbar-collapse li {
     font-size: 1rem; }
   .navbar .navbar-collapse .navbar-search-form {
-    position: relative;
-    margin-left: 0.5rem; }
+    position: relative; }
   .navbar .navbar-collapse .navbar-search {
     font-size: 0.9rem;
     width: 9rem;
@@ -135,6 +134,9 @@ svg.feather {
     border: 1px solid rgba(0, 0, 0, 0.075);
     background-color: rgba(255, 255, 255, 0.1);
     color: rgba(0, 0, 0, 0.9); }
+    @media (max-width: 1199px) {
+      .navbar .navbar-collapse .navbar-search {
+        margin-left: -0.25rem !important; } }
     .navbar .navbar-collapse .navbar-search::placeholder {
       color: rgba(0, 0, 0, 0.6); }
     .navbar .navbar-collapse .navbar-search:focus {
@@ -148,7 +150,7 @@ svg.feather {
     cursor: pointer;
     color: rgba(0, 0, 0, 0.6);
     position: absolute;
-    left: 8.75rem;
+    right: 0.6rem;
     top: 0.25rem; }
     .navbar button.navbar-search-icon:hover {
       color: rgba(0, 0, 0, 0.9); }
@@ -157,9 +159,6 @@ svg.feather {
   .navbar .navbar-social-icon {
     margin-left: 1rem;
     color: rgba(0, 0, 0, 0.6); }
-    @media (max-width: 991px) {
-      .navbar .navbar-social-icon {
-        margin-left: 0; } }
     .navbar .navbar-social-icon:nth-of-type(n+2) {
       margin-left: 0.5rem; }
     .navbar .navbar-social-icon:hover {
@@ -222,21 +221,13 @@ svg.feather {
   flex-wrap: wrap; }
   .card-wrapper .card {
     border: 0;
-    padding: 0;
-    background-color: transparent; }
-    .card-wrapper .card.light-shadow .card-inner {
-      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.03); }
-    .card-wrapper .card.material-style .card-inner {
-      border-radius: 2px;
-      box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); }
+    padding: 0; }
     .card-wrapper .card .card-inner {
       padding: 15px;
       margin: 15px;
       border-radius: 2px;
       border: 1px solid rgba(0, 0, 0, 0.1);
-      background-color: #fff;
-      overflow: hidden;
-      position: relative; }
+      overflow: hidden; }
       .card-wrapper .card .card-inner .entry-title svg.sticky-icon {
         width: 1.25rem;
         margin-right: 0.25rem;
@@ -269,12 +260,6 @@ svg.feather {
           flex-direction: row-reverse; }
           .card-wrapper .card .card-inner.card-horizontal.card-horizontal-right .entry-top-thumbnail {
             margin: -15px -15px -15px 15px; }
-      .card-wrapper .card .card-inner.card-image-overlay .entry-top-thumbnail {
-        position: absolute;
-        height: 100%;
-        margin: -15px 0 0 -15px; }
-      .card-wrapper .card .card-inner.card-image-overlay .entry-text-content {
-        position: relative; }
 
 .entry-top-thumbnail {
   margin: -15px -15px 15px -15px;
@@ -480,17 +465,15 @@ svg.feather {
       color: #1c4d93; }
 
 .card-wrapper .card .card-inner.card-horizontal {
-  min-height: 18rem; }
+  max-height: 18rem; }
 
 #wrapper-hero-content .btn-round {
   font-size: 1rem;
   padding: 0.75rem 1.5rem; }
 
-/*
 .home .pagination {
-  display: none;
-}
-*/
+  display: none; }
+
 .archive-rss-icon {
   margin-right: 0.25rem;
   color: #495057; }
@@ -500,53 +483,5 @@ svg.feather {
     width: 2rem;
     vertical-align: baseline;
     margin-left: -0.25rem; }
-
-.card-image-overlay {
-  min-height: 10rem; }
-  .card-image-overlay .entry-meta, .card-image-overlay .entry-cat-links, .card-image-overlay .entry-content {
-    display: none; }
-  .card-image-overlay .entry-text-content {
-    position: absolute !important;
-    top: calc(50% - 45px);
-    left: 0;
-    text-align: center;
-    width: 100%; }
-    .card-image-overlay .entry-text-content .entry-title a {
-      color: #1d4e94 !important;
-      font-size: 1.65rem;
-      z-index: 2;
-      position: relative; }
-      .card-image-overlay .entry-text-content .entry-title a:hover {
-        color: #1d4e94 !important; }
-  .card-image-overlay .entry-top-thumbnail::after {
-    content: "";
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background-color: rgba(224, 221, 60, 0.88);
-    z-index: 1; }
-  .card-image-overlay:hover .entry-top-thumbnail img {
-    -webkit-transform: scale(1.06);
-    -moz-transform: scale(1.06);
-    -o-transform: scale(1.06);
-    -ms-transform: scale(1.06);
-    transform: scale(1.06); }
-  .card-image-overlay .entry-top-thumbnail img {
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    transition: all 0.3s ease; }
-
-svg.feather.card-overlay-icon {
-  height: 2.5rem;
-  width: 2.5rem;
-  margin-bottom: 0.5rem;
-  color: #ffffff;
-  z-index: 2;
-  position: relative; }
 
 /*# sourceMappingURL=style.css.map */

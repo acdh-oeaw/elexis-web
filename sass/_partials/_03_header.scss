@@ -66,8 +66,8 @@
   }
 
   .navbar-search-form {
-    @include breakpoint-down($lg) {
-      margin: 0.5rem 0 0.5rem -0.25rem !important
+    @include breakpoint-down($xl) {
+      margin: 0.5rem 0 !important;
     }
   }
 
@@ -88,7 +88,7 @@
   }
 
   .navbar-collapse {
-    @include breakpoint-down($lg) {
+    @include breakpoint-down($xl) {
       border-top: 1px solid rgba(0, 0, 0, 0.075);
       padding-top: 0.5rem;
       margin-top: 1rem;
@@ -99,8 +99,7 @@
     }
 
     .navbar-search-form {
-      position: relative;
-      margin-left: 0.5rem;
+      position: relative
     }
 
     .navbar-search {
@@ -111,6 +110,9 @@
       border: 1px solid rgba(0, 0, 0, 0.075);
       background-color: rgba(255, 255, 255, 0.1);
       color: rgba(0, 0, 0, 0.9);
+      @include breakpoint-down($xl) {
+        margin-left: -0.25rem !important
+      } 
 
       &::placeholder {
         color: rgba(0, 0, 0, 0.6);
@@ -130,7 +132,7 @@
     cursor: pointer;
     color: rgba(0, 0, 0, 0.6);
     position: absolute;
-    left: 8.75rem;
+    right: 0.6rem;
     top: 0.25rem;
 
     &:hover {
@@ -144,9 +146,6 @@
   .navbar-social-icon {
     margin-left: 1rem;
     color: rgba(0, 0, 0, 0.6);
-    @include breakpoint-down($lg) {
-      margin-left: 0;
-    }
 
     &:nth-of-type(n+2) {
       margin-left: 0.5rem;

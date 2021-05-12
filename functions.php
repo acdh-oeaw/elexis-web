@@ -1,10 +1,11 @@
 <?php
+
 /**
  * elexis functions and definitions
  *
  * @package elexis
  */
-
+define('KIRKI_VERSION', '3.0.0');
 /**
  * Initialize theme default settings
  */
@@ -74,3 +75,10 @@ require get_template_directory() . '/inc/editor.php';
  * Load Editor functions.
  */
 require get_template_directory() . '/inc/customizer-controls/customizer-controls.php';
+
+/**
+ * Add social media related infos
+ */
+require get_template_directory() . '/inc/social-media-data.php';
+
+

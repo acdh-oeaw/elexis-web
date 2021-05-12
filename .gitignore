@@ -13,5 +13,3 @@ dist-product
 npm-debug.log
 
 /vendor/
-
-config_acdh.php

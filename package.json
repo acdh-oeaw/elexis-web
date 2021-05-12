@@ -26,7 +26,7 @@
     "gulp-uglify": "^3.0.0",
     "gulp-watch": "^4.3.11",
     "merge2": "^1.2.1",
-    "npm": "^5.7.1",
+    "npm": "^6.14.6",
     "run-sequence": "^2.2.1",
     "undescores-for-npm": "^1.0.0"
   }

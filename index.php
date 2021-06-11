@@ -36,6 +36,7 @@ if (!$home_content_blocks) {
 
                 <?php
                 foreach ($home_content_blocks as $home_content_block) {
+
                     if (isset($home_content_block["block_title"])) {
                         $block_title = $home_content_block["block_title"];
                     }
@@ -125,7 +126,7 @@ if (!$home_content_blocks) {
                     // posts limit from the admin
                     $args = array(
                         'post_type' => 'post',
-                        'posts_per_page' => $number_of_blocks - $querySticky->post_count,
+                        'posts_per_page' => $number_of_blocks,
                         'orderby' => $blocks_orderby,
                         'order' => $blocks_order,
                         'meta_key' => $blocks_orderby_meta_key,
@@ -134,9 +135,10 @@ if (!$home_content_blocks) {
                     $queryPosts = new WP_Query($args);
 
                     //create a new query to merge the posts
+                    $allposts = array_merge($querySticky->posts, $queryPosts->posts);
                     $query = new WP_Query();
-                    $query->posts = array_merge($querySticky->posts, $queryPosts->posts);
-                    $query->post_count = $querySticky->post_count + $queryPosts->post_count;
+                    $query->posts = array_slice($allposts, 0, $number_of_blocks);
+                    $query->post_count = $number_of_blocks;
                     ?>
 
                     <?php if (!is_null($query) && $query->have_posts()) : ?>
@@ -160,7 +162,7 @@ if (!$home_content_blocks) {
                         ?>
 
                         <div class="card-wrapper">
-
+                            <div class="row">
                             <?php /* Start the Loop */ ?>
                             <?php while ($query->have_posts()) : $query->the_post(); ?>
 
@@ -173,25 +175,27 @@ if (!$home_content_blocks) {
                                 get_template_part('loop-templates/content', get_post_format());
                                 ?>
 
-                        <?php endwhile; ?>
+                            <?php endwhile; ?>
+                                </div>
                         </div><!-- .card-wrapper -->
 
-                    <?php else : //No results   ?>
+                    <?php else : //No results    ?>
                         <?php get_template_part('loop-templates/content', 'none'); ?>
                     <?php endif; ?>
 
-    <?php wp_reset_query();
-}
-?>
+                    <?php
+                    wp_reset_query();
+                }
+                ?>
             </main><!-- #main -->
 
             <!-- The pagination component -->
-        <?php elexis_pagination(); ?>
+            <?php elexis_pagination(); ?>
 
         </div><!-- #primary -->
 
         <!-- Do the right sidebar check -->
-<?php get_template_part('global-templates/right-sidebar-check'); ?>
+        <?php get_template_part('global-templates/right-sidebar-check'); ?>
 
 
     </div><!-- .row -->

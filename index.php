@@ -133,6 +133,16 @@ if (!$home_content_blocks) {
                         'tax_query' => $blocks_tax_query
                     );
                     $queryPosts = new WP_Query($args);
+                    //remove the sticky posts from the normal posts array
+                    if (count($querySticky->posts) > 0) {
+                        foreach ($querySticky->posts as $p) {
+                            foreach ($queryPosts->posts as $k => $v) {
+                                if ($p->ID == $v->ID) {
+                                    unset($queryPosts->posts[$k]);
+                                }
+                            }
+                        }
+                    }
 
                     //create a new query to merge the posts
                     $allposts = array_merge($querySticky->posts, $queryPosts->posts);
@@ -163,20 +173,20 @@ if (!$home_content_blocks) {
 
                         <div class="card-wrapper">
                             <div class="row">
-                            <?php /* Start the Loop */ ?>
-                            <?php while ($query->have_posts()) : $query->the_post(); ?>
+                                <?php /* Start the Loop */ ?>
+                                <?php while ($query->have_posts()) : $query->the_post(); ?>
 
-                                <?php
-                                /*
-                                 * Include the Post-Format-specific template for the content.
-                                 * If you want to override this in a child theme, then include a file
-                                 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-                                 */
-                                get_template_part('loop-templates/content', get_post_format());
-                                ?>
+                                    <?php
+                                    /*
+                                     * Include the Post-Format-specific template for the content.
+                                     * If you want to override this in a child theme, then include a file
+                                     * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+                                     */
+                                    get_template_part('loop-templates/content', get_post_format());
+                                    ?>
 
-                            <?php endwhile; ?>
-                                </div>
+                                <?php endwhile; ?>
+                            </div>
                         </div><!-- .card-wrapper -->
 
                     <?php else : //No results    ?>

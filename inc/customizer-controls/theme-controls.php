@@ -1061,7 +1061,17 @@ my_config_kirki_add_field(
 				'label'       => esc_attr__( 'Meta Key to Order By', 'elexis' ),
 				'description' => esc_attr__( 'If you choose to order by meta value, then enter the meta key defined in post custom fields.', 'elexis' ),
 				'default'     => ''
-			)
+			),
+                        'blocks_post_allow_open_more' => array(
+				'type'        => 'select',
+				'label'       => esc_attr__( 'Display Show All posts?', 'elexis' ),
+				'description' => esc_attr__( 'You can display a button under the section, to allow the user to discover all posts on a new page.', 'elexis' ),
+                                'default'     => 'NO',
+				'choices'     => array(
+  				'no'   => esc_attr__( 'No', 'elexis' ),
+  				'yes'   => esc_attr__( 'Yes', 'elexis' )
+				)
+                            )
 		)
 	)
 );

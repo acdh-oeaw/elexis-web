@@ -188,7 +188,22 @@ if (!$home_content_blocks) {
                                 <?php endwhile; ?>
                             </div>
                         </div><!-- .card-wrapper -->
-
+                        
+                        <!-- Display more posts button -->
+                        <?php if($home_content_block['blocks_post_allow_open_more'] == "yes") {
+                           if(isset(get_category($home_content_block['blocks_post_category_query'][0])->slug)) {
+                                $slug = get_category($home_content_block['blocks_post_category_query'][0])->slug;
+                                ?>
+                                 <div class="row" style="width: 100%;">
+                                    <div class="col-lg-12 text-center">
+                                        <a href="category/<?=$slug?>" class="btn btn-round mb-1">Show Previous Posts</a>
+                                    </div>
+                                </div>
+                            <?php    
+                           }
+                        }?>
+                        
+                        
                     <?php else : //No results    ?>
                         <?php get_template_part('loop-templates/content', 'none'); ?>
                     <?php endif; ?>
